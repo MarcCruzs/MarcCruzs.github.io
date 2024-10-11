@@ -38,7 +38,7 @@ This technical design document outlines the approach and strategies for the SUAS
 ## 4. Methodology
 ### 4.1 ODLC 
 #### 4.1.1 Detection & Classification
-![](https://lh7-us.googleusercontent.com/MPL4Ewqiwa3qTspR_q3nyJm7jKx8z2qo5CVRB__Y4bXJ62UtTWu50gaukCjAmM4KPWVc1UwHz-tnj2Se9pMxcg9lCg4kUgYpKbsiNu3YIfGMATlN5hSsl_kKRVciZbsxVQ0uo1VIfEkgdezFvPOW398)
+![Figure1](https://lh7-us.googleusercontent.com/MPL4Ewqiwa3qTspR_q3nyJm7jKx8z2qo5CVRB__Y4bXJ62UtTWu50gaukCjAmM4KPWVc1UwHz-tnj2Se9pMxcg9lCg4kUgYpKbsiNu3YIfGMATlN5hSsl_kKRVciZbsxVQ0uo1VIfEkgdezFvPOW398)
 Figure 1. Illustration of connections between each essential component.
 For the detection, 5 models are going to be developed:
 
@@ -56,7 +56,7 @@ For more details for each model, please refer to this link for more details on t
 
 Machine Inferencing Methedology:
 
-![](https://lh7-us.googleusercontent.com/DVNPSCjDjdmOL_YaWlip2pMwD455sOpz9SsfOCo5DJjFhv_1Qt7PlRcPNW9KHom8BuMJuwwnOEEbf_Swx2Tgh6Vgav67EmhbR2eh6mq2Yl6OHREx0dlvA033j53HFxsHwV0sIPPu-mcW_bpMnSDAnws)
+![Figure2](https://lh7-us.googleusercontent.com/DVNPSCjDjdmOL_YaWlip2pMwD455sOpz9SsfOCo5DJjFhv_1Qt7PlRcPNW9KHom8BuMJuwwnOEEbf_Swx2Tgh6Vgav67EmhbR2eh6mq2Yl6OHREx0dlvA033j53HFxsHwV0sIPPu-mcW_bpMnSDAnws)
 
 Figure 2. Describing the order of models would process and what the procedure to confirming a target location for payload team to use
 
