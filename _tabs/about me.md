@@ -20,3 +20,13 @@ Victor Nguyen has been a pillar that represented community as he was my Mentor a
 Herminio Cruz is the quietest, but loudest character of life. Not speaking a word, but showing the meticilulous mind through the sophisticated designs and variations of Parols. Weeks on end, buying more supplies to create a new Parol, watching black and white western cowboy movies. The parol he ended up favoring, showing its craft. 
 
 Today I pursue my career with the same perseverance they both modeled, dedicating myself to the fields of Machine Learning and Software Engineering. Always aiming to blend technical rigor with the empathy nad loyalty I learned from those who shaped me and those I work side by side with.
+
+## Contact
+Email
+: MarcACruz916@gmail.com
+
+LinkedIn
+: [https://www.linkedin.com/in/marc-cruz13/](https://www.linkedin.com/in/marc-cruz13/){:target="_blank"}
+
+GitHub
+: [https://github.com/MarcCruzs](https://github.com/MarcCruzs){:target="_blank"}
