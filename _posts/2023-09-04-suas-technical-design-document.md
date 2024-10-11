@@ -3,7 +3,7 @@ title: SUAS Technical Design Document
 description: Outlines the approach and strategies for the SUAS (Student Unmanned Aerial Systems) Competition Software Team.
 date: 2023-09-04
 categories: [SUAS, Documentation]
-tags: [technical]
+tags: [technical-design]
 ---
 
 ## 1. Introduction
@@ -221,9 +221,9 @@ Our development approach is based on sprint-based development and structured tea
 
   
 
-|   |   |
-|---|---|
-|Version|Changes|
-|1.2 (November 2023)|Updated images of the Machine Inferencing and hardware flowchart. Added Current Work Document link. Added Standardized target possible characteristics of shape and colors.|
-|1.1 (October 2023)|Updated, Learning objectives and goals. Added Methodology and Risk mitigation.|
-|1.0 (September 2023)|Initial Release|
+|                      |                                                                                                                                                                             |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Version              | Changes                                                                                                                                                                     |
+| 1.2 (November 2023)  | Updated images of the Machine Inferencing and hardware flowchart. Added Current Work Document link. Added Standardized target possible characteristics of shape and colors. |
+| 1.1 (October 2023)   | Updated, Learning objectives and goals. Added Methodology and Risk mitigation.                                                                                              |
+| 1.0 (September 2023) | Initial Release                                                                                                                                                             |

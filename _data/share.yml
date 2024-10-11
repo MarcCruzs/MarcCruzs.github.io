@@ -16,9 +16,10 @@ platforms:
 
   # Uncomment below if you need to.
   #
-    - type: linkedin
-      icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
-      url: 'https://www.linkedin.com/in/marc-cruz13/'
+  - type: linkedin
+    icon: "fab fa-linkedin" # icons powered by <https://fontawesome.com/>
+    url: "https://www.linkedin.com/in/marc-cruz13/"
+    link: "https://www.linkedin.com/shareArticle?mini=true&url=URL&title=TITLE"
   #
   # - type: Weibo
   #   icon: "fab fa-weibo"
