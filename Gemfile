@@ -13,4 +13,4 @@ end
 
 gem "wdm", "~> 0.2.0", :platforms => [:mingw, :x64_mingw, :mswin]
 
-# gem 'github-pages', '~> 232'
+gem 'jekyll-target-blank'
