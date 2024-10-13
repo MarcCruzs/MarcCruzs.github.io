@@ -2,7 +2,7 @@
 title: SUAS Team Overview
 description: Overview of the software subteam of Cal Poly Pomona's Student Unmanned Aerial Systems (SUAS) team.
 date: 2023-08-15
-categories: [SUAS, Documentation]
+categories: [Projects, SUAS]
 tags: [overview]
 ---
 

@@ -2,7 +2,7 @@
 title: Behavior Questions
 description: On-going list of behavior questions
 date: 2023-08-15
-categories: [Recruiter's Delight]
+categories: []
 tags: [behavior]
 pin: true
 ---

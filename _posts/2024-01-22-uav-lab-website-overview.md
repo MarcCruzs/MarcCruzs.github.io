@@ -1,8 +1,8 @@
 ---
-title: UAV Lab Website | SEA Project Overview
+title: SEA Project Overview | UAV Lab Website
 description: a Software Engineering Association club project founded during Spring 2024 semester.
 date: 2024-01-22
-categories: [SEA, Project Designs]
+categories: [Club Work, Project Designs]
 tags: [overview]
 ---
 

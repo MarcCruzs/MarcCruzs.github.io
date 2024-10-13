@@ -2,7 +2,7 @@
 # the default layout is 'page'
 title: About Me
 icon: fas fa-info-circle
-order: 3
+order: 4
 ---
 
 Experiences derived from my own environment. Understood what it meant to dedicate oneself to a craft. Understood the joy of succeeding in that craft. Before the understanding, met fear, dread, and imposter syndrome of a difficult goal turning dire and bleak. Then at the end of the undescribable anxiety and the like, came the grasp of. Perserverance. Resilience. Sympathy. Applying the temperment to the goals I set and solidifying my beliefs.   

@@ -1,8 +1,8 @@
 ---
-title: InkWave | SEA Project Overview
+title: SEA Project Overview | InkWave
 description: Overview of Software Engineering Associations club project founded during Spring 2024 semester.
 date: 2024-01-22
-categories: [SEA, Project Designs]
+categories: [Club Work, Project Designs]
 tags: [overview]
 ---
 

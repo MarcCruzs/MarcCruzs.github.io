@@ -1,8 +1,8 @@
 ---
-title: CS Catalog | SEA Project Overview
+title: SEA Project Overview | CS Catalog
 description: a Software Engineering Association club project founded during Fall 2023 semester.
 date: 2023-09-26
-categories: [SEA, Project Designs]
+categories: [Club Work, Project Designs]
 tags: [overview]
 ---
 ## Motivation
