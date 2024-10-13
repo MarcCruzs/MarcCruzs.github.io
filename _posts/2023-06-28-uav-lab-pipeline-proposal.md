@@ -2,7 +2,7 @@
 title: Collaboration Proposal | CPP UAV Lab & SEA
 description: Proposal to building a pipeline between Cal Poly Pomona's Aerospace research lab software work with Computer Science students.
 date: 2023-06-28
-categories: [Club Work, Proposals]
+categories: [Club Work, Documents]
 tags: [proposal]
 ---
 
