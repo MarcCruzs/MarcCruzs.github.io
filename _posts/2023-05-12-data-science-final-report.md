@@ -36,7 +36,7 @@ Experience in the Field, and Highest Education Level.
 Starting in 2021, as the economy began recovering after
 the start of COVID, the US experienced rising inflation, well
 above the 2% mark targeted by the U.S. Federal Reserve for
-price stability <a href="#ref1">[1]</a>. Because different parts of the country have
+price stability [1]. Because different parts of the country have
 different wage scales and living costs, the question arises:
 **in which city or area would a person have the greatest
 purchasing power for a given job role?** The objective of
@@ -63,7 +63,7 @@ well as any additional data for additional enriched analysis.
 
 ### A. Salary and City Data
 Our source for salary and city data came from the “Ask
-a Manager Salary Survey” <a href="#ref2">[2]</a> for 2021. Ask a Manager is
+a Manager Salary Survey” [2] for 2021. Ask a Manager is
 a website focused on professional management themes with
 a variety of topics, one of which is to conduct a survey to
 get a glimpse of salaries across the US. This data set is
@@ -93,7 +93,7 @@ United States. AdvisorSmith is a private company that uses
 its own research in developing its business, consulting, and
 insurance products. The combination of a business motive and
 the use of reliable sources lends credence to this as an overall
-trustworthy source <a href="#ref3">[3]</a>. The data distribution of the Cost of
+trustworthy source [3]. The data distribution of the Cost of
 Living Index data is depicted in Figure 2.
 
 ![kde_CoL_graph](/assets/img/data-science/kde_CoL.png)
@@ -101,7 +101,7 @@ _Fig. 2. Kernel density of entries Cost of Living Index_
 
 It should be noted that early in the project, we used another
 Cost of Living data source from Numbeo but transitioned
-in favor of AdvisorSmith data <a href="#ref4">[4]</a>. The Numbeo source offered
+in favor of AdvisorSmith data [4]. The Numbeo source offered
 only 94 US cities in the reporting year of 2021. To expand
 the number of cities to allow better analysis, we looked at
 nearby years. Numbeo offers 6-month intervals in data years
@@ -431,10 +431,10 @@ salaries.
 
 
 ## References 
-1. <a id="ref1"></a>The Fed, "The Fed - Why does the Federal Reserve aim for 2 percent inflation over time?" Board of Governors of the Federal Reserve System, 2015. [https://www.federalreserve.gov/faqs/economy\_14400.htm](https://www.federalreserve.gov/faqs/economy_14400.htm)
+1. The Fed, "The Fed - Why does the Federal Reserve aim for 2 percent inflation over time?" Board of Governors of the Federal Reserve System, 2015. [https://www.federalreserve.gov/faqs/economy\_14400.htm](https://www.federalreserve.gov/faqs/economy_14400.htm)
 
-2. <a id="ref2"></a>A. A. Manager, "Look at 24,000 people’s real-life salaries and sort by industry, job, and location," Ask a Manager, May 05, 2021. [https://www.askamanager.org/2021/05/look-at-24000-peoples-real-life-salaries.html](https://www.askamanager.org/2021/05/look-at-24000-peoples-real-life-salaries.html)
+2. A. A. Manager, "Look at 24,000 people’s real-life salaries and sort by industry, job, and location," Ask a Manager, May 05, 2021. [https://www.askamanager.org/2021/05/look-at-24000-peoples-real-life-salaries.html](https://www.askamanager.org/2021/05/look-at-24000-peoples-real-life-salaries.html)
 
-3. <a id="ref3"></a>"U.S. Cost of Living Index by City: Downloadable Data – AdvisorSmith," advisorsmith.com. [https://advisorsmith.com/data/coli/](https://advisorsmith.com/data/coli/)
+3. "U.S. Cost of Living Index by City: Downloadable Data – AdvisorSmith," advisorsmith.com. [https://advisorsmith.com/data/coli/](https://advisorsmith.com/data/coli/)
 
-4. <a id="ref4"></a>"Northern America: Cost of Living Index by City 2021," numbeo.com. [https://www.numbeo.com/cost-of-living/region_rankings.jsp?title=2021&region=021](https://www.numbeo.com/cost-of-living/region_rankings.jsp?title=2021&region=021)
+4. "Northern America: Cost of Living Index by City 2021," numbeo.com. [https://www.numbeo.com/cost-of-living/region_rankings.jsp?title=2021&region=021](https://www.numbeo.com/cost-of-living/region_rankings.jsp?title=2021&region=021)
