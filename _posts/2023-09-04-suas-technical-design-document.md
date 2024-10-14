@@ -2,7 +2,7 @@
 title: SUAS Technical Design Document
 description: Outlines the approach and strategies for the SUAS (Student Unmanned Aerial Systems) Competition Software Team.
 date: 2023-09-04
-categories: [SUAS, Documentation]
+categories: [Projects, SUAS]
 tags: [technical-design]
 ---
 

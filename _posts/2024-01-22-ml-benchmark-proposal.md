@@ -1,8 +1,8 @@
 ---
-title: Machine Learning Benchmark  | SEA Project Proposal
+title: SEA Project Proposal | Machine Learning Benchmark
 description: Portable Hardware Analysis for Machine Learning Applications. Proposal towards CPP Project Hatchery for funding.
 date: 2024-01-22
-categories: [SEA, Project Designs]
+categories: [Club Work, Project Designs]
 tags: [proposal]
 ---
 
