@@ -166,21 +166,13 @@ When learning ROS, you should be able to get a grasp of how ROS works, how Gazeb
 1. [ROS 1 Crash Course](https://www.youtube.com/watch?v=Qk4vLFhvfbI&list=PLLSegLrePWgIbIrA4iehUQ-impvIXdd9Q)
 2. [ROS EDX Course](https://learning.edx.org/course/course-v1:DelftX+ROS1x+1T2023/home) 
 	1. I suggest mainly focusing on week 1, 2, and 4.
-<<<<<<< Updated upstream
 3. [MOVEIT Tutorials](http://docs.ros.org/en/melodic/api/moveit_tutorials/html/index.html)
-=======
-3. [MOVEIT Tutorials](https://docs.ros.org/en/melodic/api/moveit_tutorials/html/index.html)
->>>>>>> Stashed changes
   
 For these tutorials, use ROS Noetic on Ubuntu 20. You can install Ubuntu natively or on a virtual machine. The steps below showcase how to install and setup a virtual machine and install ubuntu. 
 
 ### 8.3 Virtual Machine Setup:
 
-<<<<<<< Updated upstream
-Use the following steps to install Ubuntu 20 (when following the tutorials above) and Ubuntu 18 when you are ready to work with the Husky. When using Ubuntu 20, install [ROS Noetic](http://wiki.ros.org/noetic/Installation/Ubuntu). 
-=======
 Use the following steps to install Ubuntu 20 (when following the tutorials above) and Ubuntu 18 when you are ready to work with the Husky. When using Ubuntu 20, install [ROS Noetic](https://wiki.ros.org/noetic/Installation/Ubuntu). 
->>>>>>> Stashed changes
 
 It is recommended to use [VMware Workstation Player](https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html) if you choose to opt the virtual machine route. For our project we are currently using ROS Melodic which will be installed in [Ubuntu 18.04.6 LTS (Bionic Beaver)](https://releases.ubuntu.com/18.04/). Install the desktop image ISO file. After downloading the ISO file and  installing VMWare Workstation make a new virtual machine. You should get a prompt like this. Under Installer disc image file (iso) click on browse and choose the ISO file for Ubuntu 18.04.6. In the image below shows 20.04.6 but make sure you are installing 18.04.6 on your end as we will be using that version of Linux to interface with the Husky Robot. 
   
@@ -196,11 +188,7 @@ Continue with the next steps by putting a username and password and you should e
 
 Click on customize hardware. Select 16gb of ram and change the number of cores to 6. 
 
-<<<<<<< Updated upstream
-Once the virtual machine is setup with Ubuntu 18 installed, you are now ready to install ROS. As mentioned before you will be installing [ROS melodic](http://wiki.ros.org/melodic/Installation/Ubuntu). Follow the steps for ROS installation and make sure you select full desktop installation. In section 1.5 for environment setup, proceed with the first prompt that includes .bashrc. 
-=======
 Once the virtual machine is setup with Ubuntu 18 installed, you are now ready to install ROS. As mentioned before you will be installing [ROS melodic](https://wiki.ros.org/melodic/Installation/Ubuntu). Follow the steps for ROS installation and make sure you select full desktop installation. In section 1.5 for environment setup, proceed with the first prompt that includes .bashrc. 
->>>>>>> Stashed changes
 
 ### 8.4 Husky Setup
 
