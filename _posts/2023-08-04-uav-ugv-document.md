@@ -166,7 +166,7 @@ When learning ROS, you should be able to get a grasp of how ROS works, how Gazeb
 1. [ROS 1 Crash Course](https://www.youtube.com/watch?v=Qk4vLFhvfbI&list=PLLSegLrePWgIbIrA4iehUQ-impvIXdd9Q)
 2. [ROS EDX Course](https://learning.edx.org/course/course-v1:DelftX+ROS1x+1T2023/home) 
 	1. I suggest mainly focusing on week 1, 2, and 4.
-3. [MOVEIT Tutorials](http://docs.ros.org/en/melodic/api/moveit_tutorials/html/index.html)
+3. [MOVEIT Tutorials](https://docs.ros.org/en/melodic/api/moveit_tutorials/html/index.html)
   
 For these tutorials, use ROS Noetic on Ubuntu 20. You can install Ubuntu natively or on a virtual machine. The steps below showcase how to install and setup a virtual machine and install ubuntu. 
 
