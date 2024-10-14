@@ -1,8 +1,8 @@
 ---
-title: NSF UAS REU Final Report | UAV-UGV Collaboration Paper
+title: CPP UAS REU Final Report | UAV-UGV Collaboration Paper
 description: Weed Detection and Removal with Unmanned Aerial Vehicles and Unmanned Ground Vehicle in Precision Agriculture. Report goes into details of the implementation of UAV detection and UGV operations.
 date: 2023-08-04
-categories: [Projects, NSF UAS REU]
+categories: [Projects, CPP UAS REU]
 tags: [project]
 authors: [<Marc_Cruz>, <Derek_Triska>, <Saketh_Nunna>, <Dennis_Uryeu>]
 ---
