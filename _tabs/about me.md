@@ -2,7 +2,7 @@
 # the default layout is 'page'
 title: About Me
 icon: fas fa-info-circle
-order: 4
+order: 2
 ---
 
 Experiences derived from the environment. The significance of self-abided discipline to the craft. The pleasure of the succession of one's craft. The undertones of the upbringing of this success: fear, dread, and insignificance. Altering goals into the sensations of dread and bleakness. At the end of the indescribable anxiety and the like, came the grasp of success's virtues: Perseverance. Resilience. Empathy. Applying the torment to become another life's way of temperament focused on my beliefs.
