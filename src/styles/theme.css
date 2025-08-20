@@ -1,0 +1,41 @@
+:root {
+  --background: 222.2 47% 5%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 47% 7%;
+  --card-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --primary: 142.1 70.6% 45.3%;
+  --primary-foreground: 144.9 80.4% 10.0%;
+  --accent: 142.1 70.6% 45.3%;
+  --accent-foreground: 144.9 80.4% 10%;
+  --secondary: 222.2 47.4% 11.2%;
+  --secondary-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 142.1 70.6% 45.3%;
+  --radius: 0.875rem;
+}
+.dark {
+  --background: 20 14.3% 4.1%;
+  --foreground: 60 9.1% 97.8%;
+  --card: 20 14.3% 6%;
+  --card-foreground: 60 9.1% 97.8%;
+  --muted: 12 6.5% 15.1%;
+  --muted-foreground: 24 5.4% 63.9%;
+  --primary: 142.1 70.6% 45.3%;
+  --primary-foreground: 144.9 80.4% 10%;
+  --accent: 142.1 70.6% 45.3%;
+  --accent-foreground: 144.9 80.4% 10%;
+  --secondary: 12 6.5% 15.1%;
+  --secondary-foreground: 60 9.1% 97.8%;
+  --border: 12 6.5% 15.1%;
+  --input: 12 6.5% 15.1%;
+  --ring: 142.1 70.6% 45.3%;
+}
+.container-w { width: min(92%, 1100px); margin-inline: auto; }
+.bg-gradient-emerald {
+  background-image:
+    radial-gradient(1200px 600px at 10% -10%, rgba(16, 185, 129, .08), transparent 60%),
+    radial-gradient(900px 500px at 110% 0%, rgba(16, 185, 129, .06), transparent 45%);
+}
