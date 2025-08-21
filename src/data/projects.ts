@@ -8,12 +8,14 @@ export type Project = {
   tags: string[];
   group?: string;
   url?: string;
+  summary: string;
+  description: string;
 };
 
 export const projects: Project[] = [
-  { id: "contrails", title: "Contrail Analysis Pipeline", tags: ["python","data","viz"], group: "Data/ML", url: "#" },
-  { id: "gather",    title: "Gather Point (MVP)",          tags: ["rust","react","postgres"], group: "Web", url: "#" },
-  { id: "ml-utils",  title: "ML Utils",                    tags: ["python","ml"], group: "Data/ML", url: "#" },
-  { id: "portfolio", title: "Portfolio Site",              tags: ["react","tailwind"], group: "Web", url: "#" },
-  { id: "etl",       title: "Flight ETL",                  tags: ["python","data"], group: "Data/ML", url: "#" },
+  { id: "contrails", title: "Contrail Analysis Pipeline", tags: ["python","data","viz"], group: "Data/ML", url: "#" , summary: "lorem", description: "lorem"},
+  { id: "gather",    title: "Gather Point (MVP)",          tags: ["rust","react","postgres"], group: "Web", url: "#" , summary: "lorem", description: "lorem"},
+  { id: "ml-utils",  title: "ML Utils",                    tags: ["python","ml"], group: "Data/ML", url: "#" , summary: "lorem", description: "lorem"},
+  { id: "portfolio", title: "Portfolio Site",              tags: ["react","tailwind"], group: "Web", url: "#" , summary: "lorem", description: "lorem"},
+  { id: "etl",       title: "Flight ETL",                  tags: ["python","data"], group: "Data/ML", url: "#" , summary: "lorem", description: "lorem"},
 ];
