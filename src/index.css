@@ -5,3 +5,18 @@
 * { box-sizing: border-box; }
 html, body, #root { height: 100%; }
 body { @apply bg-background text-foreground; }
+
+
+.react-grid-item.react-grid-placeholder {
+  background: rgba(223, 223, 223, 0.438) none repeat scroll 0% 0% !important;
+  transition-duration: 100ms;
+  z-index: 2;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  border-radius: 32px;
+  transition: all 500ms ease 0s !important;
+  will-change: transform;
+}

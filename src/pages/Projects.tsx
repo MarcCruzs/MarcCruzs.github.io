@@ -3,6 +3,7 @@ import ForceGraph2D, { ForceGraphMethods } from "react-force-graph-2d";
 import * as d3 from "d3-force";
 import { projects } from "@/data/projects";
 import { ICON_URLS, DEFAULT_ICON_URL } from "@/icons";
+import DraggableCatalogue from "@/components/DraggableCatalogue";
 
 import { ExternalLink, Github } from "lucide-react";
 
@@ -323,67 +324,7 @@ export default function Projects() {
       
 
 {/* ---------------- Projects (Bento) ---------------- */}
-<div className="mt-6">
-  <h2 className="mb-3 text-2xl font-bold">Projects</h2>
-
-  {/* 2 cols on small, 4 on md, 6 on lg */}
-  <section className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
-    {projects.map((p, i) => {
-      const { col, aspect } = bentoPattern(i);
-      return (
-        <article
-          key={p.id}
-          className={
-            // full width on small (col-span-2), pattern on larger screens
-            `col-span-2 md:col-span-2 ${col} rounded-xl border border-border bg-card shadow-soft hover:shadow-lg transition-shadow overflow-hidden`
-          }
-        >
-          {/* Height is controlled ONLY by aspect here */}
-          <div className={`relative ${aspect}`}>
-            {/* Content sits on top, won’t change the box height */}
-            <div className="absolute inset-0 p-4 flex flex-col">
-              <div className="flex items-start justify-between gap-3">
-                <h3 className="text-base lg:text-lg font-semibold leading-tight">
-                  {p.title}
-                </h3>
-                {p.url && (
-                  <a
-                    href={p.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-border bg-primary/10 px-2.5 py-1 text-xs text-primary hover:bg-primary/20"
-                  >
-                    Open
-                  </a>
-                )}
-              </div>
-
-              {/* Keep text from overflowing; it won’t stretch tile height */}
-              {p.summary && (
-                <p className="mt-2 text-xs lg:text-sm text-muted-foreground line-clamp-3">
-                  {p.summary}
-                </p>
-              )}
-
-              {p.tags?.length ? (
-                <div className="mt-auto pt-3 flex flex-wrap gap-1.5">
-                  {p.tags.map((t: string) => (
-                    <span
-                      key={t}
-                      className="inline-flex items-center rounded-full border border-border bg-secondary/30 px-2 py-0.5 text-[10px] lg:text-xs"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-          </div>
-        </article>
-      );
-    })}
-  </section>
-</div>
+<DraggableCatalogue />
 
 
 
