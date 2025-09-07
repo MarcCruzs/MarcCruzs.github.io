@@ -8,7 +8,7 @@ body { @apply bg-background text-foreground; }
 
 
 .react-grid-item.react-grid-placeholder {
-  background: rgba(223, 223, 223, 0.438) none repeat scroll 0% 0% !important;
+  background:  hsl(var(--foreground)) none repeat scroll 0% 0% !important;
   transition-duration: 100ms;
   z-index: 2;
   -webkit-user-select: none;
@@ -19,4 +19,25 @@ body { @apply bg-background text-foreground; }
   border-radius: 32px;
   transition: all 500ms ease 0s !important;
   will-change: transform;
+}
+
+.rgl-custom .react-resizable-handle::after {
+  position: absolute;
+  right: 8px !important;           /* adjust triangle position */
+  bottom: 8px !important;
+  width: 10px;          /* triangle size */
+  height: 10px;
+  border-right: 2px solid hsl(var(--primary)) !important;   /* ← color here */
+  border-bottom: 2px solid hsl(var(--primary)) !important;  /* ← color here */
+  box-shadow: 0 2px 4px rgba(0,0,0,.35) !important; /* works now */
+}
+
+@media screen and (max-width: 1110px) {
+  .responsive-tag {
+    display: none;
+  }
+
+  .responsive-graph {
+    display: none;
+  }
 }
