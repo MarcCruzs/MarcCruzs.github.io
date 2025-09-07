@@ -1,9 +1,30 @@
+name: Deploy to GitHub Pages (Marker Test)
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+# Required for Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
+      # Configure Pages (sets up the expected env behind the scenes)
+      - uses: actions/configure-pages@v5
+
+      # Create a trivial site so we can confirm what's deployed
       - name: Create trivial site
         run: |
           rm -rf dist
@@ -19,6 +40,7 @@ jobs:
           echo "${{ github.sha }}" > dist/commit.txt
           ls -la dist
 
+      # Upload artifact for Pages to deploy
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
