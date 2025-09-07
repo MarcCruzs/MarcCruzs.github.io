@@ -18,30 +18,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Clean dist
-        run: rm -rf dist
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./src
 
-      - run: npm ci || npm i
+      - name: Build
+        run: npm run build
+        working-directory: ./src
 
-      - name: Stamp version
-        run: |
-          mkdir -p dist
-          echo "${{ github.sha }}" > dist/commit.txt
-
-      - run: npm run build
-
-      - name: List build output
-        run: |
-          echo "Built SHA: ${{ github.sha }}"
-          ls -la dist | head -n 200
-
-      - uses: actions/upload-pages-artifact@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./src/dist
 
   deploy:
     needs: build
