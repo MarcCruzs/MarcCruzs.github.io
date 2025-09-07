@@ -26,6 +26,10 @@ import roboflow from "./assets/icons/roboflow.svg";
 import airflow from "./assets/icons/airflow.svg";
 import classwork from "./assets/icons/class.svg";
 import design from "./assets/icons/design.svg";
+import opencv from "./assets/icons/opencv.svg";
+import MATLAB from "./assets/icons/matlab.svg";
+import api from "./assets/icons/api.svg";
+import postman from "./assets/icons/postman.svg"
 
 export const ICON_URLS: Record<string, string> = {
     python,
@@ -59,6 +63,10 @@ export const ICON_URLS: Record<string, string> = {
     "apache airflow": airflow,
     "class work": classwork,
     "software design": design,
+    "opencv": opencv,
+    "matlab": MATLAB,
+    "rest api": api,
+    postman
 
 }
 

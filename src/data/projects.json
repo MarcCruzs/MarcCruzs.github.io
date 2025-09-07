@@ -2,7 +2,7 @@
   {
     "id": "contrails",
     "title": "NASA R&D",
-    "tags": ["python", "ETL", "pandas", "numpy", "NOAA", "HPC", "slurm"],
+    "tags": ["python", "ETL", "pandas", "numpy", "NOAA", "HPC", "slurm", "postman", "REST API", "MATLAB"],
     "group": "Data Science",
     "url": "",
     "summary": "**NASA Ames Research Center**\nWorked as an software engineer intern to NASA contractor for over a year. Contributed to R&D relating to contrail (condensation trails) algorithms and data collection for scientific simulations. Acted as a sole developer to building up the data pipelines and creating first evaluation metrics for potential machine learning models.",
@@ -14,13 +14,13 @@
     "tags": ["python", "numpy", "pytorch", "UAV", "roboflow", "jira"],
     "group": ["Software Design", "Data Science", "Machine Learning"],
     "url": "https://github.com/MarcCruzs/ODLC_Machine_Inferencing_System",
-    "summary": "**SUAS** (Student Unmanned Aerial Systems) Competition)\nLed as the software lead to begin development of a unique object detection system to partake in the yearly international competition. Worked on architecting, designing, and leading a group of fellow software developers to make a robust detection companion system to a student built UAV (unmanned aerial systems).",
+    "summary": "**SUAS** (Student Unmanned Aerial Systems) Competition\nLed as the software lead to begin development of a unique object detection system to partake in the yearly international competition. Worked on architecting, designing, and leading a group of fellow software developers to make a robust detection companion system to a student built UAV (unmanned aerial systems).",
     "description": "lorem"
   },
   {
     "id": "agriculture",
     "title": "Precision Agriculture Research",
-    "tags": ["python", "numpy", "pytorch", "UAV", "roboflow"],
+    "tags": ["python", "numpy", "pytorch", "UAV", "roboflow", "OpenCV", "pandas"],
     "group": ["Data Science", "Machine Learning"],
     "url": "https://github.com/cppuavlab/UGV_UAV",
     "summary": "**CPP UAS REU**\nAs part of the research assistant in the NSF program, developed software towards UAV (unmanned aerial vehicle) object detection system to take part in weed removal system in tandem with a UGV (unmanned ground vehicle). A collaboration to enhance the possibility of efficient farm maintainability through machine learning applications and robotics.",
