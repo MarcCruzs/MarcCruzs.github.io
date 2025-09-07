@@ -1,0 +1,65 @@
+[
+  {
+    "id": "contrails",
+    "title": "NASA R&D",
+    "tags": ["python", "ETL", "pandas", "numpy", "NOAA", "HPC", "slurm"],
+    "group": "Data Science",
+    "url": "",
+    "summary": "**NASA Ames Research Center**\nWorked as an software engineer intern to NASA contractor for over a year. Contributed to R&D relating to contrail (condensation trails) algorithms and data collection for scientific simulations. Acted as a sole developer to building up the data pipelines and creating first evaluation metrics for potential machine learning models.",
+    "description": "lorem"
+  },
+  {
+    "id": "suas",
+    "title": "SUAS Competition",
+    "tags": ["python", "numpy", "pytorch", "UAV", "roboflow", "jira"],
+    "group": ["Software Design", "Data Science", "Machine Learning"],
+    "url": "https://github.com/MarcCruzs/ODLC_Machine_Inferencing_System",
+    "summary": "**SUAS** (Student Unmanned Aerial Systems) Competition)\nLed as the software lead to begin development of a unique object detection system to partake in the yearly international competition. Worked on architecting, designing, and leading a group of fellow software developers to make a robust detection companion system to a student built UAV (unmanned aerial systems).",
+    "description": "lorem"
+  },
+  {
+    "id": "agriculture",
+    "title": "Precision Agriculture Research",
+    "tags": ["python", "numpy", "pytorch", "UAV", "roboflow"],
+    "group": ["Data Science", "Machine Learning"],
+    "url": "https://github.com/cppuavlab/UGV_UAV",
+    "summary": "**CPP UAS REU**\nAs part of the research assistant in the NSF program, developed software towards UAV (unmanned aerial vehicle) object detection system to take part in weed removal system in tandem with a UGV (unmanned ground vehicle). A collaboration to enhance the possibility of efficient farm maintainability through machine learning applications and robotics.",
+    "description": "lorem"
+  },
+  {
+    "id": "portfolio",
+    "title": "Website",
+    "tags": ["react", "tailwind", "HTML", "CSS", "typescript"],
+    "group": "Web Dev",
+    "url": "https://github.com/MarcCruzs/MarcCruzs.github.io",
+    "summary": "Codebase that made this website! One of my first full attempts to dabble with react, but I think the website came out neatly.",
+    "description": "lorem"
+  },
+  {
+    "id": "scooter",
+    "title": "Mobility Scooters DL Research",
+    "tags": ["python", "numpy", "tensorflow", "raspberry pi"],
+    "group": ["Data Science", "Machine Learning"],
+    "url": "https://github.com/MarcCruzs/NSFREU2022-Mobility-Scooter",
+    "summary": "**NSF REU Big Data Security & Privacy**\nConducted research under Dr. Tingting Chen, working on deep learning applications to support mobility scooter safety. The project is a novelty to applying machine learning and pushing the safety of mobility scooters for a rising elderly population. Then through the safety introduce possibility for accessibility to those who are mentally or physically disabled to have more freedom to travel.",
+    "description": "lorem"
+  },
+  {
+    "id": "gpu",
+    "title": "CS4990 | GPU Computing",
+    "tags": ["CUDA C", "C++", "NCSA", "HPC", "slurm"],
+    "group": "Class Work",
+    "url": "https://github.com/MarcCruzs/CS4990-gpu-computing",
+    "summary": "Universities' class on understanding and how to utilize HPCs for GPU computing. Used NCSA to various assignments to practice and hone understanding of GPU computing. Of those assignments understanding how to batch operations and how to organize threads into blocks.",
+    "description": "lorem"
+  },
+  {
+    "id": "sdap",
+    "title": "Apache SDAP Class Project",
+    "tags": ["python", "apache airflow"],
+    "group": "Class Work",
+    "url": "https://github.com/MarcCruzs/Apache-SDAP-Airflow",
+    "summary": "Class project for parallel processing project. The intent was to optimize further the work done in Apache SDAP by implementing Airflow into the quickstart. The idea was to secure a better logging system into Apache SDAP and also reduce the runtime when ran on local.",
+    "description": "lorem"
+  }
+]

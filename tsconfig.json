@@ -19,9 +19,11 @@
       "@/*": [
         "./src/*"
       ]
-    }
+    },
+    "esModuleInterop": true
   },
   "include": [
-    "src"
+    "src",
+    "src/types",
   ]
 }
