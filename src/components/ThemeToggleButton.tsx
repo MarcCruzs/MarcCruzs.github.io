@@ -1,4 +1,3 @@
-// components/ThemeCycleButton.tsx
 import { useTheme } from "@/utils/ThemeContext";
 
 export function ThemeCycleButton() {

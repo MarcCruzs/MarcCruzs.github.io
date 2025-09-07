@@ -1,4 +1,3 @@
-// components/ProjectsGraph.tsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import ForceGraph2D, { ForceGraphMethods } from "react-force-graph-2d";
 import * as d3 from "d3-force";
@@ -19,7 +18,7 @@ type Props = {
   onNodeClickUrl?: (url: string) => void;
 };
 
-// --- helpers ---
+
 const iconCache = new Map<string, HTMLImageElement>();
 const tintedIconCache = new Map<string, HTMLCanvasElement>();
 const normKey = (s: string) => (s || "").toLowerCase().trim();
@@ -42,20 +41,20 @@ function getTintedIcon(key: string, url: string, tintColor: string, onLoad?: () 
 
   const originalImg = getIcon(key, url);
   if (!(originalImg as any)?.complete) {
-    // If original image isn't loaded yet, return it and let the caller handle it
+    
     return originalImg;
   }
 
-  // Create a canvas to tint the image
+  
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d')!;
   canvas.width = originalImg.width;
   canvas.height = originalImg.height;
 
-  // Draw the original image
+  
   ctx.drawImage(originalImg, 0, 0);
 
-  // Apply the tint color using source-atop (this will replace the colors but preserve alpha)
+  
   ctx.globalCompositeOperation = 'source-atop';
   ctx.fillStyle = tintColor;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -118,9 +117,9 @@ function drawLabel(ctx: CanvasRenderingContext2D, text: string, x: number, y: nu
   ctx.fillText(` ${text}`, x - 8, y + 9);
 }
 
-// resolve CSS vars like "--primary" into real hsl() strings (optionally with alpha)
+
 function hslFromVar(name: string, alpha?: number) {
-  const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim(); // "H S% L%"
+  const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim(); 
   return alpha == null ? `hsl(${v})` : `hsl(${v} / ${alpha})`;
 }
 
@@ -140,7 +139,7 @@ export default function ProjectsGraph({
   const [hoverId, setHoverId] = useState<string | null>(null);
   const [zoom, setZoom] = useState(1);
 
-  // Theme-driven colors derived from CSS variables
+  
   const [colors, setColors] = useState(() => ({
     background: "transparent",
     link:       "#22c55e80",
@@ -153,7 +152,7 @@ export default function ProjectsGraph({
     deEmphasisAlpha: 0.25,
   }));
 
-  // compute from :root --primary / --foreground after mount
+  
   useEffect(() => {
     const compute = () => {
       const primary = hslFromVar("--primary");
@@ -172,13 +171,13 @@ export default function ProjectsGraph({
 
     compute();
 
-    // Optional: recompute when theme changes (e.g., toggling .dark)
+    
     const mo = new MutationObserver(compute);
     mo.observe(document.documentElement, { attributes: true, attributeFilter: ["class", "style"] });
     return () => mo.disconnect();
   }, []);
 
-  // measure container
+  
   useEffect(() => {
     const el = wrapRef.current;
     if (!el) return;
@@ -192,11 +191,11 @@ export default function ProjectsGraph({
 
   const data: GData = useMemo(() => buildGraph(items, mode), [items, mode]);
 
-  // forces
+  
   useEffect(() => {
   if (!fgRef.current || size.w === 0 || size.h === 0) return;
 
-  // 1) Make the rings a bit larger so there’s more room
+  
   const outer = Math.round(Math.min(size.w, size.h) * 0.42);
   const inner = Math.round(outer * 0.55);
 
@@ -205,13 +204,13 @@ export default function ProjectsGraph({
 
   fgRef.current.d3Force("radial",
     d3.forceRadial((n: any) => (n.type === "group" ? inner : outer), 0, 0)
-      .strength(0.04) // slightly softer so links/charge can breathe
+      .strength(0.04) 
   );
   fgRef.current.d3Force("center", d3.forceCenter(0, 0));
   fgRef.current.d3Force("x", d3.forceX(0).strength(0.01));
   fgRef.current.d3Force("y", d3.forceY(0).strength(0.01));
 
-  // 2) Stronger repulsion + a larger distanceMax so nodes push apart from farther away
+  
   fgRef.current.d3Force("charge",
     d3.forceManyBody()
       .strength((n: any) =>
@@ -221,16 +220,16 @@ export default function ProjectsGraph({
       .distanceMax(220)
   );
 
-  // 3) Bigger collision bubbles to prevent overlap/clumping
+  
   fgRef.current.d3Force("collide",
     d3.forceCollide((n: any) => {
-      // visual radii are ~6 for project, your icons ~16–20/scale; give padding
+      
       return n.type === "project" ? 12 : n.type === "tag" ? 18 : 22;
     }).strength(0.9)
   );
 
-  // 4) Longer links, scaled by degree, and a bit softer strength
-  //    (higher-degree nodes get a touch more space)
+  
+  
   const deg = new Map<string, number>();
   data.links.forEach(l => {
     const s = String((l as any).source.id ?? (l as any).source);
@@ -246,10 +245,10 @@ export default function ProjectsGraph({
         const s = String(l.source.id ?? l.source);
         const t = String(l.target.id ?? l.target);
         const d = (deg.get(s) || 0) + (deg.get(t) || 0);
-        const base = l.kind === "gg" ? 34 : 80; // was 20/60
+        const base = l.kind === "gg" ? 34 : 80; 
         return base + 3 * Math.sqrt(d);
       })
-      .strength((l: any) => (l.kind === "gg" ? 0.3 : 0.2)); // softer so charge/collide win
+      .strength((l: any) => (l.kind === "gg" ? 0.3 : 0.2)); 
   }
   fgRef.current.d3ReheatSimulation();
 }, [size.w, size.h, mode, data.links]);
@@ -322,7 +321,7 @@ export default function ProjectsGraph({
 
               const r = n.type === "group" ? 20 / scale : 16 / scale;
 
-              // Draw the background circle
+              
               ctx.beginPath();
               ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
               ctx.globalAlpha = alpha;
@@ -336,7 +335,7 @@ export default function ProjectsGraph({
               const key = normKey(n.name);
               const url = ICON_URLS[key] ?? DEFAULT_ICON_URL;
               
-              // Try to get a tinted version of the icon
+              
               const tintedIcon = getTintedIcon(key, url, colors.nodeStroke, () => (fgRef.current as any)?.refresh?.());
               const iconSize = r * 1.3;
 
@@ -344,16 +343,16 @@ export default function ProjectsGraph({
                 ctx.save();
                 ctx.globalAlpha = alpha;
                 
-                // Create circular clipping path
+                
                 ctx.beginPath();
                 ctx.arc(n.x, n.y, r - 1, 0, Math.PI * 2);
                 ctx.clip();
                 
-                // Draw the tinted icon
+                
                 ctx.drawImage(tintedIcon, n.x - iconSize / 2, n.y - iconSize / 2, iconSize, iconSize);
                 ctx.restore();
               } else {
-                // Fallback: draw original icon without tinting if tinted version isn't ready
+                
                 const originalIcon = getIcon(key, url, () => (fgRef.current as any)?.refresh?.());
                 if ((originalIcon as any)?.complete) {
                   ctx.save();

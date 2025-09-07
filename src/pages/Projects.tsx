@@ -14,8 +14,6 @@ export default function Projects() {
         className="border border-border rounded-lg bg-card shadow-soft p-4 responsive-graph" 
       />
 
-
-      {/* Your other content */}
       <DraggableCatalogue />
     </section>
   );

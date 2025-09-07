@@ -11,11 +11,9 @@ import "react-resizable/css/styles.css";
 const ResponsiveGridLayout = WidthProvider(Responsive);
 const COLS = { lg: 3, md: 3, sm: 2, xs: 1, xxs: 1 };
 
-// Simple markdown parser for basic formatting
 function parseMarkdown(text: string): JSX.Element {
   if (!text) return <></>;
 
-  // Split by lines to handle lists and paragraphs
   const lines = text.split('\n');
   const elements: JSX.Element[] = [];
   let currentParagraph: string[] = [];
@@ -36,7 +34,6 @@ function parseMarkdown(text: string): JSX.Element {
   lines.forEach((line, index) => {
     const trimmedLine = line.trim();
     
-    // Handle bullet points
     if (trimmedLine.startsWith('- ') || trimmedLine.startsWith('* ')) {
       flushParagraph();
       elements.push(
@@ -45,7 +42,6 @@ function parseMarkdown(text: string): JSX.Element {
         </ul>
       );
     }
-    // Handle numbered lists
     else if (/^\d+\.\s/.test(trimmedLine)) {
       flushParagraph();
       const content = trimmedLine.replace(/^\d+\.\s/, '');
@@ -55,30 +51,25 @@ function parseMarkdown(text: string): JSX.Element {
         </ol>
       );
     }
-    // Handle empty lines (paragraph breaks)
     else if (trimmedLine === '') {
       flushParagraph();
     }
-    // Regular paragraph content
     else {
       currentParagraph.push(line);
     }
   });
 
-  // Flush any remaining paragraph
   flushParagraph();
 
   return <>{elements}</>;
 }
 
-// Parse inline markdown (bold, italic, code, links)
 function parseInlineMarkdown(text: string): (string | JSX.Element)[] {
   const elements: (string | JSX.Element)[] = [];
   let remaining = text;
   let key = 0;
 
   while (remaining.length > 0) {
-    // Bold (**text** or __text__)
     const boldMatch = remaining.match(/^(.*?)\*\*(.*?)\*\*(.*)/s) || remaining.match(/^(.*?)__(.*?)__(.*)/s);
     if (boldMatch) {
       if (boldMatch[1]) elements.push(...parseTextWithLineBreaks(boldMatch[1], key));
@@ -87,7 +78,6 @@ function parseInlineMarkdown(text: string): (string | JSX.Element)[] {
       continue;
     }
 
-    // Italic (*text* or _text_)
     const italicMatch = remaining.match(/^(.*?)\*(.*?)\*(.*)/s) || remaining.match(/^(.*?)_(.*?)_(.*)/s);
     if (italicMatch && !remaining.match(/^\*\*/)) { // Make sure it's not part of bold
       if (italicMatch[1]) elements.push(...parseTextWithLineBreaks(italicMatch[1], key));
@@ -96,7 +86,6 @@ function parseInlineMarkdown(text: string): (string | JSX.Element)[] {
       continue;
     }
 
-    // Inline code (`code`)
     const codeMatch = remaining.match(/^(.*?)`(.*?)`(.*)/s);
     if (codeMatch) {
       if (codeMatch[1]) elements.push(...parseTextWithLineBreaks(codeMatch[1], key));
@@ -109,7 +98,6 @@ function parseInlineMarkdown(text: string): (string | JSX.Element)[] {
       continue;
     }
 
-    // Links ([text](url))
     const linkMatch = remaining.match(/^(.*?)\[([^\]]+)\]\(([^)]+)\)(.*)/s);
     if (linkMatch) {
       if (linkMatch[1]) elements.push(...parseTextWithLineBreaks(linkMatch[1], key));
@@ -123,7 +111,6 @@ function parseInlineMarkdown(text: string): (string | JSX.Element)[] {
       continue;
     }
 
-    // No more matches, handle remaining text with line breaks
     elements.push(...parseTextWithLineBreaks(remaining, key));
     break;
   }
@@ -131,7 +118,6 @@ function parseInlineMarkdown(text: string): (string | JSX.Element)[] {
   return elements;
 }
 
-// Helper function to handle line breaks in plain text
 function parseTextWithLineBreaks(text: string, keyOffset: number): (string | JSX.Element)[] {
   if (!text.includes('\n')) {
     return [text];
@@ -195,7 +181,6 @@ export default function DraggableCatalogue() {
   const [tag, setTag] = useState<string | null>(null);
   const [group, setGroup] = useState<string | null>(null);
 
-  // choose the pattern
   const pattern = patternName === "A" ? PATTERN_A : patternName === "B" ? PATTERN_B : PATTERN_C;
 
   const norm = (s: string) => s.toLowerCase();
@@ -242,7 +227,6 @@ export default function DraggableCatalogue() {
       ])
     );
 
-  // build layouts with scoring/filter; sizes fixed by pattern
   const raw_layouts = noFilterActive
   ? buildLayoutsShelf(ids, sizeClassById, { lg:3, md:3, sm:2, xs:1, xxs:1 })
   : buildLayoutsSmart({

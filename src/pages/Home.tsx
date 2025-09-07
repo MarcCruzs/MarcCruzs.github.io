@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { Responsive, WidthProvider, type Layouts } from "react-grid-layout";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
@@ -167,10 +166,10 @@ export default function Home() {
               alt="Marc Cruz"
               src={"/pfp.jpg"}
               className="w-full h-full rounded-md object-contain no-drag"
-              width={6000}              // set these to your real pixel size if you know it
+              width={6000}              
               height={4000}
-              loading="eager"          // top-of-page hero
-              fetchPriority="high"     // help LCP
+              loading="eager"          
+              fetchPriority="high"    
               decoding="async"
             />
           </div>

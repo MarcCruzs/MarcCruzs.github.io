@@ -1,4 +1,3 @@
-// components/LinkCard.tsx
 import { Link } from "react-router-dom";
 import type { ReactNode, HTMLAttributes } from "react";
 
@@ -8,9 +7,9 @@ type LinkCardProps = {
   icon?: ReactNode;
   bgClass?: string;
   borderClass?: string;
-  fgClass?: string;        // base text/icon color
-  hoverClass?: string;     // hover bg/border class(es)
-  hoverFgClass?: string;   // hover text/icon color (changes SVG stroke)
+  fgClass?: string;       
+  hoverClass?: string;     
+  hoverFgClass?: string;   
   external?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
@@ -47,10 +46,10 @@ export function LinkCard({
           className={[
             "shrink-0 inline-flex items-center gap-2 rounded-full px-4 py-2 border",
             "transition-colors duration-1000 ease-out", 
-            borderClass,    // base border color
-            fgClass,        // base text/icon color
-            hoverClass,     // hover bg/border
-            hoverFgClass,   // hover text/icon color → changes SVG stroke
+            borderClass,    
+            fgClass,     
+            hoverClass,    
+            hoverFgClass,  
           ].join(" ")}
           onPointerDown={(e) => e.stopPropagation()}
           aria-label={title}

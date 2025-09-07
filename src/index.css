@@ -23,13 +23,13 @@ body { @apply bg-background text-foreground; }
 
 .rgl-custom .react-resizable-handle::after {
   position: absolute;
-  right: 8px !important;           /* adjust triangle position */
+  right: 8px !important;          
   bottom: 8px !important;
-  width: 10px;          /* triangle size */
+  width: 10px;          
   height: 10px;
-  border-right: 2px solid hsl(var(--primary)) !important;   /* ← color here */
-  border-bottom: 2px solid hsl(var(--primary)) !important;  /* ← color here */
-  box-shadow: 0 2px 4px rgba(0,0,0,.35) !important; /* works now */
+  border-right: 2px solid hsl(var(--primary)) !important;  
+  border-bottom: 2px solid hsl(var(--primary)) !important;  
+  box-shadow: 0 2px 4px rgba(0,0,0,.35) !important;
 }
 
 @media screen and (max-width: 1110px) {

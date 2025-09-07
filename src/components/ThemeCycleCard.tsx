@@ -1,4 +1,3 @@
-// components/ThemeCycleCard.tsx
 import { cloneElement, isValidElement } from "react";
 import { useTheme } from "@/utils/ThemeContext";
 import { Tetragon } from "akar-icons";

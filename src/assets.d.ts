@@ -1,5 +1,5 @@
 declare module "*.svg" {
-  const src: string; // Vite returns a URL for the asset
+  const src: string; 
   export default src;
 }
 

@@ -1,4 +1,4 @@
-// src/utils/layoutBuilderShelf.ts
+
 import type { Layout, Layouts } from "react-grid-layout";
 import type { BP, SizeClass } from "@/utils/layoutPatterns";
 import { SIZE_CLASSES } from "@/utils/layoutPatterns";
@@ -9,9 +9,9 @@ export type SizeClassById = Record<string, SizeClass>;
 type Cols = Record<"lg"|"md"|"sm"|"xs"|"xxs", number>;
 
 export function buildLayoutsShelf(
-  idsInOrder: string[],                // the order you want on screen (pattern-applied)
-  sizeClassById: SizeClassById,        // id -> S/M/L/M_v
-  cols: Cols                           // { lg:6, md:4, sm:2, xs:1, xxs:1 }
+  idsInOrder: string[],                
+  sizeClassById: SizeClassById,        
+  cols: Cols                           
 ): Layouts {
   const bps: BP[] = ["lg","md","sm","xs","xxs"];
   const layouts: Partial<Layouts> = {};
@@ -31,10 +31,10 @@ export function buildLayoutsShelf(
       const minW = Math.min(w, sz.minW ?? w);
       const minH = Math.min(h, sz.minH ?? h);
 
-      // move to next row if it doesn't fit
+      
       if (curX + w > totalCols) {
         curX = 0;
-        curY += rowHeight;      // advance by tallest tile in the row
+        curY += rowHeight;      
         rowHeight = 0;
       }
 

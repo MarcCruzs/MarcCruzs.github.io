@@ -1,5 +1,4 @@
-// data/projects.ts
-import raw from "./projects.json"; // path relative to this file
+import raw from "./projects.json"; 
 
 export type Project = {
   id: string;

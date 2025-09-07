@@ -1,6 +1,6 @@
 import {projects} from "@/data/projects"
 
-// src/utils/layoutPatterns.ts
+
 export type BP = "lg" | "md" | "sm" | "xs" | "xxs";
 export type SizeClass = "S" | "M" | "M_v" | "L";
 
@@ -40,13 +40,13 @@ export const SIZE_CLASSES: Record<SizeClass, Record<BP, SZ>> = {
 
 
 
-// Three repeating patterns (you can tweak these to taste)
+
 export const PATTERN_A: SizeClass[] = ["S","M","M","S","M","L","L","L","L","L"];
 export const PATTERN_B: SizeClass[] = ["M_v","M","M","L","L","M","S","M","L","S"];
 export const PATTERN_C: SizeClass[] =["S","M","M","S","M","M","S","S", "M_v","M","M"];
 
 
-// Helper: map Nth project -> size class from chosen pattern
+
 export function assignSizeClasses(ids: string[], pattern: SizeClass[]): Record<string, SizeClass> {
   const map: Record<string, SizeClass> = {};
   const n = pattern.length;
@@ -56,10 +56,10 @@ export function assignSizeClasses(ids: string[], pattern: SizeClass[]): Record<s
 
 const totalProjects = projects.length;
 
-const project_distribution = totalProjects / 3 // Total / amount of patterns
+const project_distribution = totalProjects / 3 
 
-// 4 4 3 11 per cycle. 
 
-// export const PATTERN_A: SizeClass[] = ["S","M","M","S"];
-// export const PATTERN_B: SizeClass[] = ["M_v","M","M"];
-// export const PATTERN_C: SizeClass[] = ["M","M","S","S"];
+
+
+
+

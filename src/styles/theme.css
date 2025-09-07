@@ -1,23 +1,22 @@
-/* Light mode (default) */
 :root {
-  /* surfaces & text */
-  --background: 0 0% 100%;            /* #ffffff */
-  --foreground: 240 10% 3.9%;         /* near-black text */
+  
+  --background: 0 0% 100%;            
+  --foreground: 240 10% 3.9%;         
 
-  --card: 0 0% 100%;                  /* same as background */
+  --card: 0 0% 100%;                  
   --card-foreground: 240 10% 3.9%;
 
-  --muted: 240 4.8% 95.9%;            /* subtle gray surface */
-  --muted-foreground: 240 3.8% 46.1%; /* muted text */
+  --muted: 240 4.8% 95.9%;            
+  --muted-foreground: 240 3.8% 46.1%; 
 
   --secondary: 240 4.8% 95.9%;
   --secondary-foreground: 240 5.9% 10%;
 
-  --border: 0, 3%, 16%;             /* light gray borders/inputs */
+  --border: 0, 3%, 16%;             
   --input: 240 5.9% 90%;
 
-  /* brand / accents (keep your emerald primary) */
-  --primary: 148, 80%, 29%;       /* emerald-500 */
+  
+  --primary: 148, 80%, 29%;       
   --primary-foreground: 148, 68%, 78%;
 
   --accent: 142.1 70.6% 45.3%;
@@ -36,35 +35,35 @@
   --brand-github-hover-fg: 134 61% 45%; 
   --brand-github-fg: 0 0% 100%;
 
-  --cream-bg: 37 94% 93%;       /* darker “cream” for dark mode if desired */
+  --cream-bg: 37 94% 93%;       
   --cream-hover: 0, 1%, 3%; 
   --cream-hover-fg: 37 94% 93%;
   --cream-fg: 0, 0%, 0%;
 }
 
-/* VS Code Dark+–like */
-.dark {
-  /* editor bg: #1e1e1e, panel: #252526, text: #d4d4d4 */
-  --background: 0 0% 12%;             /* #1e1e1e */
-  --foreground: 0 0% 83%;             /* #d4d4d4 */
 
-  --card: 0 0% 14%;                   /* #242424 / #252526 */
+.dark {
+  
+  --background: 0 0% 12%;             
+  --foreground: 0 0% 83%;             
+
+  --card: 0 0% 14%;                   
   --card-foreground: 0 0% 83%;
 
-  --muted: 0 0% 18%;                  /* #2e2e2e */
-  --muted-foreground: 0 0% 64%;       /* #a3a3a3 */
+  --muted: 0 0% 18%;                  
+  --muted-foreground: 0 0% 64%;       
 
-  --secondary: 0 0% 16%;              /* #292929 */
-  --secondary-foreground: 0 0% 92%;   /* near-white */
+  --secondary: 0 0% 16%;              
+  --secondary-foreground: 0 0% 92%;   
 
-  --border: 0 0% 29%;                 /* #2a2a2a-ish */
+  --border: 0 0% 29%;                 
   --input: 0 0% 16%;
 
-  /* VS Code accent blues (keep if you prefer emerald, swap if you want VS Code feel) */
-  --primary: 211 100% 60%;            /* #3794ff (button blue) */
+  
+  --primary: 211 100% 60%;            
   --primary-foreground: 0 0% 100%;
 
-  --accent: 207 52% 59%;              /* #569cd6 (link-ish blue) */
+  --accent: 207 52% 59%;              
   --accent-foreground: 0 0% 100%;
 
   --ring: 211 100% 60%;
@@ -79,12 +78,12 @@
   --brand-github-hover-fg: 134 61% 45%; 
   --brand-github-fg: 0 0% 100%;
 
-  --cream-bg: 37 94% 93%;       /* darker “cream” for dark mode if desired */
+  --cream-bg: 37 94% 93%;       
   --cream-hover: 0, 1%, 3%; 
   --cream-hover-fg: 37 94% 93%;
   --cream-fg: 0, 0%, 0%;
 
 }
 
-/* Layout helper you already had */
+
 .container-w { width: min(92%, 1100px); margin-inline: auto; }

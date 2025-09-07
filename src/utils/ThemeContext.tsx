@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { Sun, Moon } from "lucide-react";
 
-export type ThemeClass = "" | "dark"; // adjust to your themes
+export type ThemeClass = "" | "dark"; 
 export const THEMES: ThemeClass[] = ["", "dark"];
 
 export function toThemeKey(name: ThemeClass) {
@@ -28,7 +28,7 @@ const Ctx = createContext<ThemeCtx | null>(null);
 
 function applyThemeToDom(name: ThemeClass) {
   if (typeof document === "undefined") return;
-  // remove all theme classes first
+  
   THEMES.forEach(t => t && document.documentElement.classList.remove(t));
   if (name) document.documentElement.classList.add(name);
   localStorage.setItem("theme-name", name);
@@ -38,7 +38,7 @@ function applyThemeToDom(name: ThemeClass) {
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [idx, setIdx] = useState(0);
 
-  // on mount: read saved theme, apply
+  
   useEffect(() => {
     const saved = (localStorage.getItem("theme-name") || "") as ThemeClass;
     const startIdx = Math.max(0, THEMES.indexOf(saved));
