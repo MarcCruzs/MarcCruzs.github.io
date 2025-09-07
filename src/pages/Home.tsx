@@ -162,21 +162,30 @@ export default function Home() {
           </div>
 
         <div key="hero" className="rounded-lg bg-card shadow-soft overflow-hidden">
-          <div className="relative w-full aspect[4/4]">
+          <div className="relative w-full aspect-[6/4]">
             <img
               alt="Marc Cruz"
-              src="/pfp.jpg"
+              src={"/pfp.jpg"}
               className="w-full h-full rounded-md object-contain no-drag"
+              width={6000}              // set these to your real pixel size if you know it
+              height={4000}
+              loading="eager"          // top-of-page hero
+              fetchPriority="high"     // help LCP
+              decoding="async"
             />
           </div>
         </div>
-
         
         <div key="hero-2" className="rounded-lg bg-card shadow-soft flex">
           <img
             alt="White lotus flower"
+            src={"/img2.JPG"}
             className="rounded-md w-full h-full object-cover no-drag"
-            src="/img2.JPG"
+            width={1600}
+            height={900}
+            loading="eager"            
+            decoding="async"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1000px"
           />
         </div>
       </ResponsiveGridLayout>
