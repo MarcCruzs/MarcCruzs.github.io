@@ -1,11 +1,10 @@
-name: Deploy to GitHub Pages (Marker Test)
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [ "main" ]
   workflow_dispatch:
 
-# Required for Pages
 permissions:
   contents: read
   pages: write
@@ -21,26 +20,26 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Configure Pages (sets up the expected env behind the scenes)
-      - uses: actions/configure-pages@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-      # Create a trivial site so we can confirm what's deployed
-      - name: Create trivial site
+      - name: Install deps
+        run: npm ci
+
+      - name: Stamp version
         run: |
-          rm -rf dist
           mkdir -p dist
-          cat > dist/index.html <<'HTML'
-          <!doctype html>
-          <meta charset="utf-8"/>
-          <title>MARKER</title>
-          <h1>THIS IS THE NEW DEPLOY</h1>
-          <p>SHA: ${{ github.sha }}</p>
-          <p>Time: $(date -u +"%Y-%m-%dT%H:%M:%SZ")</p>
-          HTML
           echo "${{ github.sha }}" > dist/commit.txt
-          ls -la dist
 
-      # Upload artifact for Pages to deploy
+      - name: Build
+        run: npm run build
+
+      - name: Verify dist
+        run: |
+          test -d dist || (echo "dist not found. Did the build succeed? Check vite.config build.outDir." && exit 1)
+          ls -la dist | head -n 200
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
