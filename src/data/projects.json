@@ -2,7 +2,7 @@
   {
     "id": "contrails",
     "title": "NASA R&D",
-    "tags": ["python", "ETL", "pandas", "numpy", "NOAA", "HPC", "slurm", "postman", "REST API", "MATLAB"],
+    "tags": ["python", "ETL", "pandas", "numpy", "NOAA", "HPC", "slurm", "postman", "RESTful API", "MATLAB"],
     "group": "Data Science",
     "url": "",
     "summary": "**NASA Ames Research Center**\nWorked as an software engineer intern to NASA contractor for over a year. Contributed to R&D relating to contrail (condensation trails) algorithms and data collection for scientific simulations. Acted as a sole developer to building up the data pipelines and creating first evaluation metrics for potential machine learning models.",
