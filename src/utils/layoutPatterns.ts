@@ -15,7 +15,7 @@ export const SIZE_CLASSES: Record<SizeClass, Record<BP, SZ>> = {
     xxs:{ w: 1, h: 2, minW: 1, minH: 2 },
   },
   M: {
-    lg: { w: 2, h: 3, minW: 1, minH: 2 },
+    lg: { w: 2, h: 3, minW: 1, minH: 3 },
     md: { w: 2, h: 2, minW: 1, minH: 2 },
     sm: { w: 2, h: 2, minW: 1, minH: 2 },
     xs: { w: 1, h: 2, minW: 1, minH: 2 },

@@ -1,8 +1,9 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, Leaf } from "akar-icons";
+import { Apple, Banana, Citrus } from "lucide-react";
 
-export type ThemeClass = "" | "dark"; 
-export const THEMES: ThemeClass[] = ["", "dark"];
+export type ThemeClass = "" | "dark" | "green" | "dichromacy" | "trichromacy" | "monochromacy"; 
+export const THEMES: ThemeClass[] = ["", "dark", "green", "dichromacy", "trichromacy", "monochromacy"];
 
 export function toThemeKey(name: ThemeClass) {
   return name ? name.replace(/^theme-/, "") : "light";
@@ -10,9 +11,13 @@ export function toThemeKey(name: ThemeClass) {
 
 const ICON_BY_THEME: Record<string, JSX.Element> = {
   default: <Sun />,
-  emerald: <Sun />,
+  green: <Leaf  />,
   blue: <Sun />,
   dark: <Moon />,
+  dichromacy: <Apple></Apple>,
+  trichromacy: <Banana></Banana>,
+  monochromacy: <Citrus></Citrus>
+
 };
 
 type ThemeCtx = {

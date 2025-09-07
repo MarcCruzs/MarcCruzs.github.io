@@ -41,3 +41,9 @@ body { @apply bg-background text-foreground; }
     display: none;
   }
 }
+
+@media screen and (max-width: 450) {
+  .responsive-home-graph {
+    display: none;
+  }
+}
