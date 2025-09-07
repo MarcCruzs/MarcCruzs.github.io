@@ -14,7 +14,7 @@ const ICON_COLOR = "#ffffff"
 
 const initialLayouts: Layouts = {
   lg: [
-    // 3 cols → place block at col 0 (w:1), hero spans cols 1–2 (w:2)
+    // 3 cols
     { i: "block", x: 3, y: 1, w: 2, h: 3, minW: 2, minH: 3 },
     { i: "block-2", x: 1, y: 2, w: 1, h: 2, minW: 1, minH: 2 },
 
@@ -42,7 +42,6 @@ const initialLayouts: Layouts = {
   ],
 
   sm: [
-    // 2 cols: stack full-width rows
     { i: "block",   x: 0, y: 0, w: 2, h: 3, minW: 2, minH: 2 },
     { i: "block-2", x: 0, y: 7, w: 2, h: 2, minW: 2, minH: 2 },
 
@@ -57,7 +56,6 @@ const initialLayouts: Layouts = {
   ],
 
   xs: [
-    // 1 col: everything full width
     { i: "block",   x: 0, y: 0,  w: 1, h: 3, minW: 1, minH: 2 },
     { i: "block-2", x: 0, y: 7,  w: 1, h: 2, minW: 1, minH: 2 },
 
@@ -71,7 +69,6 @@ const initialLayouts: Layouts = {
   ],
 
   xxs: [
-    // same as xs
     { i: "block",   x: 0, y: 0,  w: 1, h: 3, minW: 1, minH: 2 },
     { i: "hero",    x: 0, y: 3,  w: 1, h: 4, minW: 1, minH: 3 },
     { i: "block-2", x: 0, y: 7,  w: 1, h: 2, minW: 1, minH: 2 },
@@ -102,7 +99,7 @@ export default function Home() {
         isResizable={false}
         draggableCancel="a, button, .no-drag"
       >
-        {/* block */}
+
         <div key="block" className="rounded-lg bg-card shadow-soft p-6 flex flex-col">
           <h1 className="text-3xl font-bold">Hello, I'm Marc Cruz!</h1>
           <h1 className="text-3xl font-bold mb-5">I develop & build software.</h1>
@@ -164,18 +161,12 @@ export default function Home() {
           <ThemeCycleCard></ThemeCycleCard>
           </div>
 
-
-        {/* Hero (taller) */}
         <div key="hero" className="rounded-lg bg-card shadow-soft overflow-hidden">
-          <div className="relative w-full aspect[4/4]"> {/* or h-80, h-96, etc. */}
+          <div className="relative w-full aspect[4/4]">
             <img
               alt="Marc Cruz"
-              src={"/pfp.png"}
+              src="/pfp.jpg"
               className="w-full h-full rounded-md object-contain no-drag"
-              draggable={false}
-              loading="eager"
-              decoding="async"
-              fetchPriority="high"
             />
           </div>
         </div>
@@ -185,8 +176,7 @@ export default function Home() {
           <img
             alt="White lotus flower"
             className="rounded-md w-full h-full object-cover no-drag"
-            src={"/img2.png"}
-            onPointerDown={(e) => e.stopPropagation()}
+            src="/img2.JPG"
           />
         </div>
       </ResponsiveGridLayout>
