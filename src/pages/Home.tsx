@@ -170,7 +170,7 @@ export default function Home() {
           <div className="relative w-full aspect[4/4]"> {/* or h-80, h-96, etc. */}
             <img
               alt="Marc Cruz"
-              src={`${import.meta.env.BASE_URL}pfp.png`}
+              src={"/pfp.png"}
               className="w-full h-full rounded-md object-contain no-drag"
               draggable={false}
               loading="eager"
@@ -185,7 +185,7 @@ export default function Home() {
           <img
             alt="White lotus flower"
             className="rounded-md w-full h-full object-cover no-drag"
-            src={`${import.meta.env.BASE_URL}img2.png`}
+            src={"/img2.png"}
             onPointerDown={(e) => e.stopPropagation()}
           />
         </div>
