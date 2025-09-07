@@ -55,7 +55,7 @@ const initialLayouts: Layouts = {
   ],
 
   xs: [
-    { i: "block",   x: 0, y: 0,  w: 1, h: 3, minW: 1, minH: 2 },
+    { i: "block",   x: 0, y: 0,  w: 1, h: 5, minW: 1, minH: 2 },
     { i: "block-2", x: 0, y: 7,  w: 1, h: 2, minW: 1, minH: 2 },
 
     { i: "link-1",  x: 0, y: 9,  w: 1, h: 1, minW: 1, minH: 1 },
@@ -68,7 +68,7 @@ const initialLayouts: Layouts = {
   ],
 
   xxs: [
-    { i: "block",   x: 0, y: 0,  w: 1, h: 3, minW: 1, minH: 2 },
+    { i: "block",   x: 0, y: 0,  w: 1, h: 5, minW: 1, minH: 2 },
     { i: "hero",    x: 0, y: 3,  w: 1, h: 4, minW: 1, minH: 3 },
     { i: "block-2", x: 0, y: 7,  w: 1, h: 2, minW: 1, minH: 2 },
     { i: "link-1",  x: 0, y: 9,  w: 1, h: 1, minW: 1, minH: 1 },
@@ -81,7 +81,9 @@ const initialLayouts: Layouts = {
 
 export default function Home() {
   const [layouts, setLayouts] = useState<Layouts>(initialLayouts);
+  const DRAGGABLE_BREAKPOINTS = new Set(["md"]);
 
+  const [isDragEnabled, setIsDragEnabled] = useState(true);
   return (
     <section>
       <ResponsiveGridLayout
@@ -94,9 +96,12 @@ export default function Home() {
         containerPadding={[0, 0]}
         compactType="vertical"
         preventCollision={false}
-        isDraggable
+        isDraggable={isDragEnabled}
         isResizable={false}
         draggableCancel="a, button, .no-drag"
+        onBreakpointChange={(bp) => {
+          setIsDragEnabled(DRAGGABLE_BREAKPOINTS.has(bp));
+        }}
       >
 
         <div key="block" className="rounded-lg bg-card shadow-soft p-6 flex flex-col">
@@ -129,7 +134,7 @@ export default function Home() {
             fgClass="text-[hsl(var(--brand-linkedin-fg))]"
             hoverClass="hover:bg-[hsl(var(--brand-linkedin-hover))]"
             hoverFgClass="hover:text-[hsl(var(--brand-linkedin-hover-fg))]"
-            borderClass="border-[hsl(var(--brand-linkedin-fg))"
+            borderClass="border-[hsl(var(--brand-linkedin-fg))]"
             className="text-[hsl(var(--brand-linkedin-fg))]"
           />
         </div>
@@ -161,18 +166,15 @@ export default function Home() {
           </div>
 
         <div key="hero" className="rounded-lg bg-card shadow-soft overflow-hidden">
-          <div className="relative w-full aspect-[6/4]">
             <img
               alt="Marc Cruz"
               src={"/pfp.jpg"}
-              className="w-full h-full rounded-md object-contain no-drag"
-              width={6000}              
-              height={4000}
+              className="w-full h-full rounded-md object-cover no-drag"
+
               loading="eager"          
               fetchPriority="high"    
               decoding="async"
             />
-          </div>
         </div>
         
         <div key="hero-2" className="rounded-lg bg-card shadow-soft flex">
@@ -180,8 +182,7 @@ export default function Home() {
             alt="White lotus flower"
             src={"/img2.JPG"}
             className="rounded-md w-full h-full object-cover no-drag"
-            width={1600}
-            height={900}
+
             loading="eager"            
             decoding="async"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1000px"
