@@ -9,7 +9,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur">
       <div className="container-w flex items-center justify-between py-3">
-        <Link to="/" className="text-2xl font-bold">Marc Cruz</Link>
+        <Link to="/" className="text-2xl font-bold">&lt;MarC&gt;</Link>
         <nav className="hidden md:flex items-center gap-1">
           <NavLink to="/" end className={({isActive}) => base + (isActive ? ' ' + active : '')}>Home</NavLink>
           <NavLink to="/projects" className={({isActive}) => base + (isActive ? ' ' + active : '')}>Projects</NavLink>
