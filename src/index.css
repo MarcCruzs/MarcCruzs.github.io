@@ -6,6 +6,23 @@
 html, body, #root { height: 100%; }
 body { @apply bg-background text-foreground; }
 
+.glass-surface {
+  position: relative;
+  isolation: isolate;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.glass-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  opacity: 0.82;
+  z-index: -1;
+  border-radius: inherit;
+}
+
 
 .react-grid-item.react-grid-placeholder {
   background:  hsl(var(--foreground)) none repeat scroll 0% 0% !important;

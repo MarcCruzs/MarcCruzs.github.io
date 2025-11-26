@@ -141,7 +141,7 @@ function parseTextWithLineBreaks(text: string, keyOffset: number): (string | JSX
 function ProjectCard({ title, summary, tags, url }: any) {
   const isGithub = url?.includes("github.com");
   return (
-    <article className="h-full w-full rounded-xl border border-border bg-card shadow-soft overflow-hidden flex flex-col">
+    <article className="h-full w-full rounded-xl border border-border bg-card shadow-soft overflow-hidden flex flex-col glass-surface">
       <div className="flex items-center justify-between gap-2 border-b border-border px-3 py-2 cursor-grab drag-handle">
         <div className="flex items-center gap-2">
           <GripVertical className="h-4 w-4 text-muted-foreground" />
