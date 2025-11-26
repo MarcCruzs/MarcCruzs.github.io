@@ -29,7 +29,7 @@ export function LinkCard({
   return (
     <div
       className={[
-        "h-full select-none rounded-lg shadow-soft p-5 flex flex-col justify-center",
+        "h-full select-none rounded-lg shadow-soft p-5 flex flex-col justify-center glass-surface",
         borderClass,
         bgClass,
         className,

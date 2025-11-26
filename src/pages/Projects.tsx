@@ -11,7 +11,7 @@ export default function Projects() {
       <ProjectsGraph
         items={projects}
         initialMode="groups"
-        className="border border-border rounded-lg bg-card shadow-soft p-4 responsive-graph" 
+        className="border border-border rounded-lg bg-card shadow-soft p-4 responsive-graph glass-surface"
       />
 
       <DraggableCatalogue />

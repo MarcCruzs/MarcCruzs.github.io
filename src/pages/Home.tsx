@@ -139,7 +139,7 @@ export default function Home() {
           {/* empty on purpose */}
         </div>
 
-        <div key="block" className="rounded-lg bg-card shadow-soft p-6 flex flex-col">
+        <div key="block" className="rounded-lg bg-card shadow-soft p-6 flex flex-col glass-surface">
           <h1 className="text-3xl font-bold">Hello, I'm Marc Cruz!</h1>
           <h1 className="text-3xl font-bold mb-5">I develop & build software.</h1>
           
@@ -148,7 +148,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div key="block-4" className="font-bold rounded-lg bg-card shadow-soft p-6 flex flex-col">
+        <div key="block-4" className="font-bold rounded-lg bg-card shadow-soft p-6 flex flex-col glass-surface">
 
           <p className="mb-4 no-drag">
             <i>Previously</i>
@@ -175,7 +175,7 @@ export default function Home() {
 
         </div>
 
-        <div key="block-3" className="rounded-lg bg-card shadow-soft p-6 flex flex-col">
+        <div key="block-3" className="rounded-lg bg-card shadow-soft p-6 flex flex-col glass-surface">
           <p className="text-sm mt-auto font-bold">Featured Projects</p>
           <br></br>
           <p className="text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea</p>
@@ -234,9 +234,9 @@ export default function Home() {
         <div
           key="block-2">
           <ThemeCycleCard></ThemeCycleCard>
-          </div>
+        </div>
 
-        <div key="hero" className="rounded-lg bg-card shadow-soft overflow-hidden">
+        <div key="hero" className="rounded-lg bg-card shadow-soft overflow-hidden glass-surface">
             <img
               alt="Marc Cruz"
               src={"/pfp.jpg"}
@@ -248,7 +248,7 @@ export default function Home() {
             />
         </div>
         
-        <div key="hero-2" className="rounded-lg bg-card shadow-soft flex">
+        <div key="hero-2" className="rounded-lg bg-card shadow-soft flex glass-surface">
           <img
             alt="White lotus flower"
             src={"/img2.JPG"}
@@ -260,7 +260,7 @@ export default function Home() {
           />
         </div>
 
-        <div key="hero-3" className="rounded-lg bg-card shadow-soft flex">
+        <div key="hero-3" className="rounded-lg bg-card shadow-soft flex glass-surface">
           <img
             alt="El Nido's Beach"
             src={"/img3.JPG"}

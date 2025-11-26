@@ -9,7 +9,7 @@ export function ThemeCycleCard() {
     <button
       onClick={cycle}
       className="
-        w-full h-full rounded-lg
+        w-full h-full rounded-lg glass-surface
         border border-[hsl(var(--border))]
         bg-[hsl(var(--card))] text-[hsl(var(--foreground))]
         shadow-soft
