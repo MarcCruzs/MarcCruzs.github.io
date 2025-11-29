@@ -6,22 +6,47 @@
 html, body, #root { height: 100%; }
 body { @apply bg-background text-foreground; }
 
-.glass-surface {
+.glass-card {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border-width: 1px;
   position: relative;
-  isolation: isolate;
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  will-change: backdrop-filter;
+  overflow: hidden;
 }
 
-.glass-surface::before {
-  content: "";
+.glass-card::before {
+  content: '';
   position: absolute;
-  inset: 0;
-  background: inherit;
-  opacity: 0.82;
-  z-index: -1;
-  border-radius: inherit;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
 }
+
+.glass-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.8),
+    transparent,
+    rgba(255, 255, 255, 0.3)
+  );
+}
+
+
 
 
 .react-grid-item.react-grid-placeholder {

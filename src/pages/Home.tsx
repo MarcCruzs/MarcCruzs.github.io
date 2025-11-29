@@ -139,7 +139,7 @@ export default function Home() {
           {/* empty on purpose */}
         </div>
 
-        <div key="block" className="rounded-lg bg-card shadow-soft p-6 flex flex-col glass-surface">
+        <div key="block" className="rounded-lg shadow-soft p-6 flex flex-col bg-foreground/5 border-foreground/30 glass-card">
           <h1 className="text-3xl font-bold">Hello, I'm Marc Cruz!</h1>
           <h1 className="text-3xl font-bold mb-5">I develop & build software.</h1>
           
@@ -148,7 +148,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div key="block-4" className="font-bold rounded-lg bg-card shadow-soft p-6 flex flex-col glass-surface">
+        <div key="block-4" className="font-bold rounded-lg  shadow-soft p-6 flex flex-col bg-foreground/5 border-foreground/30 glass-card">
 
           <p className="mb-4 no-drag">
             <i>Previously</i>
@@ -175,7 +175,7 @@ export default function Home() {
 
         </div>
 
-        <div key="block-3" className="rounded-lg bg-card shadow-soft p-6 flex flex-col glass-surface">
+        <div key="block-3" className="rounded-lg  shadow-soft p-6 flex flex-col bg-foreground/5 border-foreground/30 glass-card">
           <p className="text-sm mt-auto font-bold">Featured Projects</p>
           <br></br>
           <p className="text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea</p>
@@ -193,7 +193,7 @@ export default function Home() {
             hoverClass="hover:bg-[hsl(var(--brand-github-hover))]"
             hoverFgClass="hover:text-[hsl(var(--brand-github-hover-fg))]"
             borderClass="border-[hsl(var(--brand-github-fg))]"
-            className="text-[hsl(var(--brand-github-fg))]"
+            className="text-[hsl(var(--brand-github-fg))] glass-card"
             />
         </div>
 
@@ -206,10 +206,10 @@ export default function Home() {
             hoverClass="hover:bg-[hsl(var(--brand-linkedin-hover))]"
             hoverFgClass="hover:text-[hsl(var(--brand-linkedin-hover-fg))]"
             borderClass="border-[hsl(var(--brand-linkedin-fg))]"
-            className="text-[hsl(var(--brand-linkedin-fg))]"
+            className="text-[hsl(var(--brand-linkedin-fg))] glass-card"
           />
         </div>
-
+{/* 
         <div key="link-3">
           <LinkCard
             title="RESUME"
@@ -219,15 +219,16 @@ export default function Home() {
             hoverClass="hover:bg-[hsl(var(--cream-hover))] hover:border-[hsl(var(--cream-fg))]"
             hoverFgClass="hover:text-[hsl(var(--cream-hover-fg))]"
             borderClass="border-[hsl(var(--cream-fg))]"
-            className="text-[hsl(var(--cream-fg))]" 
+            className="text-[hsl(var(--cream-fg))] glass-card" 
           />
-        </div>
+        </div> */}
 
         <div key="link-4">
           <LinkCard
             title="PROJECTS"
             to="/projects"
             bgClass="bg-card"
+            className="glass-card"
           />
         </div>
 
@@ -236,7 +237,7 @@ export default function Home() {
           <ThemeCycleCard></ThemeCycleCard>
         </div>
 
-        <div key="hero" className="rounded-lg bg-card shadow-soft overflow-hidden glass-surface">
+        <div key="hero" className="rounded-lg shadow-soft overflow-hidden bg-foreground/5 border-foreground/30 glass-card">
             <img
               alt="Marc Cruz"
               src={"/pfp.jpg"}
@@ -248,7 +249,7 @@ export default function Home() {
             />
         </div>
         
-        <div key="hero-2" className="rounded-lg bg-card shadow-soft flex glass-surface">
+        <div key="hero-2" className="rounded-lg  shadow-soft flex bg-foreground/5 border-foreground/30 glass-card">
           <img
             alt="White lotus flower"
             src={"/img2.JPG"}
@@ -260,7 +261,7 @@ export default function Home() {
           />
         </div>
 
-        <div key="hero-3" className="rounded-lg bg-card shadow-soft flex glass-surface">
+        <div key="hero-3" className="rounded-lg  shadow-soft flex bg-foreground/5 border-foreground/30 glass-card">
           <img
             alt="El Nido's Beach"
             src={"/img3.JPG"}
