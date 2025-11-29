@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Responsive, WidthProvider, type Layouts } from "react-grid-layout";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
@@ -14,24 +14,25 @@ const ICON_COLOR = "#ffffff"
 
 const initialLayouts: Layouts = {
   lg: [
-    // 3 cols
-    { i: "block", x: 3, y: 1, w: 2, h: 4, minW: 2, minH: 3 },
-    { i: "block-2", x: 1, y: 5, w: 1, h: 2, minW: 1, minH: 2 },
-    { i: "block-3", x: 0, y: 5, w: 1, h: 5, minW: 3, minH: 1 },
-    { i: "block-4", x: 0, y: 2, w: 1, h: 3, minW: 1, minH: 3 },
+    
+    { i: "spacer-1", x: 3, y: 3, w: 2, h: 2, minW: 1, minH: 1 },
+    { i: "spacer-2", x: 3, y: 4, w: 3, h: 2, minW: 1, minH: 1 },
 
-    { i: "link-1", x: 0, y: 4, w: 1, h: 1, minW: 1, minH: 1 },
-    { i: "link-2", x: 0, y: 5, w: 1, h: 1, minW: 1, minH: 1 },
-    { i: "link-3", x: 0, y: 6, w: 1, h: 1, minW: 1, minH: 1 },
-    { i: "link-4", x: 1, y: 6, w: 1, h: 1, minW: 1, minH: 1 },
+    // 3 cols
+    { i: "block", x: 3, y: 1, w: 2, h: 3, minW: 2, minH: 3 },
+    { i: "block-2", x: 1, y: 5, w: 1, h: 2, minW: 1, minH: 2 },
+    { i: "block-3", x: 0, y: 5, w: 1, h: 4, minW: 3, minH: 1 },
+    { i: "block-4", x: 3, y: 2, w: 1, h: 3, minW: 1, minH: 3 },
+    { i: "block-5", x: 0, y: 2, w: 2, h: 3, minW: 2, minH: 3 },
+
+    { i: "link-1", x: 0, y: 6, w: 1, h: 1, minW: 1, minH: 1 },
+    { i: "link-2", x: 0, y: 7, w: 1, h: 1, minW: 1, minH: 1 },
+    { i: "link-3", x: 0, y: 8, w: 1, h: 1, minW: 1, minH: 1 },
+    { i: "link-4", x: 0, y: 4, w: 1, h: 1, minW: 1, minH: 1 },
 
     { i: "hero",  x: 0, y: 0, w: 1, h: 3, minW: 1, minH: 3 },
     { i: "hero-2",  x: 0, y: 5, w: 1, h: 3, minW: 1, minH: 3 },
     { i: "hero-3",  x: 1, y: 4, w: 2, h: 5, minW: 1, minH: 3 },
-
-    { i: "spacer-1", x: 3, y: 3, w: 2, h: 2, minW: 1, minH: 1 },
-    { i: "spacer-2", x: 3, y: 4, w: 3, h: 2, minW: 1, minH: 1 },
-
 
   ],
 
@@ -102,9 +103,23 @@ const initialLayouts: Layouts = {
 
 export default function Home() {
   const [layouts, setLayouts] = useState<Layouts>(initialLayouts);
-  const DRAGGABLE_BREAKPOINTS = new Set(["md"]);
+  const DRAGGABLE_BREAKPOINTS = new Set(["lg", "md", "sm"]);
 
   const [isDragEnabled, setIsDragEnabled] = useState(true);
+
+  const [rowHeight, setRowHeight] = useState(0);
+
+  useEffect(() => {
+    function update() {
+      const h = Math.max(60, window.innerHeight * 0.05); 
+      setRowHeight(h);
+    }
+    update();
+
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
   return (
     <section>
       <ResponsiveGridLayout
@@ -112,7 +127,7 @@ export default function Home() {
         layouts={layouts}
         cols={COLS}
         breakpoints={{ lg: 1024, md: 768, sm: 640, xs: 480, xxs: 0 }}
-        rowHeight={67}
+        rowHeight={rowHeight}
         margin={[16, 16]}
         containerPadding={[0, 0]}
         compactType="vertical"
@@ -125,12 +140,13 @@ export default function Home() {
         }}
       >
 
+        {/* 
         <div
           key="spacer-1"
           className="pointer-events-none select-none"
         >
-          {/* empty on purpose */}
-        </div>
+        </div> 
+        */}
 
         <div
           key="spacer-2"
@@ -141,8 +157,14 @@ export default function Home() {
 
         <div key="block" className="rounded-lg shadow-soft p-6 flex flex-col bg-foreground/5 border-foreground/30 glass-card">
           <h1 className="text-3xl font-bold">Hello, I'm Marc Cruz!</h1>
-          <h1 className="text-3xl font-bold mb-5">I develop & build software.</h1>
+          <h1 className="justify-between text-3xl font-bold mb-3">Building meaningful solutions for corporations, small businesses, and communities.</h1>
           
+          <p className="text-muted-foreground mb-4 no-drag overflow-hidden">
+            Most recent experience on NASA’s NAMS-2 program, building pipelines for aviation data. testing, and maintainable code.
+          </p>
+        </div>
+
+        <div key="block-5" className="rounded-lg shadow-soft p-6 flex flex-col bg-foreground/5 border-foreground/30 glass-card">
           <p className="text-muted-foreground mb-4 no-drag">
             Most recent experience on NASA’s NAMS-2 program, building pipelines for aviation data. Comfortable with Pandas, NumPy, SQL, Rust, Docker, and Git. I care about clear architecture, testing, and maintainable code.
           </p>
@@ -150,11 +172,11 @@ export default function Home() {
 
         <div key="block-4" className="font-bold rounded-lg  shadow-soft p-6 flex flex-col bg-foreground/5 border-foreground/30 glass-card">
 
-          <p className="mb-4 no-drag">
+          <p className="mb-auto no-drag">
             <i>Previously</i>
           </p>
-          <div className="flex items-center gap-2 py-1">
-            <Dot className="text-blue-500" size={32} strokeWidth={3} />
+          <div className="flex items-center py-1">
+            <Dot className="text-blue-500" size={40} strokeWidth={3} />
             <p className="text-sm">NASA NAMS-2 SWE Contractor</p>
           </div>
 {/* 
@@ -163,13 +185,13 @@ export default function Home() {
             <p className="text-sm">NASA Ames - Intern</p>
           </div> */}
 
-          <div className="flex items-center gap-2 py-1">
-            <Dot className="text-purple-500" size={32} strokeWidth={3} />
+          <div className="flex items-center py-1">
+            <Dot className="text-purple-500" size={40} strokeWidth={3} />
             <p className="text-sm">President, Software Engineering Association</p>
           </div>
 
-          <div className="flex items-center gap-2 py-1">
-            <Dot className="text-orange-500" size={32} strokeWidth={3} />
+          <div className="flex items-center py-1">
+            <Dot className="text-orange-500" size={40} strokeWidth={3} />
             <p className="text-sm">UAS Object Detection Lead - CPP SUAS Team</p>
           </div>
 
