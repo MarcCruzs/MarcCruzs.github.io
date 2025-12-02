@@ -15,7 +15,7 @@ export default function Navbar() {
           <NavLink to="/projects" className={({isActive}) => base + (isActive ? ' ' + active : '')}>Projects</NavLink>
         </nav>
         <div className="flex items-center gap-2">
-          <a className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-border/70 hover:bg-border-[hsl(var(--border))]" 
+          {/* <a className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-border/70 hover:bg-border-[hsl(var(--border))]" 
             href="https://github.com/MarcCruzs" target="_blank" rel="noopener" aria-label="GitHub">
             <Github className="w-5 h-5" />
           </a>
@@ -24,7 +24,7 @@ export default function Navbar() {
           </a>
           <a className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-border/70 hover:bg-card" href="mailto:marc.cruz.office@gmail.com" aria-label="Email">
             <Mail className="w-5 h-5" />
-          </a>
+          </a> */}
           <ThemeCycleButton></ThemeCycleButton>
         </div>
       </div>

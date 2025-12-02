@@ -152,13 +152,13 @@ export default function Home() {
           />
         </div>
 
-        <div key="link-4">
+        {/* <div key="link-4">
           <LinkCard
             title="PROJECTS"
             to="/projects"
             bgClass="bg-card"
           />
-        </div>
+        </div> */}
 
         <div
           key="block-2">
