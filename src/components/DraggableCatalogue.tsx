@@ -141,8 +141,8 @@ function parseTextWithLineBreaks(text: string, keyOffset: number): (string | JSX
 function ProjectCard({ title, summary, tags, url }: any) {
   const isGithub = url?.includes("github.com");
   return (
-    <article className="h-full w-full rounded-xl border border-border bg-card shadow-soft overflow-hidden flex flex-col">
-      <div className="flex items-center justify-between gap-2 border-b border-border px-3 py-2 cursor-grab drag-handle">
+    <article className="glass-card h-full w-full rounded-xl border border-border bg-card shadow-soft overflow-hidden flex flex-col">
+      <div className="flex items-center justify-between gap-2 border-b border-foreground/30 px-3 py-2 cursor-grab drag-handle">
         <div className="flex items-center gap-2">
           <GripVertical className="h-4 w-4 text-muted-foreground" />
           <h3 className="text-sm font-semibold leading-none">{title}</h3>
@@ -244,27 +244,27 @@ export default function DraggableCatalogue() {
       {/* Controls */}
       <div className="mb-3 flex flex-wrap items-center gap-2">
         <input
-          className="rounded-md border border-border bg-background px-3 py-1 text-sm"
+          className="rounded-md border border-border bg-background px-3 py-1 text-sm glass-card"
           placeholder= {tag == null ? "Search..." : tag}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button className={`rounded-full border border-border px-3 py-1 text-sm ${!tag && !group ? "bg-muted/60" : "hover:bg-muted"}`} onClick={() => { setTag(null); setGroup(null); }}>
+        <button className={`glass-card rounded-full border border-border px-3 py-1 text-sm ${!tag && !group ? "bg-muted/60" : "hover:bg-muted"}`} onClick={() => { setTag(null); setGroup(null); }}>
           All
         </button>
-        <button className="rounded-full border border-border px-3 py-1 text-sm hover:bg-muted" onClick={() => { setTag(null); setGroup("Data Science"); }}>
+        <button className="glass-card rounded-full border border-border px-3 py-1 text-sm hover:bg-muted" onClick={() => { setTag(null); setGroup("Data Science"); }}>
           Data Science
         </button>
-        <button className="rounded-full border border-border px-3 py-1 text-sm hover:bg-muted" onClick={() => { setTag(null); setGroup("Machine Learning"); }}>
+        <button className="glass-card rounded-full border border-border px-3 py-1 text-sm hover:bg-muted" onClick={() => { setTag(null); setGroup("Machine Learning"); }}>
           Machine Learning
         </button>
-        <button className="rounded-full border border-border px-3 py-1 text-sm hover:bg-muted" onClick={() => { setTag(null); setGroup("Web Dev"); }}>
+        <button className="glass-card rounded-full border border-border px-3 py-1 text-sm hover:bg-muted" onClick={() => { setTag(null); setGroup("Web Dev"); }}>
           Web Development
         </button>
-        <button className="rounded-full border border-border px-3 py-1 text-sm hover:bg-muted" onClick={() => { setTag(null); setGroup("Class Work"); }}>
+        <button className="glass-card rounded-full border border-border px-3 py-1 text-sm hover:bg-muted" onClick={() => { setTag(null); setGroup("Class Work"); }}>
           Class Work
         </button>
-        <button className="rounded-full border border-border px-3 py-1 text-sm hover:bg-muted" onClick={() => { setTag("python"); setGroup(null); }}>
+        <button className="glass-card rounded-full border border-border px-3 py-1 text-sm hover:bg-muted" onClick={() => { setTag("python"); setGroup(null); }}>
           Python
         </button>
       </div>
