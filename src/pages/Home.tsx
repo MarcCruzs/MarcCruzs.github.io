@@ -390,7 +390,7 @@ export default function Home() {
           {/* Background image (one layer below the card) */}
           <img
             alt=""
-            src="/img2.JPG"
+            src="/img2.jpg"
             className="absolute inset-0 w-full h-full object-cover rounded-3xl opacity-60 no-drag"
             loading="eager"
             decoding="sync"
@@ -430,7 +430,7 @@ export default function Home() {
           {/* Background image (one layer below the card) */}
           <img
             alt=""
-            src="/img4.jpg"
+            src="/img4.png"
             className="absolute inset-0 w-full h-full object-cover rounded-3xl opacity-60 no-drag"
             loading="eager"
             decoding="sync"
@@ -484,7 +484,7 @@ export default function Home() {
           {/* Background image (one layer below the card) */}
           <img
             alt="SUAS UAV"
-            src="/img5.JPG"
+            src="/img5.jpg"
             className="absolute inset-0 w-full h-full object-cover rounded-3xl opacity-60 no-drag"
             loading="eager"
             decoding="sync"
@@ -596,8 +596,8 @@ export default function Home() {
           className="rounded-lg shadow-soft flex bg-foreground/5 border-foreground/30 glass-card"
         >
           <img
-            alt="White lotus flower"
-            src={"/img2.JPG"}
+            alt="Earth Observations taken during Expedition Four (NASA ID: iss004e11807)"
+            src={"/img2.jpg"}
             className="rounded-md w-full h-full object-cover no-drag"
             loading="eager"
             decoding="sync"
@@ -625,7 +625,7 @@ export default function Home() {
         >
           <img
             alt="White lotus flower"
-            src={"/img4.jpg"}
+            src={"/img4.png"}
             className="rounded-md w-full h-full object-cover no-drag"
             loading="eager"
             decoding="sync"
@@ -639,7 +639,7 @@ export default function Home() {
         >
           <img
             alt="White lotus flower"
-            src={"/img5.JPG"}
+            src={"/img5.jpg"}
             className="rounded-md w-full h-full object-cover no-drag"
             loading="eager"
             decoding="sync"
