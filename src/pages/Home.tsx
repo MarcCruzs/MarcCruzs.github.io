@@ -292,36 +292,44 @@ export default function Home() {
         {/* Main hero / intro */}
         <div
           key="block"
-          className="select-none rounded-lg shadow-soft p-6 flex flex-col bg-foreground/5 border border-foreground/30 glass-card"
+          className="relative select-none rounded-lg shadow-soft p-6 flex flex-col bg-foreground/5 border border-foreground/30 glass-card overflow-hidden"
         >
-          <h1 className="text-8xl font-black font-poppins mb-4">MARC CRUZ</h1>
-
-          <h2 className="text-3xl font-semibold text-foreground/90 leading-snug mb-8 ">
-            I build scalable backend systems and data pipelines that stay clean and dependable.
-          </h2>
-
-          {/* Newspaper column */}
-          <div className="space-y-4 max-w-xs">
-            <p className="text-xs text-muted-foreground text-justify leading-loose">
-              My experience spans NASA ETL pipelines, distributed processing systems, and
-              data-intensive web platforms. I focus on building systems that remain
-              robust and maintainable as they grow.
-            </p>
+          {/* Lava lamp background layer */}
+          <div className="lava-bg">
+            <div className="blob-3"></div>
           </div>
 
-          {/* Button anchored to bottom */}
-          <Button
-            variant="secondary"
-            size="lg"
-            asChild
-            className="self-start mt-auto px-6 py-3 text-base font-semibold rounded-md
-                      shadow-sm hover:shadow-md"
-          >
-            <HashLink smooth to="/#contact">
-              Get in Touch
-            </HashLink>
-          </Button>
+          {/* Foreground content */}
+          <div className="relative z-10 flex flex-col h-full">
+            <h1 className="text-8xl font-black font-poppins mb-4">MARC CRUZ</h1>
+
+            <h2 className="text-3xl font-semibold text-foreground/90 leading-snug mb-8">
+              I build scalable backend systems and data pipelines that stay clean and dependable.
+            </h2>
+
+            {/* Newspaper column */}
+            <div className="space-y-4 max-w-xs">
+              <p className="text-xs text-muted-foreground text-justify leading-loose">
+                My experience spans NASA ETL pipelines, distributed processing systems, and
+                data-intensive web platforms. I focus on building systems that remain
+                robust and maintainable as they grow.
+              </p>
+            </div>
+
+            {/* Button anchored to bottom */}
+            <Button
+              variant="secondary"
+              size="lg"
+              asChild
+              className="self-start mt-auto px-6 py-3 text-base font-semibold rounded-md shadow-sm hover:shadow-md"
+            >
+              <HashLink smooth to="/#contact">
+                Get in Touch
+              </HashLink>
+            </Button>
+          </div>
         </div>
+
 
         {/* Featured projects intro */}
         <div

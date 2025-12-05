@@ -89,6 +89,79 @@ body { @apply bg-background text-foreground; }
   box-shadow: 0 2px 4px rgba(0,0,0,.35) !important;
 }
 
+/* Container for all blobs */
+.lava-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.40;
+  filter: blur(26px);
+}
+
+/* Blob defaults */
+.lava-bg::before,
+.lava-bg::after,
+.lava-bg .blob-3 {
+  content: "";
+  position: absolute;
+  background: #00A86B;
+  width: 32%;               /* smaller blobs */
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+/* BLOB 1 — rises from bottom to mid */
+.lava-bg::before {
+  bottom: 0%;
+  left: 10%;
+  animation: lavaRise3 14s ease-in-out infinite alternate;
+}
+
+/* BLOB 2 — rises from mid to near top */
+.lava-bg::after {
+  bottom: 10%;
+  right: -10%;
+  width: 38%;
+  animation: lavaRise2 18s ease-in-out infinite alternate;
+}
+
+/* BLOB 3 — slow large blob drifting vertically */
+.lava-bg .blob-3 {
+  bottom: -25%;
+  left: 40%;
+  width: 45%;
+  animation: lavaRise2 22s ease-in-out infinite alternate;
+}
+
+
+/* ====================== KEYFRAMES ====================== */
+/* Mimics the buoyant rise and fall of lava globules */
+
+@keyframes lavaRise1 {
+  0%   { transform: translate(-4%, 0)      scale(0.95); }
+  40%  { transform: translate(3%, -25%)    scale(1.05); }
+  70%  { transform: translate(-2%, -40%)   scale(1); }
+  100% { transform: translate(4%, -55%)    scale(0.9); }
+}
+
+@keyframes lavaRise2 {
+  0%   { transform: translate(0, 0)        scale(1); }
+  30%  { transform: translate(-3%, -20%)   scale(1.08); }
+  60%  { transform: translate(2%, -40%)    scale(0.97); }
+  100% { transform: translate(-2%, -60%)   scale(1.02); }
+}
+
+@keyframes lavaRise3 {
+  0%   { transform: translate(0, 0)        scale(1); }
+  30%  { transform: translate(-3%, -30%)   scale(1.08); }
+  60%  { transform: translate(2%, -60%)    scale(0.97); }
+  100% { transform: translate(-2%, -150%)   scale(1.5); }
+}
+
+
 @media screen and (max-width: 1110px) {
   .responsive-tag {
     display: none;
