@@ -19,15 +19,15 @@ const ICON_COLOR = "#ffffff"
 const initialLayouts: Layouts = {
   lg: [
     // SPACERS
-    // { i: "spacer-1", x: 3, y: 6, w: 3, h: 2, minW: 1, minH: 1 },
-    { i: "spacer-2", x: 3, y: 4,  w: 3, h: 2, minW: 1, minH: 1 },
-    { i: "spacer-3", x: 3, y: 30, w: 3, h: 2, minW: 1, minH: 1 },
+    // { i: "spacer-1", x: 2, y: 6, w: 3, h: 2, minW: 1, minH: 1 },
+    { i: "spacer-2", x: 0, y: 4,  w: 3, h: 2, minW: 1, minH: 1 },
+    { i: "spacer-3", x: 0, y: 30, w: 3, h: 2, minW: 1, minH: 1 },
 
     // BLOCKS
     { i: "block",   x: 0, y: 0,  w: 2, h: 6, minW: 1, minH: 3 },
     { i: "block-2", x: 2, y: 6,  w: 1, h: 5, minW: 1, minH: 2 },
     { i: "block-3", x: 0, y: 5,  w: 1, h: 5, minW: 1, minH: 1 },
-    { i: "block-4", x: 3, y: 2,  w: 1, h: 3, minW: 1, minH: 3 },
+    { i: "block-4", x: 2, y: 2,  w: 1, h: 3, minW: 1, minH: 3 },
     { i: "block-5", x: 0, y: 2,  w: 2, h: 4, minW: 2, minH: 3 },
     { i: "block-6", x: 0, y: 7,  w: 1, h: 5, minW: 1, minH: 2 },
     { i: "block-7", x: 2, y: 8,  w: 1, h: 5, minW: 1, minH: 2 },
@@ -238,7 +238,7 @@ export default function Home() {
 
   const [isDragEnabled, setIsDragEnabled] = useState(true);
 
-  const [rowHeight, setRowHeight] = useState(0);
+  const [rowHeight, setRowHeight] = useState<number | null>(null);
 
   useEffect(() => {
     function update() {
@@ -253,6 +253,7 @@ export default function Home() {
 
   return (
     <section>
+      {rowHeight !== null && (
       <ResponsiveGridLayout
         className={isDragEnabled ? "cursor-grab" : "cursor-default"}
         layouts={layouts}
@@ -392,7 +393,7 @@ export default function Home() {
             src="/img2.JPG"
             className="absolute inset-0 w-full h-full object-cover rounded-3xl opacity-60 no-drag"
             loading="eager"
-            decoding="async"
+            decoding="sync"
           />
 
           {/* Foreground card */}
@@ -432,7 +433,7 @@ export default function Home() {
             src="/img4.jpg"
             className="absolute inset-0 w-full h-full object-cover rounded-3xl opacity-60 no-drag"
             loading="eager"
-            decoding="async"
+            decoding="sync"
           />
 
           {/* Foreground card */}
@@ -486,7 +487,7 @@ export default function Home() {
             src="/img5.JPG"
             className="absolute inset-0 w-full h-full object-cover rounded-3xl opacity-60 no-drag"
             loading="eager"
-            decoding="async"
+            decoding="sync"
           />
 
           {/* Foreground card */}
@@ -586,7 +587,7 @@ export default function Home() {
             className="w-full h-full rounded-md object-cover no-drag"
             loading="eager"
             fetchPriority="high"
-            decoding="async"
+            decoding="sync"
           />
         </div>
 
@@ -599,7 +600,7 @@ export default function Home() {
             src={"/img2.JPG"}
             className="rounded-md w-full h-full object-cover no-drag"
             loading="eager"
-            decoding="async"
+            decoding="sync"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1000px"
           />
         </div>
@@ -613,7 +614,7 @@ export default function Home() {
             src={"/img3.JPG"}
             className="rounded-md w-full h-full object-center object-cover no-drag"
             loading="eager"
-            decoding="async"
+            decoding="sync"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1000px"
           />
         </div>
@@ -627,7 +628,7 @@ export default function Home() {
             src={"/img4.jpg"}
             className="rounded-md w-full h-full object-cover no-drag"
             loading="eager"
-            decoding="async"
+            decoding="sync"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1000px"
           />
         </div>
@@ -641,7 +642,7 @@ export default function Home() {
             src={"/img5.JPG"}
             className="rounded-md w-full h-full object-cover no-drag"
             loading="eager"
-            decoding="async"
+            decoding="sync"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1000px"
           />
         </div>
@@ -680,18 +681,18 @@ export default function Home() {
           className="rounded-lg shadow-soft flex bg-foreground/5 border-foreground/30 glass-card"
         >
           <img
-            alt="Abstract city at night"
+            alt="Umbrella Man"
             src={"/img6.jpg" /* or reuse one of your existing images */}
             className="rounded-md w-full h-full object-cover no-drag"
             loading="eager"
-            decoding="async"
+            decoding="sync"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1000px"
           />
         </div>
 
 
       </ResponsiveGridLayout>
-
+      )}
     </section>
   );
 }

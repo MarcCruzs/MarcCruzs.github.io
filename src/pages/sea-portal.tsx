@@ -11,9 +11,9 @@ const COLS = {lg: 3, md: 3, sm: 2, xs: 1, xxs: 1 };
 const initialLayouts: Layouts = {
   lg: [
     // SPACERS
-    // { i: "spacer-1", x: 3, y: 6, w: 3, h: 2, minW: 1, minH: 1 },
-    { i: "spacer-2", x: 3, y: 4,  w: 3, h: 2, minW: 1, minH: 1 },
-    { i: "spacer-3", x: 3, y: 30, w: 3, h: 2, minW: 1, minH: 1 },
+    // { i: "spacer-1", x: 2, y: 6, w: 3, h: 2, minW: 1, minH: 1 },
+    { i: "spacer-2", x: 2, y: 4,  w: 3, h: 2, minW: 1, minH: 1 },
+    { i: "spacer-3", x: 2, y: 30, w: 3, h: 2, minW: 1, minH: 1 },
 
     // BLOCKS
     { i: "block",   x: 0, y: 0,  w: 3, h: 5, minW: 1, minH: 3 },
@@ -210,7 +210,7 @@ export default function SeaPortal() {
 
   const [isDragEnabled, setIsDragEnabled] = useState(true);
 
-  const [rowHeight, setRowHeight] = useState(0);
+  const [rowHeight, setRowHeight] = useState<number | null>(null);
 
   useEffect(() => {
     function update() {
@@ -225,6 +225,7 @@ export default function SeaPortal() {
 
   return (
     <section>
+      {rowHeight !== null && (
       <ResponsiveGridLayout
         className={isDragEnabled ? "cursor-grab" : "cursor-default"}
         layouts={layouts}
@@ -458,7 +459,7 @@ export default function SeaPortal() {
 
 
       </ResponsiveGridLayout>
-
+      )}
     </section>
   );
 }
