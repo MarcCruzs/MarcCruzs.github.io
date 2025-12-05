@@ -52,8 +52,6 @@ body { @apply bg-background text-foreground; }
 }
 
 
-
-
 .react-grid-item.react-grid-placeholder {
   background:  hsl(var(--foreground)) none repeat scroll 0% 0% !important;
   transition-duration: 100ms;
@@ -63,9 +61,10 @@ body { @apply bg-background text-foreground; }
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  border-radius: 32px;
+  border-radius: 20px;
   transition: all 500ms ease 0s !important;
   will-change: transform;
+  cursor: grabbing;
 }
 
 .rgl-custom .react-resizable-handle::after {

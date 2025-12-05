@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Home from "@/pages/Home";
 import Projects from "@/pages/Projects";
+import SeaPortal from "@/pages/sea-portal"
 import { ThemeProvider } from "@/utils/ThemeContext";
 
 const pageVariants = {
@@ -39,6 +40,7 @@ export default function App() {
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Page><Home /></Page>} />
             <Route path="/projects" element={<Page><Projects /></Page>} />
+            <Route path="/projects/sea-portal" element={<Page><SeaPortal /></Page>} />
           </Routes>
         </AnimatePresence>
       </main>

@@ -10,6 +10,7 @@ type LinkCardProps = {
   fgClass?: string;       
   hoverClass?: string;     
   hoverFgClass?: string;   
+  buttonClass?: string;
   external?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
@@ -19,9 +20,10 @@ export function LinkCard({
   icon,
   bgClass = "bg-card",
   borderClass = "border-border",
+  buttonClass,
   fgClass = "text-[hsl(var(--foreground))]",
-  hoverClass = "hover:bg-muted hover:border-muted",
-  hoverFgClass = "hover:text-[hsl(var(--foreground))]",
+  hoverClass = "hover:bg-foreground hover:border-muted",
+  hoverFgClass = "hover:text-[hsl(var(--background))]",
   external = true,
   className = "",
   ...rest
@@ -44,12 +46,13 @@ export function LinkCard({
           target={external ? "_blank" : undefined}
           rel={external ? "noopener noreferrer" : undefined}
           className={[
-            "shrink-0 inline-flex items-center gap-2 rounded-full px-4 py-2 border",
+            "shrink-0 inline-flex items-center gap-2 rounded-full px-4 py-2 border border-muted-foreground",
             "transition-colors duration-1000 ease-out", 
             borderClass,    
             fgClass,     
             hoverClass,    
-            hoverFgClass,  
+            hoverFgClass,
+            buttonClass
           ].join(" ")}
           onPointerDown={(e) => e.stopPropagation()}
           aria-label={title}
