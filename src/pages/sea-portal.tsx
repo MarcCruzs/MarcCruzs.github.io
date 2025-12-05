@@ -11,9 +11,9 @@ const COLS = {lg: 3, md: 3, sm: 2, xs: 1, xxs: 1 };
 const initialLayouts: Layouts = {
   lg: [
     // SPACERS
-    // { i: "spacer-1", x: 3, y: 6, w: 3, h: 2, minW: 1, minH: 1 },
-    { i: "spacer-2", x: 3, y: 4,  w: 3, h: 2, minW: 1, minH: 1 },
-    { i: "spacer-3", x: 3, y: 30, w: 3, h: 2, minW: 1, minH: 1 },
+    // { i: "spacer-1", x: 2, y: 6, w: 3, h: 2, minW: 1, minH: 1 },
+    { i: "spacer-2", x: 2, y: 4,  w: 3, h: 2, minW: 1, minH: 1 },
+    { i: "spacer-3", x: 2, y: 30, w: 3, h: 2, minW: 1, minH: 1 },
 
     // BLOCKS
     { i: "block",   x: 0, y: 0,  w: 3, h: 5, minW: 1, minH: 3 },
@@ -21,7 +21,7 @@ const initialLayouts: Layouts = {
     { i: "block-3", x: 2, y: 4,  w: 1, h: 10, minW: 1, minH: 1 },
     { i: "block-4", x: 0, y: 5,  w: 2, h: 5, minW: 1, minH: 3 },
     { i: "block-5", x: 2, y: 6,  w: 1, h: 10, minW: 1, minH: 3 },
-    { i: "block-6", x: 0, y: 7,  w: 2, h: 5, minW: 1, minH: 2 },
+    { i: "block-6", x: 0, y: 8,  w: 3, h: 3, minW: 1, minH: 2 },
     { i: "block-7", x: 2, y: 8,  w: 2, h: 5, minW: 1, minH: 2 },
 
     { i: "block-8",  x: 0, y: 6, w: 2, h: 5, minW: 1, minH: 4 },
@@ -39,9 +39,9 @@ const initialLayouts: Layouts = {
 
     // HEROES
     { i: "hero",   x: 2, y: 0,  w: 1, h: 3, minW: 1, minH: 3 },
-    { i: "hero-2", x: 0, y: 5,  w: 2, h: 10, minW: 1, minH: 3 },
-    { i: "hero-3", x: 2, y: 7,  w: 1, h: 5, minW: 1, minH: 3 },
-    { i: "hero-4", x: 2, y: 6,  w: 1, h: 10, minW: 1, minH: 3 },
+    { i: "hero-2", x: 0, y: 5,  w: 2, h: 16, minW: 1, minH: 3 },
+    { i: "hero-3", x: 2, y: 7,  w: 1, h: 11, minW: 1, minH: 3 },
+    { i: "hero-4", x: 2, y: 6,  w: 1, h: 5, minW: 1, minH: 3 },
     { i: "hero-5", x: 0, y: 8,  w: 1, h: 5, minW: 1, minH: 3 },
     { i: "hero-6", x: 1, y: 30, w: 1, h: 5, minW: 1, minH: 3 },
   ],
@@ -80,7 +80,7 @@ const initialLayouts: Layouts = {
     { i: "link-5", x: 2, y: 29, w: 1, h: 2, minW: 1, minH: 1 },
 
     // HEROES
-    { i: "hero-2", x: 0, y: 31, w: 1, h: 4, minW: 1, minH: 3 },
+    { i: "hero-2", x: 0, y: 31, w: 1, h: 16, minW: 1, minH: 3 },
     { i: "hero-3", x: 1, y: 31, w: 1, h: 4, minW: 1, minH: 3 },
     { i: "hero-4", x: 2, y: 31, w: 1, h: 4, minW: 1, minH: 3 },
     { i: "hero-5", x: 2, y: 35, w: 1, h: 4, minW: 1, minH: 3 },
@@ -210,7 +210,7 @@ export default function SeaPortal() {
 
   const [isDragEnabled, setIsDragEnabled] = useState(true);
 
-  const [rowHeight, setRowHeight] = useState(0);
+  const [rowHeight, setRowHeight] = useState<number | null>(null);
 
   useEffect(() => {
     function update() {
@@ -225,6 +225,7 @@ export default function SeaPortal() {
 
   return (
     <section>
+      {rowHeight !== null && (
       <ResponsiveGridLayout
         className={isDragEnabled ? "cursor-grab" : "cursor-default"}
         layouts={layouts}
@@ -338,7 +339,7 @@ export default function SeaPortal() {
           key="block-7"
           className="rounded-lg shadow-soft p-6 flex flex-col bg-foreground/5 border-foreground/30 glass-card"
         >
-          <h3 className="text-3xl font-black font-poppins mb-auto">THE LESSONS</h3>
+          <h3 className="text-3xl font-black font-poppins mb-auto">THE LESSONS (THUS FAR)</h3>
           <br />
           <ul className="list-disc pl-4 space-y-1 text-sm"> 
             <li>Gained experience designing systems that survive leadership turnover.</li> 
@@ -403,8 +404,8 @@ export default function SeaPortal() {
           className="rounded-lg shadow-soft flex bg-foreground/5 border-foreground/30 glass-card"
         >
           <img
-            alt="White lotus flower"
-            src={"/img2.JPG"}
+            alt="database"
+            src={"/database.png"}
             className="rounded-md w-full h-full object-cover no-drag"
             loading="eager"
             decoding="async"
@@ -418,7 +419,7 @@ export default function SeaPortal() {
         >
           <img
             alt="Palace of Fine Arts"
-            src={"/img3.JPG"}
+            src={"/img.jpg"}
             className="rounded-md w-full h-full object-center object-cover no-drag"
             loading="eager"
             decoding="async"
@@ -432,7 +433,7 @@ export default function SeaPortal() {
         >
           <img
             alt="White lotus flower"
-            src={"/img4.jpg"}
+            src={"/login.jpg"}
             className="rounded-md w-full h-full object-cover no-drag"
             loading="eager"
             decoding="async"
@@ -444,21 +445,34 @@ export default function SeaPortal() {
           key="hero-5"
           className="rounded-lg shadow-soft flex bg-foreground/5 border-foreground/30 glass-card"
         >
-          <img
-            alt="White lotus flower"
-            src={"/img5.JPG"}
-            className="rounded-md w-full h-full object-cover no-drag"
-            loading="eager"
-            decoding="async"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1000px"
-          />
+          <a
+            href="https://cppsea.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full h-full"
+          >
+            <div
+              key="hero-5"
+              className="rounded-lg shadow-soft flex bg-foreground/5 border-foreground/30 glass-card"
+            >
+              <img
+                alt="White lotus flower"
+                src={"/sea-logo.png"}
+                className="rounded-md w-full h-full object-cover no-drag"
+                loading="eager"
+                decoding="async"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1000px"
+              />
+            </div>
+          </a>
+
         </div>
 
 
 
 
       </ResponsiveGridLayout>
-
+      )}
     </section>
   );
 }
