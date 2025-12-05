@@ -206,3 +206,7 @@
 
   --ring: 0 0% 70%;
 }
+
+body {
+  font-family: Helvetica, Arial;
+}

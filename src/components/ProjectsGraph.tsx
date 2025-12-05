@@ -261,7 +261,7 @@ export default function ProjectsGraph({
         <button onClick={() => setMode("tags")}   className={`px-3 py-1.5 rounded-full border ${mode === "tags"   ? "bg-primary text-primary-foreground" : "hover:bg-muted"} border-border`}>Skills</button>
       </div>
 
-      <div ref={wrapRef} className="relative h-[360px] sm:h-[470px] lg:h-[470px] w-full rounded-md overflow-hidden border border-border">
+      <div ref={wrapRef} className="relative h-[360px] sm:h-[470px] lg:h-[470px] w-full rounded-md overflow-hidden border border-foreground/30">
         {size.w > 0 && size.h > 0 && (
           <ForceGraph2D
             ref={fgRef}

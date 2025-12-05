@@ -2,8 +2,8 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { Sun, Moon, Leaf } from "akar-icons";
 import { Apple, Banana, Citrus } from "lucide-react";
 
-export type ThemeClass = "" | "dark" | "green" | "dichromacy" | "trichromacy" | "monochromacy"; 
-export const THEMES: ThemeClass[] = ["", "dark", "green", "dichromacy", "trichromacy", "monochromacy"];
+export type ThemeClass = "" | "dark"; 
+export const THEMES: ThemeClass[] = ["", "dark"];
 
 export function toThemeKey(name: ThemeClass) {
   return name ? name.replace(/^theme-/, "") : "light";
