@@ -2,7 +2,6 @@ import { projects } from "@/data/projects";
 import DraggableCatalogue from "@/components/DraggableCatalogue";
 import ProjectsGraph from "@/components/ProjectsGraph";
 
-
 export default function Projects() {
   return (
     <section className="space-y-4">

@@ -6,26 +6,26 @@ import { HashLink } from "react-router-hash-link";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
-const COLS = {lg: 3, md: 3, sm: 2, xs: 1, xxs: 1 };
+const COLS = { lg: 3, md: 3, sm: 2, xs: 1, xxs: 1 };
 
 const initialLayouts: Layouts = {
   lg: [
     // SPACERS
     // { i: "spacer-1", x: 3, y: 6, w: 3, h: 2, minW: 1, minH: 1 },
-    { i: "spacer-2", x: 3, y: 4,  w: 3, h: 2, minW: 1, minH: 1 },
+    { i: "spacer-2", x: 3, y: 4, w: 3, h: 2, minW: 1, minH: 1 },
     { i: "spacer-3", x: 3, y: 30, w: 3, h: 2, minW: 1, minH: 1 },
 
     // BLOCKS
-    { i: "block",   x: 0, y: 0,  w: 3, h: 5, minW: 1, minH: 3 },
-    { i: "block-2", x: 0, y: 4,  w: 2, h: 5, minW: 1, minH: 2 },
-    { i: "block-3", x: 2, y: 4,  w: 1, h: 10, minW: 1, minH: 1 },
-    { i: "block-4", x: 0, y: 5,  w: 2, h: 5, minW: 1, minH: 3 },
-    { i: "block-5", x: 2, y: 4,  w: 1, h: 10, minW: 1, minH: 3 },
-    { i: "block-6", x: 0, y: 7,  w: 2, h: 5, minW: 1, minH: 2 },
-    { i: "block-7", x: 2, y: 8,  w: 2, h: 5, minW: 1, minH: 2 },
+    { i: "block", x: 0, y: 0, w: 3, h: 5, minW: 1, minH: 3 },
+    { i: "block-2", x: 0, y: 4, w: 2, h: 5, minW: 1, minH: 2 },
+    { i: "block-3", x: 2, y: 4, w: 1, h: 10, minW: 1, minH: 1 },
+    { i: "block-4", x: 0, y: 5, w: 2, h: 5, minW: 1, minH: 3 },
+    { i: "block-5", x: 2, y: 4, w: 1, h: 10, minW: 1, minH: 3 },
+    { i: "block-6", x: 0, y: 7, w: 2, h: 5, minW: 1, minH: 2 },
+    { i: "block-7", x: 2, y: 8, w: 2, h: 5, minW: 1, minH: 2 },
 
-    { i: "block-8",  x: 0, y: 31, w: 1, h: 4, minW: 1, minH: 4 },
-    { i: "block-9",  x: 0, y: 32, w: 1, h: 4, minW: 1, minH: 3 },
+    { i: "block-8", x: 0, y: 31, w: 1, h: 4, minW: 1, minH: 4 },
+    { i: "block-9", x: 0, y: 32, w: 1, h: 4, minW: 1, minH: 3 },
     { i: "block-10", x: 1, y: 32, w: 1, h: 4, minW: 1, minH: 3 },
     { i: "block-11", x: 2, y: 32, w: 1, h: 4, minW: 1, minH: 3 },
     { i: "block-12", x: 1, y: 33, w: 1, h: 3, minW: 1, minH: 3 },
@@ -34,28 +34,28 @@ const initialLayouts: Layouts = {
     { i: "link-1", x: 2, y: 31, w: 1, h: 1, minW: 1, minH: 1 },
     { i: "link-2", x: 1, y: 31, w: 1, h: 1, minW: 1, minH: 1 },
     { i: "link-3", x: 0, y: 33, w: 1, h: 1, minW: 1, minH: 1 },
-    { i: "link-4", x: 0, y: 9,  w: 3, h: 1, minW: 1, minH: 1 },
+    { i: "link-4", x: 0, y: 9, w: 3, h: 1, minW: 1, minH: 1 },
     { i: "link-5", x: 0, y: 31, w: 1, h: 1, minW: 1, minH: 1 },
 
     // HEROES
-    { i: "hero",   x: 2, y: 0,  w: 1, h: 3, minW: 1, minH: 3 },
-    { i: "hero-2", x: 0, y: 6,  w: 2, h: 10, minW: 1, minH: 3 },
-    { i: "hero-3", x: 1, y: 4,  w: 2, h: 5, minW: 1, minH: 3 },
-    { i: "hero-4", x: 2, y: 7,  w: 2, h: 5, minW: 1, minH: 3 },
-    { i: "hero-5", x: 0, y: 8,  w: 2, h: 5, minW: 1, minH: 3 },
+    { i: "hero", x: 2, y: 0, w: 1, h: 3, minW: 1, minH: 3 },
+    { i: "hero-2", x: 0, y: 6, w: 2, h: 10, minW: 1, minH: 3 },
+    { i: "hero-3", x: 1, y: 4, w: 2, h: 5, minW: 1, minH: 3 },
+    { i: "hero-4", x: 2, y: 7, w: 2, h: 5, minW: 1, minH: 3 },
+    { i: "hero-5", x: 0, y: 8, w: 2, h: 5, minW: 1, minH: 3 },
     { i: "hero-6", x: 1, y: 30, w: 2, h: 5, minW: 1, minH: 3 },
   ],
 
   md: [
     // SPACERS
-    { i: "spacer-2", x: 2, y: 7,  w: 1, h: 2, minW: 1, minH: 1 },
+    { i: "spacer-2", x: 2, y: 7, w: 1, h: 2, minW: 1, minH: 1 },
     { i: "spacer-3", x: 2, y: 100, w: 1, h: 2, minW: 1, minH: 1 },
 
     // CORE BLOCKS
-    { i: "block",   x: 0, y: 0,  w: 2, h: 8, minW: 2, minH: 4 },
-    { i: "hero",    x: 2, y: 0,  w: 1, h: 4, minW: 1, minH: 3 },
-    { i: "block-3", x: 0, y: 8,  w: 3, h: 4, minW: 2, minH: 3 },
-    { i: "block-4", x: 2, y: 6,  w: 1, h: 4, minW: 1, minH: 3 },
+    { i: "block", x: 0, y: 0, w: 2, h: 8, minW: 2, minH: 4 },
+    { i: "hero", x: 2, y: 0, w: 1, h: 4, minW: 1, minH: 3 },
+    { i: "block-3", x: 0, y: 8, w: 3, h: 4, minW: 2, minH: 3 },
+    { i: "block-4", x: 2, y: 6, w: 1, h: 4, minW: 1, minH: 3 },
 
     // FEATURED PROJECT CARDS
     { i: "block-2", x: 0, y: 10, w: 1, h: 6, minW: 1, minH: 4 },
@@ -66,8 +66,8 @@ const initialLayouts: Layouts = {
     { i: "block-5", x: 0, y: 16, w: 3, h: 4, minW: 1, minH: 3 },
 
     // SKILL / EXTRA BLOCKS
-    { i: "block-8",  x: 0, y: 20, w: 1, h: 4, minW: 1, minH: 3 },
-    { i: "block-9",  x: 1, y: 20, w: 1, h: 4, minW: 1, minH: 3 },
+    { i: "block-8", x: 0, y: 20, w: 1, h: 4, minW: 1, minH: 3 },
+    { i: "block-9", x: 1, y: 20, w: 1, h: 4, minW: 1, minH: 3 },
     { i: "block-10", x: 2, y: 20, w: 1, h: 4, minW: 1, minH: 3 },
     { i: "block-11", x: 0, y: 24, w: 1, h: 4, minW: 1, minH: 3 },
     { i: "block-12", x: 1, y: 24, w: 2, h: 3, minW: 1, minH: 3 },
@@ -93,8 +93,8 @@ const initialLayouts: Layouts = {
     { i: "spacer-3", x: 0, y: 24, w: 2, h: 1, minW: 1, minH: 1 },
 
     // CORE BLOCKS
-    { i: "block",   x: 0, y: 0,  w: 2, h: 6, minW: 2, minH: 4 },
-    { i: "hero",    x: 0, y: 6,  w: 2, h: 4, minW: 2, minH: 3 },
+    { i: "block", x: 0, y: 0, w: 2, h: 6, minW: 2, minH: 4 },
+    { i: "hero", x: 0, y: 6, w: 2, h: 4, minW: 2, minH: 3 },
     { i: "block-4", x: 0, y: 10, w: 2, h: 5, minW: 2, minH: 3 },
     { i: "block-3", x: 0, y: 11, w: 2, h: 4, minW: 2, minH: 3 },
 
@@ -107,8 +107,8 @@ const initialLayouts: Layouts = {
     { i: "block-5", x: 0, y: 36, w: 2, h: 4, minW: 2, minH: 3 },
 
     // EXTRA BLOCKS (stacked)
-    { i: "block-8",  x: 0, y: 40, w: 2, h: 4, minW: 2, minH: 3 },
-    { i: "block-9",  x: 0, y: 44, w: 2, h: 4, minW: 2, minH: 3 },
+    { i: "block-8", x: 0, y: 40, w: 2, h: 4, minW: 2, minH: 3 },
+    { i: "block-9", x: 0, y: 44, w: 2, h: 4, minW: 2, minH: 3 },
     { i: "block-10", x: 0, y: 48, w: 2, h: 4, minW: 2, minH: 3 },
     { i: "block-11", x: 0, y: 52, w: 2, h: 4, minW: 2, minH: 3 },
     { i: "block-12", x: 0, y: 56, w: 2, h: 3, minW: 2, minH: 3 },
@@ -130,8 +130,8 @@ const initialLayouts: Layouts = {
 
   xs: [
     // CORE STACK
-    { i: "block",   x: 0, y: 0,  w: 1, h: 8, minW: 1, minH: 4 },
-    { i: "hero",    x: 0, y: 6,  w: 1, h: 4, minW: 1, minH: 3 },
+    { i: "block", x: 0, y: 0, w: 1, h: 8, minW: 1, minH: 4 },
+    { i: "hero", x: 0, y: 6, w: 1, h: 4, minW: 1, minH: 3 },
     { i: "block-4", x: 0, y: 10, w: 1, h: 5, minW: 1, minH: 3 },
     { i: "block-3", x: 0, y: 14, w: 1, h: 5, minW: 1, minH: 3 },
 
@@ -143,8 +143,8 @@ const initialLayouts: Layouts = {
     { i: "block-5", x: 0, y: 41, w: 1, h: 4, minW: 1, minH: 3 },
 
     // EXTRA BLOCKS
-    { i: "block-8",  x: 0, y: 45, w: 1, h: 4, minW: 1, minH: 3 },
-    { i: "block-9",  x: 0, y: 49, w: 1, h: 4, minW: 1, minH: 3 },
+    { i: "block-8", x: 0, y: 45, w: 1, h: 4, minW: 1, minH: 3 },
+    { i: "block-9", x: 0, y: 49, w: 1, h: 4, minW: 1, minH: 3 },
     { i: "block-10", x: 0, y: 53, w: 1, h: 4, minW: 1, minH: 3 },
     { i: "block-11", x: 0, y: 57, w: 1, h: 4, minW: 1, minH: 3 },
     { i: "block-12", x: 0, y: 61, w: 1, h: 3, minW: 1, minH: 3 },
@@ -170,8 +170,8 @@ const initialLayouts: Layouts = {
 
   xxs: [
     // Same structure as xs for now
-    { i: "block",   x: 0, y: 0,  w: 1, h: 8, minW: 1, minH: 4 },
-    { i: "hero",    x: 0, y: 6,  w: 1, h: 4, minW: 1, minH: 3 },
+    { i: "block", x: 0, y: 0, w: 1, h: 8, minW: 1, minH: 4 },
+    { i: "hero", x: 0, y: 6, w: 1, h: 4, minW: 1, minH: 3 },
     { i: "block-3", x: 0, y: 20, w: 1, h: 5, minW: 1, minH: 3 },
     { i: "block-4", x: 0, y: 10, w: 1, h: 5, minW: 1, minH: 3 },
 
@@ -181,8 +181,8 @@ const initialLayouts: Layouts = {
 
     { i: "block-5", x: 0, y: 41, w: 1, h: 4, minW: 1, minH: 3 },
 
-    { i: "block-8",  x: 0, y: 45, w: 1, h: 4, minW: 1, minH: 3 },
-    { i: "block-9",  x: 0, y: 49, w: 1, h: 4, minW: 1, minH: 3 },
+    { i: "block-8", x: 0, y: 45, w: 1, h: 4, minW: 1, minH: 3 },
+    { i: "block-9", x: 0, y: 49, w: 1, h: 4, minW: 1, minH: 3 },
     { i: "block-10", x: 0, y: 53, w: 1, h: 4, minW: 1, minH: 3 },
     { i: "block-11", x: 0, y: 57, w: 1, h: 4, minW: 1, minH: 3 },
     { i: "block-12", x: 0, y: 61, w: 1, h: 3, minW: 1, minH: 3 },
@@ -214,7 +214,7 @@ export default function SeaPortal() {
 
   useEffect(() => {
     function update() {
-      const h = Math.max(60, window.innerHeight * 0.05); 
+      const h = Math.max(60, window.innerHeight * 0.05);
       setRowHeight(h);
     }
     update();
@@ -242,12 +242,8 @@ export default function SeaPortal() {
           setIsDragEnabled(DRAGGABLE_BREAKPOINTS.has(bp));
         }}
       >
-
         {/* ================== SPACERS ================== */}
-        <div
-          key="spacer-2"
-          className="pointer-events-none select-none"
-        >
+        <div key="spacer-2" className="pointer-events-none select-none">
           {/* empty on purpose */}
         </div>
 
@@ -258,7 +254,9 @@ export default function SeaPortal() {
           key="block"
           className="select-none rounded-lg shadow-soft p-6 flex flex-col bg-foreground/5 border border-foreground/30 glass-card"
         >
-          <h1 className="text-8xl font-black font-poppins mb-4">[PROJECT_NAME]</h1>
+          <h1 className="text-8xl font-black font-poppins mb-4">
+            [PROJECT_NAME]
+          </h1>
 
           <h2 className="text-3xl font-semibold text-foreground/90 leading-snug mb-8 ">
             [PUNCHY DESC]
@@ -267,9 +265,10 @@ export default function SeaPortal() {
           {/* Newspaper column */}
           <div className="space-y-4 max-w-lg">
             <p className="text-xs text-muted-foreground text-justify leading-loose">
-              [REAL DESCRIPTION] My experience spans NASA ETL pipelines, distributed processing systems, and
-              data-intensive web platforms. I focus on building systems that remain
-              robust and maintainable as they grow.
+              [REAL DESCRIPTION] My experience spans NASA ETL pipelines,
+              distributed processing systems, and data-intensive web platforms.
+              I focus on building systems that remain robust and maintainable as
+              they grow.
             </p>
           </div>
         </div>
@@ -280,18 +279,21 @@ export default function SeaPortal() {
           key="block-2"
           className="rounded-lg shadow-soft p-6 flex flex-col bg-foreground/5 border-foreground/30 glass-card"
         >
-          <h3 className="text-3xl font-black font-poppins mb-auto">THE PROBLEM</h3>
+          <h3 className="text-3xl font-black font-poppins mb-auto">
+            THE PROBLEM
+          </h3>
           <br />
           <p className="text-xs">
-            A selection of projects that highlight my work in backend systems, data
-            engineering, and software architecture. Each showcases how I approach
-            scalability, clarity, and real-world problem solving.
+            A selection of projects that highlight my work in backend systems,
+            data engineering, and software architecture. Each showcases how I
+            approach scalability, clarity, and real-world problem solving.
           </p>
           <br />
           <p className="text-xs">
-            These projects represent the systems I’ve built across research, student
-            organizations, and engineering work. From NASA data pipelines to internal tools
-            that streamline operations and automate workflows.
+            These projects represent the systems I’ve built across research,
+            student organizations, and engineering work. From NASA data
+            pipelines to internal tools that streamline operations and automate
+            workflows.
           </p>
         </div>
 
@@ -300,18 +302,21 @@ export default function SeaPortal() {
           key="block-3"
           className="rounded-lg shadow-soft p-6 flex flex-col bg-foreground/5 border-foreground/30 glass-card"
         >
-          <h3 className="text-3xl font-black font-poppins mb-auto">THE ENVIRONMENT</h3>
+          <h3 className="text-3xl font-black font-poppins mb-auto">
+            THE ENVIRONMENT
+          </h3>
           <br />
           <p className="text-xs">
-            A selection of projects that highlight my work in backend systems, data
-            engineering, and software architecture. Each showcases how I approach
-            scalability, clarity, and real-world problem solving.
+            A selection of projects that highlight my work in backend systems,
+            data engineering, and software architecture. Each showcases how I
+            approach scalability, clarity, and real-world problem solving.
           </p>
           <br />
           <p className="text-xs">
-            These projects represent the systems I’ve built across research, student
-            organizations, and engineering work. From NASA data pipelines to internal tools
-            that streamline operations and automate workflows.
+            These projects represent the systems I’ve built across research,
+            student organizations, and engineering work. From NASA data
+            pipelines to internal tools that streamline operations and automate
+            workflows.
           </p>
         </div>
 
@@ -320,18 +325,21 @@ export default function SeaPortal() {
           key="block-4"
           className="rounded-lg shadow-soft p-6 flex flex-col bg-foreground/5 border-foreground/30 glass-card"
         >
-          <h3 className="text-3xl font-black font-poppins mb-auto">THE ACTIONS</h3>
+          <h3 className="text-3xl font-black font-poppins mb-auto">
+            THE ACTIONS
+          </h3>
           <br />
           <p className="text-xs">
-            A selection of projects that highlight my work in backend systems, data
-            engineering, and software architecture. Each showcases how I approach
-            scalability, clarity, and real-world problem solving.
+            A selection of projects that highlight my work in backend systems,
+            data engineering, and software architecture. Each showcases how I
+            approach scalability, clarity, and real-world problem solving.
           </p>
           <br />
           <p className="text-xs">
-            These projects represent the systems I’ve built across research, student
-            organizations, and engineering work. From NASA data pipelines to internal tools
-            that streamline operations and automate workflows.
+            These projects represent the systems I’ve built across research,
+            student organizations, and engineering work. From NASA data
+            pipelines to internal tools that streamline operations and automate
+            workflows.
           </p>
         </div>
 
@@ -343,15 +351,16 @@ export default function SeaPortal() {
           <h3 className="text-3xl font-black font-poppins mb-auto">DETAILS</h3>
           <br />
           <p className="text-xs">
-            A selection of projects that highlight my work in backend systems, data
-            engineering, and software architecture. Each showcases how I approach
-            scalability, clarity, and real-world problem solving.
+            A selection of projects that highlight my work in backend systems,
+            data engineering, and software architecture. Each showcases how I
+            approach scalability, clarity, and real-world problem solving.
           </p>
           <br />
           <p className="text-xs">
-            These projects represent the systems I’ve built across research, student
-            organizations, and engineering work. From NASA data pipelines to internal tools
-            that streamline operations and automate workflows.
+            These projects represent the systems I’ve built across research,
+            student organizations, and engineering work. From NASA data
+            pipelines to internal tools that streamline operations and automate
+            workflows.
           </p>
         </div>
 
@@ -359,18 +368,21 @@ export default function SeaPortal() {
           key="block-6"
           className="rounded-lg shadow-soft p-6 flex flex-col bg-foreground/5 border-foreground/30 glass-card"
         >
-          <h3 className="text-3xl font-black text-muted-foreground font-poppins mb-auto">THE RESULTS</h3>
+          <h3 className="text-3xl font-black text-muted-foreground font-poppins mb-auto">
+            THE RESULTS
+          </h3>
           <br />
           <p className="text-xs">
-            A selection of projects that highlight my work in backend systems, data
-            engineering, and software architecture. Each showcases how I approach
-            scalability, clarity, and real-world problem solving.
+            A selection of projects that highlight my work in backend systems,
+            data engineering, and software architecture. Each showcases how I
+            approach scalability, clarity, and real-world problem solving.
           </p>
           <br />
           <p className="text-xs">
-            These projects represent the systems I’ve built across research, student
-            organizations, and engineering work. From NASA data pipelines to internal tools
-            that streamline operations and automate workflows.
+            These projects represent the systems I’ve built across research,
+            student organizations, and engineering work. From NASA data
+            pipelines to internal tools that streamline operations and automate
+            workflows.
           </p>
         </div>
 
@@ -379,22 +391,23 @@ export default function SeaPortal() {
           key="block-7"
           className="rounded-lg shadow-soft p-6 flex flex-col bg-foreground/5 border-foreground/30 glass-card"
         >
-          <h3 className="text-3xl font-black font-poppins mb-auto">THE LESSONS</h3>
+          <h3 className="text-3xl font-black font-poppins mb-auto">
+            THE LESSONS
+          </h3>
           <br />
           <p className="text-xs">
-            A selection of projects that highlight my work in backend systems, data
-            engineering, and software architecture. Each showcases how I approach
-            scalability, clarity, and real-world problem solving.
+            A selection of projects that highlight my work in backend systems,
+            data engineering, and software architecture. Each showcases how I
+            approach scalability, clarity, and real-world problem solving.
           </p>
           <br />
           <p className="text-xs">
-            These projects represent the systems I’ve built across research, student
-            organizations, and engineering work. From NASA data pipelines to internal tools
-            that streamline operations and automate workflows.
+            These projects represent the systems I’ve built across research,
+            student organizations, and engineering work. From NASA data
+            pipelines to internal tools that streamline operations and automate
+            workflows.
           </p>
         </div>
-
-
 
         {/* ================== LINK CARDS ================== */}
 
@@ -478,12 +491,7 @@ export default function SeaPortal() {
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1000px"
           />
         </div>
-
-
-
-
       </ResponsiveGridLayout>
-
     </section>
   );
 }

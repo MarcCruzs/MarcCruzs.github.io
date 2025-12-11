@@ -71,9 +71,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobile nav */}
-      <details id="mobile-menu" 
-              className="md:hidden border-t border-border/60"
-            >
+      <details id="mobile-menu" className="md:hidden border-t border-border/60">
         <summary className="container-w py-2 cursor-pointer text-right">
           Menu
         </summary>
@@ -82,21 +80,27 @@ export default function Navbar() {
             to="/"
             end
             onClick={closeMobileMenu}
-            className={({ isActive }) => mobile_base + (isActive ? " " + active : "")}
+            className={({ isActive }) =>
+              mobile_base + (isActive ? " " + active : "")
+            }
           >
             Home
           </NavLink>
           <NavLink
             to="/projects"
             onClick={closeMobileMenu}
-            className={({ isActive }) => mobile_base + (isActive ? " " + active : "")}
+            className={({ isActive }) =>
+              mobile_base + (isActive ? " " + active : "")
+            }
           >
             Projects
           </NavLink>
 
-          <button type="button" 
-          className={mobile_base} 
-          onClick={handleContactClick}>
+          <button
+            type="button"
+            className={mobile_base}
+            onClick={handleContactClick}
+          >
             Contact
           </button>
         </div>
