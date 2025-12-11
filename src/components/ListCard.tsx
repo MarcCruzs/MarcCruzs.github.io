@@ -24,10 +24,7 @@ export function ListCard({ title, items }: ListCardProps) {
       {/* Columns */}
       <div className="flex flex-1 divide-x divide-foreground/10">
         {columns.map((col, colIdx) => (
-          <ul
-            key={colIdx}
-            className="flex-1 flex flex-col"
-          >
+          <ul key={colIdx} className="flex-1 flex flex-col">
             {col.map((item, rowIdx) => (
               <li
                 key={rowIdx}

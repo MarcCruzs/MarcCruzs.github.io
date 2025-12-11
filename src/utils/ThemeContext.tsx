@@ -1,78 +1,112 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { Sun, Moon, Leaf } from "akar-icons";
-import { Apple, Banana, Citrus } from "lucide-react";
+// src/context/ThemeContext.tsx (or similar)
 
-export type ThemeClass = "" | "dark"; 
-export const THEMES: ThemeClass[] = ["", "dark"];
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactNode,
+} from "react";
+import { Sun, Moon } from "akar-icons";
 
-export function toThemeKey(name: ThemeClass) {
-  return name ? name.replace(/^theme-/, "") : "light";
-}
+export type ThemeClass = "" | "dark";
+const THEMES: ThemeClass[] = ["", "dark"];
 
-const ICON_BY_THEME: Record<string, JSX.Element> = {
-  default: <Sun />,
-  green: <Leaf  />,
-  blue: <Sun />,
-  dark: <Moon />,
-  dichromacy: <Apple></Apple>,
-  trichromacy: <Banana></Banana>,
-  monochromacy: <Citrus></Citrus>
+type ThemeLabel = "light" | "dark";
 
-};
-
-type ThemeCtx = {
-  theme: ThemeClass;
-  idx: number;
-  label: string;
-  icon: JSX.Element;
+type ThemeContextValue = {
+  theme: ThemeClass;      // "" or "dark"
+  idx: number;            // index in THEMES
+  label: ThemeLabel;      // "light" or "dark"
+  icon: JSX.Element;      // Sun or Moon
   setTheme: (t: ThemeClass) => void;
   cycle: () => void;
 };
 
-const Ctx = createContext<ThemeCtx | null>(null);
+const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
+
+function toThemeKey(name: ThemeClass): ThemeLabel {
+  return name === "dark" ? "dark" : "light";
+}
 
 function applyThemeToDom(name: ThemeClass) {
   if (typeof document === "undefined") return;
-  
-  THEMES.forEach(t => t && document.documentElement.classList.remove(t));
-  if (name) document.documentElement.classList.add(name);
-  localStorage.setItem("theme-name", name);
+
+  // Remove all known theme classes
+  THEMES.forEach((t) => {
+    if (t) document.documentElement.classList.remove(t);
+  });
+
+  // Add the new one if not empty ("" is light / default)
+  if (name) {
+    document.documentElement.classList.add(name);
+  }
+
+  // Optional, if you want a data attribute for other tooling
   document.documentElement.setAttribute("data-theme", name || "default");
+
+  // Persist
+  window.localStorage.setItem("theme-name", name);
 }
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
+export function ThemeProvider({ children }: { children: ReactNode }) {
   const [idx, setIdx] = useState(0);
 
-  
+  // On mount, choose initial theme
   useEffect(() => {
-    const saved = (localStorage.getItem("theme-name") || "") as ThemeClass;
-    const startIdx = Math.max(0, THEMES.indexOf(saved));
-    setIdx(startIdx);
-    applyThemeToDom(saved);
+    if (typeof window === "undefined") return;
+
+    const stored = window.localStorage.getItem("theme-name") as ThemeClass | null;
+
+    let initialTheme: ThemeClass = "";
+
+    if (stored && THEMES.includes(stored)) {
+      initialTheme = stored;
+    } else if (
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
+      initialTheme = "dark";
+    }
+
+    const initialIndex = THEMES.indexOf(initialTheme);
+    const safeIndex = initialIndex >= 0 ? initialIndex : 0;
+    const safeTheme = THEMES[safeIndex];
+
+    setIdx(safeIndex);
+    applyThemeToDom(safeTheme);
   }, []);
 
   const setTheme = (t: ThemeClass) => {
-    const i = Math.max(0, THEMES.indexOf(t));
-    setIdx(i);
-    applyThemeToDom(t);
+    const index = THEMES.indexOf(t);
+    const safeIndex = index >= 0 ? index : 0;
+    const safeTheme = THEMES[safeIndex];
+
+    setIdx(safeIndex);
+    applyThemeToDom(safeTheme);
   };
 
-  const cycle = () => setTheme(THEMES[(idx + 1) % THEMES.length]);
+  const cycle = () => {
+    setTheme(THEMES[(idx + 1) % THEMES.length]);
+  };
 
   const theme = THEMES[idx];
   const label = toThemeKey(theme);
-  const icon = ICON_BY_THEME[label] ?? ICON_BY_THEME.default;
+  const icon = label === "dark" ? <Moon /> : <Sun />;
 
   const value = useMemo(
     () => ({ theme, idx, label, icon, setTheme, cycle }),
     [theme, idx, label, icon]
   );
 
-  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }
 
 export function useTheme() {
-  const v = useContext(Ctx);
-  if (!v) throw new Error("useTheme must be used within ThemeProvider");
-  return v;
+  const ctx = useContext(ThemeContext);
+  if (!ctx) {
+    throw new Error("useTheme must be used within a ThemeProvider");
+  }
+  return ctx;
 }
