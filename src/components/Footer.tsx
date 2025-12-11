@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="container-w py-4 text-sm text-muted-foreground flex items-center justify-between flex-wrap gap-2">
         <div>© {new Date().getFullYear()} Marc Cruz</div>
         <div className="opacity-80">Built with React + Tailwind</div>
-        <Link to="/" className="text-2xl font-bold">
+        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-2xl font-bold">
           &lt;/MarC&gt;
         </Link>
       </div>

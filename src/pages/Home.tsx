@@ -1,4 +1,3 @@
-import { useLocation, useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -6,15 +5,10 @@ import { Responsive, WidthProvider, type Layouts } from "react-grid-layout";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 import { LinkCard } from "@/components/LinkCard";
-import { ThemeCycleCard } from "@/components/ThemeCycleCard";
-import { Dot, Orbit, Rocket, SatelliteDish, Users2 } from "lucide-react";
-import { Plane } from "akar-icons";
-import { ListCard } from "@/components/ListCard";
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 // 3 columns on lg/md; 2 on sm; 1 on xs/xxs
 const COLS = { lg: 3, md: 3, sm: 2, xs: 1, xxs: 1 };
-const ICON_COLOR = "#ffffff";
 
 const initialLayouts: Layouts = {
   lg: [
@@ -194,7 +188,7 @@ const initialLayouts: Layouts = {
 
 const roles = [
   {
-    text: "NASA SWE Contractor ",
+    text: "NASA S.W.E. Contractor ",
     linkText: "(NAMS-2)",
     href: "https://nams-2-crown.com/",
   },
@@ -276,14 +270,14 @@ export default function Home() {
                 MARC CRUZ
               </h1>
 
-              <h2 className="text-3xl font-semibold text-foreground/90 leading-snug mb-8">
+              <h2 className="text-3xl font-semibold  leading-snug mb-8">
                 I build scalable backend systems and data pipelines that stay
                 clean and dependable.
               </h2>
 
               {/* Newspaper column */}
               <div className="space-y-4 max-w-xs">
-                <p className="text-xs text-muted-foreground text-justify leading-loose">
+                <p className="text-xs text-justify leading-relaxed">
                   My experience spans NASA ETL pipelines, distributed processing
                   systems, and data-intensive web platforms. I focus on building
                   systems that remain robust and maintainable as they grow.
@@ -292,10 +286,10 @@ export default function Home() {
 
               {/* Button anchored to bottom */}
               <Button
-                variant="secondary"
+                variant="primary"
                 size="lg"
                 asChild
-                className="self-start mt-auto px-6 py-3 text-base font-semibold rounded-md shadow-sm hover:shadow-md"
+                className="border border-border/70 self-start mt-auto px-6 py-3 text-base font-semibold rounded-md shadow-sm hover:shadow-md"
               >
                 <HashLink smooth to="/#contact">
                   Get in Touch
@@ -335,7 +329,7 @@ export default function Home() {
           >
             {/* Header */}
             <div className="px-4 py-2 border-b border-foreground/10">
-              <h3 className="font-black font-poppins text-md text-foreground/80 tracking-wide">
+              <h3 className="font-black font-poppins text-md text-foreground tracking-wide">
                 PREVIOUSLY
               </h3>
             </div>
@@ -348,7 +342,7 @@ export default function Home() {
                   className="flex-1 flex items-center px-4 hover:bg-foreground/10 transition-colors"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="h-3 w-3 rounded-sm bg-foreground/40" />
+                    <div className="h-3 w-3 rounded-sm bg-accent/90" />
 
                     <span className="text-sm text-foreground/80">
                       {role.text}
@@ -357,7 +351,7 @@ export default function Home() {
                           href={role.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="underline hover:text-foreground"
+                          className="underline hover:text-accent/60 text-accent"
                         >
                           {role.linkText}
                         </a>
@@ -391,7 +385,7 @@ export default function Home() {
 
               {/* Description */}
               <div className="space-y-4">
-                <p className="text-sm text-justify leading-loose">
+                <p className="text-sm text-justify leading-relaxed">
                   I developed and optimized ETL pipelines for NASA’s atmospheric
                   data workflows, improving how large scientific datasets were
                   ingested, processed, and prepared for research and modeling.
@@ -432,7 +426,7 @@ export default function Home() {
 
               {/* Description */}
               <div className="space-y-4">
-                <p className="text-sm text-justify leading-loose">
+                <p className="text-sm text-justify leading-relaxed">
                   I built the SEA Portal to streamline how the club manages
                   members, events, and internal data. It replaces manual
                   processes with a scalable, automated system that improves
@@ -494,7 +488,7 @@ export default function Home() {
 
               {/* Description */}
               <div className="space-y-4">
-                <p className="text-sm text-justify leading-loose">
+                <p className="text-sm text-justify leading-relaxed">
                   I helped develop the computer vision system for our SUAS
                   competition UAV, creating software that identified objects and
                   supported the team’s autonomous mission tasks.
@@ -503,7 +497,7 @@ export default function Home() {
 
               {/* Buttons */}
               <Button
-                variant="secondary"
+                variant="github"
                 size="lg"
                 asChild
                 className="self-end mt-auto px-6 py-3 text-base font-semibold rounded-md

@@ -10,13 +10,17 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow hover:bg-primary/90",
+          "glass-card bg-card shadow border-border text-[hsl(var(--foreground))] hover:bg-foreground hover:border-muted hover:text-[hsl(var(--background))] duration-1000",
         destructive:
           "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
         outline:
           "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
+          "bg-card shadow text-[hsl(var(--foreground))] hover:bg-foreground hover:border-muted hover:text-[hsl(var(--background))] duration-500",
+        github:
+          "bg-card shadow text-[hsl(var(--foreground))] hover:bg-[hsl(var(--brand-github-hover))] hover:border-muted hover:text-[hsl(var(--brand-github-hover-fg))] duration-500",
+        primary:
+          "bg-card shadow text-[hsl(var(--background))] bg-[hsl(var(--foreground))] hover:bg-background hover:border-muted hover:text-[hsl(var(--foreground))] duration-200",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
       },

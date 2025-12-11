@@ -39,7 +39,10 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur">
       <div className="container-w flex items-center justify-between py-3">
-        <Link to="/" className="text-2xl font-bold">
+        <Link to="/" 
+        className="text-2xl font-bold"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
           &lt;MarC&gt;
         </Link>
 
@@ -60,9 +63,13 @@ export default function Navbar() {
             Projects
           </NavLink>
 
-          <button type="button" className={base} onClick={handleContactClick}>
+          <NavLink
+            className={base}
+            onClick={handleContactClick} to={""}          
+          >
             Contact
-          </button>
+          </NavLink>
+
         </nav>
 
         <div className="flex items-center gap-2">

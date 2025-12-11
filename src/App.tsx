@@ -31,7 +31,7 @@ export default function App() {
 
   return (
     <ThemeProvider>
-    <div className="min-h-full flex flex-col bg-gradient-emerald">
+    <div className="min-h-full flex flex-col">
       <Navbar />
 
       <main className="container-w flex-1 py-6">
