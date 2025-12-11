@@ -5,11 +5,18 @@ import { ThemeCycleButton } from "./ThemeToggleButton";
 export default function Navbar() {
   const base =
     "px-3 py-2 rounded-md text-sm font-medium hover:bg-card transition";
+  const mobile_base =
+    "px-3 py-2 rounded-md text-sm font-medium hover:bg-card transition flex justify-end";
   const active =
     "bg-card text-[hsl(var(--primary))] border border-[hsl(var(--border))]";
 
   const navigate = useNavigate();
   const location = useLocation();
+
+  const closeMobileMenu = () => {
+    const menu = document.getElementById("mobile-menu");
+    if (menu) menu.removeAttribute("open");
+  };
 
   const handleContactClick = () => {
     const go = () => {
@@ -25,6 +32,9 @@ export default function Navbar() {
     } else {
       go();
     }
+
+    const menu = document.getElementById("mobile-menu");
+    if (menu) menu.removeAttribute("open");
   };
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur">
@@ -61,7 +71,9 @@ export default function Navbar() {
       </div>
 
       {/* Mobile nav */}
-      <details className="md:hidden border-t border-border/60">
+      <details id="mobile-menu" 
+              className="md:hidden border-t border-border/60"
+            >
         <summary className="container-w py-2 cursor-pointer text-right">
           Menu
         </summary>
@@ -69,18 +81,22 @@ export default function Navbar() {
           <NavLink
             to="/"
             end
-            className={({ isActive }) => base + (isActive ? " " + active : "")}
+            onClick={closeMobileMenu}
+            className={({ isActive }) => mobile_base + (isActive ? " " + active : "")}
           >
             Home
           </NavLink>
           <NavLink
             to="/projects"
-            className={({ isActive }) => base + (isActive ? " " + active : "")}
+            onClick={closeMobileMenu}
+            className={({ isActive }) => mobile_base + (isActive ? " " + active : "")}
           >
             Projects
           </NavLink>
 
-          <button type="button" className={base} onClick={handleContactClick}>
+          <button type="button" 
+          className={mobile_base} 
+          onClick={handleContactClick}>
             Contact
           </button>
         </div>

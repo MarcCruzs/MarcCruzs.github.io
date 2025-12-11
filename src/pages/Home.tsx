@@ -128,12 +128,6 @@ const initialLayouts: Layouts = {
     { i: "link-4", x: 1, y: 61, w: 1, h: 2, minW: 1, minH: 1 },
     { i: "link-5", x: 0, y: 63, w: 2, h: 2, minW: 1, minH: 1 },
 
-    // HEROES
-    { i: "hero-2", x: 0, y: 65, w: 2, h: 4, minW: 2, minH: 3 },
-    { i: "hero-3", x: 0, y: 69, w: 2, h: 4, minW: 2, minH: 3 },
-    { i: "hero-4", x: 0, y: 73, w: 2, h: 4, minW: 2, minH: 3 },
-    { i: "hero-5", x: 0, y: 77, w: 2, h: 4, minW: 2, minH: 3 },
-    { i: "hero-6", x: 0, y: 81, w: 2, h: 4, minW: 2, minH: 3 },
   ],
 
   xs: [
@@ -164,13 +158,6 @@ const initialLayouts: Layouts = {
     { i: "link-4", x: 0, y: 70, w: 1, h: 2, minW: 1, minH: 1 },
     { i: "link-5", x: 0, y: 72, w: 1, h: 2, minW: 1, minH: 1 },
 
-    // HEROES
-    { i: "hero-2", x: 0, y: 74, w: 1, h: 4, minW: 1, minH: 3 },
-    { i: "hero-3", x: 0, y: 78, w: 1, h: 4, minW: 1, minH: 3 },
-    { i: "hero-4", x: 0, y: 82, w: 1, h: 4, minW: 1, minH: 3 },
-    { i: "hero-5", x: 0, y: 86, w: 1, h: 4, minW: 1, minH: 3 },
-    { i: "hero-6", x: 0, y: 90, w: 1, h: 4, minW: 1, minH: 3 },
-
     // SPACERS
     { i: "spacer-2", x: 0, y: 94, w: 1, h: 1, minW: 1, minH: 1 },
     { i: "spacer-3", x: 0, y: 95, w: 1, h: 1, minW: 1, minH: 1 },
@@ -200,12 +187,6 @@ const initialLayouts: Layouts = {
     { i: "link-3", x: 0, y: 68, w: 1, h: 2, minW: 1, minH: 1 },
     { i: "link-4", x: 0, y: 70, w: 1, h: 2, minW: 1, minH: 1 },
     { i: "link-5", x: 0, y: 72, w: 1, h: 2, minW: 1, minH: 1 },
-
-    { i: "hero-2", x: 0, y: 74, w: 1, h: 4, minW: 1, minH: 3 },
-    { i: "hero-3", x: 0, y: 78, w: 1, h: 4, minW: 1, minH: 3 },
-    { i: "hero-4", x: 0, y: 82, w: 1, h: 4, minW: 1, minH: 3 },
-    { i: "hero-5", x: 0, y: 86, w: 1, h: 4, minW: 1, minH: 3 },
-    { i: "hero-6", x: 0, y: 90, w: 1, h: 4, minW: 1, minH: 3 },
 
     { i: "spacer-2", x: 0, y: 94, w: 1, h: 1, minW: 1, minH: 1 },
     { i: "spacer-3", x: 0, y: 95, w: 1, h: 1, minW: 1, minH: 1 },
@@ -601,7 +582,7 @@ export default function Home() {
 
         <div
           key="hero-2"
-          className="rounded-lg shadow-soft flex bg-foreground/5 border-foreground/30 glass-card"
+          className="hidden md:flex rounded-lg shadow-soft bg-foreground/5 border-foreground/30 glass-card"
         >
           <img
             alt="Earth Observations taken during Expedition Four (NASA ID: iss004e11807)"
@@ -615,7 +596,7 @@ export default function Home() {
 
         <div
           key="hero-3"
-          className="rounded-lg shadow-soft flex bg-foreground/5 border-foreground/30 glass-card"
+          className="hidden md:flex rounded-lg shadow-soft bg-foreground/5 border-foreground/30 glass-card"
         >
           <img
             alt="Palace of Fine Arts"
@@ -629,7 +610,7 @@ export default function Home() {
 
         <div
           key="hero-4"
-          className="rounded-lg shadow-soft flex bg-foreground/5 border-foreground/30 glass-card"
+          className="hidden md:flex rounded-lg shadow-soft bg-foreground/5 border-foreground/30 glass-card"
         >
           <img
             alt="White lotus flower"
@@ -643,7 +624,7 @@ export default function Home() {
 
         <div
           key="hero-5"
-          className="rounded-lg shadow-soft flex bg-foreground/5 border-foreground/30 glass-card"
+          className="hidden md:flex rounded-lg shadow-soft bg-foreground/5 border-foreground/30 glass-card"
         >
           <img
             alt="UAV"
@@ -686,7 +667,7 @@ export default function Home() {
         {/* Contact hero image */}
         <div
           key="hero-6"
-          className="rounded-lg shadow-soft flex bg-foreground/5 border-foreground/30 glass-card"
+          className="hidden md:flex rounded-lg shadow-soft bg-foreground/5 border-foreground/30 glass-card"
         >
           <img
             alt="Umbrella Man"
