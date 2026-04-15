@@ -1,90 +1,262 @@
-import { HashLink } from "react-router-hash-link";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { ThemeCycleButton } from "./ThemeToggleButton";
+import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Moon, Sun, Menu, X } from "lucide-react";
 
-export default function Navbar() {
-  const base =
-    "px-3 py-2 rounded-md text-sm font-medium hover:bg-card transition";
-  const active =
-    "bg-card text-[hsl(var(--primary))] border border-[hsl(var(--border))]";
+interface NavbarProps {
+  dark: boolean;
+  onToggleDark: () => void;
+}
 
-  const navigate = useNavigate();
+type NavLink = {
+  label: string;
+  href: string;
+  isRoute?: boolean;
+  isNew?: boolean;
+};
+
+const navLinks: NavLink[] = [
+  { label: "Work", href: "#work" },
+  { label: "Services", href: "#services" },
+  { label: "About", href: "#about" },
+  { label: "Showroom", href: "/showroom", isRoute: true, isNew: true },
+  { label: "Contact", href: "#contact" },
+];
+
+export function Navbar({ dark, onToggleDark }: NavbarProps) {
+  const [scrolledState, setScrolledState] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const onShowroom = location.pathname !== "/";
 
-  const handleContactClick = () => {
-    const go = () => {
-      const el = document.getElementById("contact");
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    };
+  // Non-home routes have no dark hero — force "scrolled" styling so text uses
+  // the theme text color instead of the cream-over-espresso treatment.
+  const scrolled = scrolledState || onShowroom;
 
-    if (location.pathname !== "/") {
-      navigate("/");
-      setTimeout(go, 400);
-    } else {
-      go();
-    }
-  };
+  useEffect(() => {
+    const handleScroll = () => setScrolledState(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur">
-      <div className="container-w flex items-center justify-between py-3">
-        <Link to="/" className="text-2xl font-bold">
-          &lt;MarC&gt;
+    <header
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        transition: "background-color var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out)",
+        backgroundColor: scrolled
+          ? "color-mix(in srgb, var(--color-background) 85%, transparent)"
+          : "transparent",
+        borderBottom: scrolled
+          ? "1px solid var(--color-border)"
+          : "1px solid transparent",
+        backdropFilter: scrolled ? "blur(12px)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(12px)" : "none",
+      }}
+      role="banner"
+    >
+      <nav
+        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16"
+        aria-label="Main navigation"
+      >
+        {/* Wordmark — cream over dark hero, switches to theme text color once scrolled */}
+        <Link
+          to="/"
+          className="font-display font-semibold text-xl tracking-tight transition-all duration-base ease-out hover:opacity-80"
+          style={{
+            color: scrolled ? "var(--color-text)" : "var(--color-on-dark)",
+          }}
+        >
+          Marc Cruz
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
-          {/* Page links (keep NavLink) */}
-          <NavLink
-            to="/"
-            end
-            className={({ isActive }) => base + (isActive ? " " + active : "")}
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/projects"
-            className={({ isActive }) => base + (isActive ? " " + active : "")}
-          >
-            Projects
-          </NavLink>
+        {/* Desktop nav links */}
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => {
+            const isActive = link.isRoute && location.pathname === link.href;
+            const baseColor = isActive
+              ? "var(--color-accent)"
+              : scrolled
+                ? "var(--color-text-muted)"
+                : "color-mix(in srgb, var(--color-on-dark) 75%, transparent)";
+            const hoverColor = isActive
+              ? "var(--color-accent)"
+              : scrolled
+                ? "var(--color-text)"
+                : "var(--color-on-dark)";
 
-          <button type="button" className={base} onClick={handleContactClick}>
-            Contact
-          </button>
-        </nav>
+            const linkContent = (
+              <span className="inline-flex items-center gap-1.5">
+                {link.label}
+                {link.isNew && (
+                  <span
+                    className="px-1 py-px rounded text-[9px] font-bold uppercase tracking-wider leading-none"
+                    style={{ backgroundColor: "var(--color-accent)", color: "var(--color-accent-ink)" }}
+                  >
+                    New
+                  </span>
+                )}
+              </span>
+            );
 
-        <div className="flex items-center gap-2">
-          <ThemeCycleButton />
+            if (link.isRoute) {
+              return (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="text-sm font-medium transition-all duration-300"
+                  style={{ color: baseColor }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = hoverColor)}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = baseColor)}
+                >
+                  {linkContent}
+                </Link>
+              );
+            }
+
+            // Hash links: if not on home page, use React Router navigate so
+            // ScrollToHash can scroll to the section after the page mounts
+            return (
+              <a
+                key={link.href}
+                href={onShowroom ? `/${link.href}` : link.href}
+                className="text-sm font-medium transition-all duration-300"
+                style={{ color: baseColor }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = hoverColor)}
+                onMouseLeave={(e) => (e.currentTarget.style.color = baseColor)}
+                onClick={onShowroom ? (e) => {
+                  e.preventDefault();
+                  navigate(`/${link.href}`);
+                } : undefined}
+              >
+                {linkContent}
+              </a>
+            );
+          })}
         </div>
-      </div>
 
-      {/* Mobile nav */}
-      <details className="md:hidden border-t border-border/60">
-        <summary className="container-w py-2 cursor-pointer text-right">
-          Menu
-        </summary>
-        <div className="container-w pb-3 flex flex-col gap-1">
-          <NavLink
-            to="/"
-            end
-            className={({ isActive }) => base + (isActive ? " " + active : "")}
+        {/* Actions */}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={onToggleDark}
+            aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+            className="p-2 rounded-lg transition-all duration-fast ease-out hover:scale-110 active:scale-95"
+            style={{ color: scrolled ? "var(--color-text-muted)" : "color-mix(in srgb, var(--color-on-dark) 75%, transparent)" }}
           >
-            Home
-          </NavLink>
-          <NavLink
-            to="/projects"
-            className={({ isActive }) => base + (isActive ? " " + active : "")}
-          >
-            Projects
-          </NavLink>
+            {dark ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
 
-          <button type="button" className={base} onClick={handleContactClick}>
-            Contact
+          <a
+            href={onShowroom ? "/#contact" : "#contact"}
+            onClick={onShowroom ? (e) => {
+              e.preventDefault();
+              navigate("/#contact");
+            } : undefined}
+            className="btn-terracotta hidden md:inline-flex items-center px-4 py-2 rounded-lg text-sm font-semibold"
+            data-umami-event="cta-nav-click"
+          >
+            Start Your Project
+          </a>
+
+          <button
+            onClick={() => setMobileOpen((o) => !o)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            className="md:hidden p-2 rounded-lg transition-all duration-fast ease-out"
+            style={{ color: scrolled ? "var(--color-text-muted)" : "color-mix(in srgb, var(--color-on-dark) 75%, transparent)" }}
+          >
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
-      </details>
+      </nav>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div
+          className="md:hidden px-4 pb-4 space-y-1"
+          style={{
+            backgroundColor: "var(--color-background)",
+            borderBottom: "1px solid var(--color-border)",
+          }}
+        >
+          {navLinks.map((link) => {
+            const inner = (
+              <span className="inline-flex items-center gap-1.5">
+                {link.label}
+                {link.isNew && (
+                  <span
+                    className="px-1 py-px rounded text-[9px] font-bold uppercase tracking-wider leading-none"
+                    style={{ backgroundColor: "var(--color-accent)", color: "var(--color-accent-ink)" }}
+                  >
+                    New
+                  </span>
+                )}
+              </span>
+            );
+
+            if (link.isRoute) {
+              return (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-150"
+                  style={{ color: "var(--color-text-muted)" }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "var(--color-text)";
+                    e.currentTarget.style.backgroundColor = "var(--color-surface)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "var(--color-text-muted)";
+                    e.currentTarget.style.backgroundColor = "transparent";
+                  }}
+                >
+                  {inner}
+                </Link>
+              );
+            }
+
+            return (
+              <a
+                key={link.href}
+                href={onShowroom ? `/${link.href}` : link.href}
+                onClick={onShowroom ? (e) => {
+                  e.preventDefault();
+                  setMobileOpen(false);
+                  navigate(`/${link.href}`);
+                } : () => setMobileOpen(false)}
+                className="block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-150"
+                style={{ color: "var(--color-text-muted)" }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "var(--color-text)";
+                  e.currentTarget.style.backgroundColor = "var(--color-surface)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = "var(--color-text-muted)";
+                  e.currentTarget.style.backgroundColor = "transparent";
+                }}
+              >
+                {inner}
+              </a>
+            );
+          })}
+          <a
+            href={onShowroom ? "/#contact" : "#contact"}
+            onClick={onShowroom ? (e) => {
+              e.preventDefault();
+              setMobileOpen(false);
+              navigate("/#contact");
+            } : () => setMobileOpen(false)}
+            className="btn-terracotta block w-full text-center px-4 py-3 rounded-lg text-sm font-semibold mt-2"
+          >
+            Start Your Project
+          </a>
+        </div>
+      )}
     </header>
   );
 }

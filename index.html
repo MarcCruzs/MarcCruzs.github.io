@@ -3,8 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="dark light"/>
-    <title>Marc Cruz • Portfolio</title>
+    <title>Marc Cruz | Web Design, SEO & AI · Orange County, CA</title>
+    <meta name="description" content="Custom-built websites with SEO, analytics & AI for small businesses. Based in Orange County — serving all of the US. No templates. Everything from scratch." />
+    <meta property="og:title" content="Marc Cruz | Web Design, SEO & AI · Orange County, CA" />
+    <meta property="og:description" content="Custom-built websites with SEO, analytics & AI for small businesses. Based in Orange County — serving all of the US." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://marccruzs.com" />
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Marc Cruz",
+      "jobTitle": "Full-Stack Web Developer",
+      "description": "Custom websites with SEO, analytics and AI for small businesses. Based in Orange County, CA.",
+      "url": "https://marccruzs.com",
+      "email": "marc.cruz.office@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Orange County",
+        "addressRegion": "CA",
+        "addressCountry": "US"
+      },
+      "knowsAbout": ["Web Design", "SEO", "Analytics", "AI Implementation", "React", "TypeScript"]
+    }
+    </script>
+    <script>
+      // Restore saved theme before first paint to avoid flash
+      try {
+        const t = localStorage.getItem('theme');
+        if (t === 'light') document.documentElement.classList.add('light');
+      } catch (_) {}
+      // Restore accessibility prefs before first paint
+      try {
+        const a = JSON.parse(localStorage.getItem('a11y-prefs') || '{}');
+        const h = document.documentElement.classList;
+        if (a.fontSize === 1) h.add('a11y-font-lg');
+        if (a.fontSize === 2) h.add('a11y-font-xl');
+        if (a.highContrast) h.add('a11y-high-contrast');
+        if (a.reduceMotion) h.add('a11y-reduce-motion');
+        if (a.dyslexiaFont) h.add('a11y-dyslexia');
+        if (a.focusHighlight) h.add('a11y-focus-highlight');
+        if (a.lineHeight) h.add('a11y-line-height');
+      } catch (_) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

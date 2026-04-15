@@ -1,52 +1,55 @@
-import { Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import Home from "@/pages/Home";
-import Projects from "@/pages/Projects";
-import SeaPortal from "@/pages/sea-portal"
-import { ThemeProvider } from "@/utils/ThemeContext";
-
-const pageVariants = {
-  initial: { opacity: 0, y: 8 },
-  enter:   { opacity: 1, y: 0, transition: { duration: 1 } },
-  exit:    { opacity: 0, y: -8, transition: { duration: 0.18 } },
-};
-
-function Page({ children }: { children: React.ReactNode }) {
-  return (
-    <motion.div
-      variants={pageVariants}
-      initial="initial"
-      animate="enter"
-      exit="exit"
-    >
-      {children}
-    </motion.div>
-  );
-}
+import { useState, useEffect } from "react";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import { StickyMobileBar } from "@/components/StickyMobileBar";
+import { AccessibilityWidget } from "@/components/AccessibilityWidget";
+import { Hero } from "@/components/sections/Hero";
+import { TrustBar } from "@/components/sections/TrustBar";
+import { Services } from "@/components/sections/Services";
+import { Work } from "@/components/sections/Work";
+import { Process } from "@/components/sections/Process";
+import { About } from "@/components/sections/About";
+import { FAQ } from "@/components/sections/FAQ";
+import { ShowroomCTA } from "@/components/sections/ShowroomCTA";
+import { Contact } from "@/components/sections/Contact";
 
 export default function App() {
-  const location = useLocation();
+  const [dark, setDark] = useState(false);
+  const [heroVisible, setHeroVisible] = useState(true);
+
+  // Sync dark class on <html>
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", dark);
+  }, [dark]);
+
+  // Watch hero visibility for sticky mobile bar
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setHeroVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    const hero = document.getElementById("hero");
+    if (hero) observer.observe(hero);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <ThemeProvider>
-    <div className="min-h-full flex flex-col bg-gradient-emerald">
-      <Navbar />
-
-      <main className="container-w flex-1 py-6">
-        {/* AnimatePresence watches route changes and plays exit/enter */}
-        <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<Page><Home /></Page>} />
-            <Route path="/projects" element={<Page><Projects /></Page>} />
-            <Route path="/projects/sea-portal" element={<Page><SeaPortal /></Page>} />
-          </Routes>
-        </AnimatePresence>
+    <div style={{ backgroundColor: "var(--color-background)", color: "var(--color-text)" }}>
+      <Navbar dark={dark} onToggleDark={() => setDark((d) => !d)} />
+      <main>
+        <Hero />
+        <TrustBar />
+        <Services />
+        <Work />
+        <Process />
+        <About />
+        <FAQ />
+        <ShowroomCTA />
+        <Contact />
       </main>
-
       <Footer />
+      <StickyMobileBar visible={!heroVisible} />
+      <AccessibilityWidget />
     </div>
-    </ThemeProvider>
   );
 }
