@@ -1,193 +1,192 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   Marc Cruz · Portfolio
+   Midcentury modern theme — loaded from shared themes/ folder
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* Variable fonts — must come before @tailwind + theme import */
+@import "@fontsource-variable/fraunces";
+@import "@fontsource-variable/inter";
+
+/* Theme tokens (cascade layers declared inside) */
+@import "./midcentury.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* { box-sizing: border-box; }
-html, body, #root { height: 100%; }
-body { @apply bg-background text-foreground; }
+/* ── Client-specific overrides ──────────────────────────────────────────── */
+@layer components {
+  /* Hero — dark espresso slab against cream body for mid-century contrast */
+  .hero-espresso {
+    background-color: var(--color-surface-dark);
+    color: var(--color-on-dark);
+    position: relative;
+    overflow: hidden;
+  }
 
-.glass-card {
-  background: linear-gradient(
-  to bottom,
-  rgba(255,255,255,0.12),
-  rgba(255,255,255,0.05)
-);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 20px;
-  border-width: 1px;
-  position: relative;
-  will-change: backdrop-filter;
-  overflow: hidden;
+  /* Geometric grid overlay for hero — warm mustard hairlines */
+  .hero-grid-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(hsl(39 72% 55% / 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(39 72% 55% / 0.08) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  /* Terracotta CTA button base */
+  .btn-terracotta {
+    background-color: var(--color-primary);
+    color: var(--color-primary-ink);
+    transition: transform var(--dur-fast) var(--ease-out),
+                background-color var(--dur-fast) var(--ease-out),
+                box-shadow var(--dur-base) var(--ease-out);
+  }
+  .btn-terracotta:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px hsl(14 57% 35% / 0.28);
+  }
+  .btn-terracotta:active {
+    transform: scale(0.98);
+  }
+
+  /* Glass surface — for nav and hero overline */
+  .glass-warm {
+    background: color-mix(in srgb, var(--color-background) 80%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .glass-warm-ink {
+    background: color-mix(in srgb, var(--color-surface-dark) 60%, transparent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid color-mix(in srgb, var(--color-accent) 30%, transparent);
+  }
+
+  /* Service/project card */
+  .card-mid {
+    background-color: var(--color-surface-raised);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--dur-base) var(--ease-out),
+                transform var(--dur-base) var(--ease-out),
+                box-shadow var(--dur-base) var(--ease-out);
+  }
+  .card-mid:hover {
+    border-color: var(--color-border-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px hsl(var(--shadow-color) / 0.15);
+  }
 }
 
-.glass-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.8),
-    transparent
-  );
-}
-
-.glass-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1px;
-  height: 100%;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.8),
-    transparent,
-    rgba(255, 255, 255, 0.3)
-  );
-}
-
-
-.fade-in {
-  opacity: 0;
-  animation: fadeIn 0.25s ease-out forwards;
-}
-
-@keyframes fadeIn {
-  to {
+/* ── Scroll-reveal system (kept from prior build) ─────────────────────── */
+@layer components {
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.65s var(--ease-out),
+                transform 0.65s var(--ease-out);
+  }
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.65s var(--ease-out),
+                transform 0.65s var(--ease-out);
+  }
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.65s var(--ease-out),
+                transform 0.65s var(--ease-out);
+  }
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.94) translateY(20px);
+    transition: opacity 0.55s var(--ease-out),
+                transform 0.55s var(--ease-out);
+  }
+  .reveal.is-visible,
+  .reveal-left.is-visible,
+  .reveal-right.is-visible,
+  .reveal-scale.is-visible {
     opacity: 1;
+    transform: none;
   }
 }
 
-.react-grid-item.react-grid-placeholder {
-  background:  hsl(var(--foreground)) none repeat scroll 0% 0% !important;
-  transition-duration: 100ms;
-  z-index: 2;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-  border-radius: 20px;
-  transition: all 500ms ease 0s !important;
-  will-change: transform;
-  cursor: grabbing;
+/* ── Hero entrance keyframes ───────────────────────────────────────────── */
+@keyframes hero-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-.rgl-custom .react-resizable-handle::after {
-  position: absolute;
-  right: 8px !important;          
-  bottom: 8px !important;
-  width: 10px;          
-  height: 10px;
-  border-right: 2px solid hsl(var(--primary)) !important;  
-  border-bottom: 2px solid hsl(var(--primary)) !important;  
-  box-shadow: 0 2px 4px rgba(0,0,0,.35) !important;
+/* ── Showroom keyframes ────────────────────────────────────────────────── */
+@keyframes sr-fadeUp  { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+@keyframes sr-fadeIn  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes sr-float   { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+/* ── Accessibility Widget Overrides ──────────────────────────────────── */
+html.a11y-font-lg { font-size: 112.5%; }
+html.a11y-font-xl { font-size: 125%; }
+
+html.a11y-high-contrast {
+  --color-text:           hsl(0, 0%, 0%) !important;
+  --color-text-muted:     hsl(0, 0%, 15%) !important;
+  --color-text-subtle:    hsl(0, 0%, 25%) !important;
+  --color-background:     hsl(0, 0%, 100%) !important;
+  --color-surface:        hsl(0, 0%, 96%) !important;
+  --color-surface-raised: hsl(0, 0%, 100%) !important;
+  --color-border:         hsl(0, 0%, 30%) !important;
+}
+html.a11y-high-contrast.dark {
+  --color-text:           hsl(0, 0%, 100%) !important;
+  --color-text-muted:     hsl(0, 0%, 88%) !important;
+  --color-text-subtle:    hsl(0, 0%, 75%) !important;
+  --color-background:     hsl(0, 0%, 0%) !important;
+  --color-surface:        hsl(0, 0%, 6%) !important;
+  --color-surface-raised: hsl(0, 0%, 10%) !important;
+  --color-border:         hsl(0, 0%, 60%) !important;
 }
 
-/* Container for all blobs */
-.lava-bg {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.40;
-  filter: blur(26px);
+html.a11y-reduce-motion *,
+html.a11y-reduce-motion *::before,
+html.a11y-reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+html.a11y-reduce-motion .reveal,
+html.a11y-reduce-motion .reveal-left,
+html.a11y-reduce-motion .reveal-right,
+html.a11y-reduce-motion .reveal-scale {
+  opacity: 1 !important;
+  transform: none !important;
 }
 
-/* Blob defaults */
-.lava-bg::before,
-.lava-bg::after,
-.lava-bg .blob-3 {
-  content: "";
-  position: absolute;
-  background: #00A86B;
-  width: 32%;               /* smaller blobs */
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  opacity: 0.9;
+html.a11y-dyslexia * {
+  font-family: "OpenDyslexic", "Comic Sans MS", sans-serif !important;
+  letter-spacing: 0.05em;
+  word-spacing: 0.12em;
 }
 
-/* BLOB 1 — rises from bottom to mid */
-.lava-bg::before {
-  bottom: 0%;
-  left: 10%;
-  animation: lavaRise3 14s ease-in-out infinite alternate;
+html.a11y-focus-highlight *:focus-visible {
+  outline: 3px solid var(--color-accent) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 6px hsl(39 72% 47% / 0.25) !important;
 }
 
-/* BLOB 2 — rises from mid to near top */
-.lava-bg::after {
-  bottom: 10%;
-  right: -10%;
-  width: 38%;
-  animation: lavaRise2 18s ease-in-out infinite alternate;
+html.a11y-line-height * {
+  line-height: 1.9 !important;
+  letter-spacing: 0.03em;
 }
-
-/* BLOB 3 — slow large blob drifting vertically */
-.lava-bg .blob-3 {
-  bottom: -25%;
-  left: 40%;
-  width: 45%;
-  animation: lavaRise2 22s ease-in-out infinite alternate;
+html.a11y-line-height p,
+html.a11y-line-height li {
+  margin-bottom: 0.8em;
 }
-
-
-/* ====================== KEYFRAMES ====================== */
-/* Mimics the buoyant rise and fall of lava globules */
-
-@keyframes lavaRise1 {
-  0%   { transform: translate(-4%, 0)      scale(0.95); }
-  40%  { transform: translate(3%, -25%)    scale(1.05); }
-  70%  { transform: translate(-2%, -40%)   scale(1); }
-  100% { transform: translate(4%, -55%)    scale(0.9); }
-}
-
-@keyframes lavaRise2 {
-  0%   { transform: translate(0, 0)        scale(1); }
-  30%  { transform: translate(-3%, -20%)   scale(1.08); }
-  60%  { transform: translate(2%, -40%)    scale(0.97); }
-  100% { transform: translate(-2%, -60%)   scale(1.02); }
-}
-
-@keyframes lavaRise3 {
-  0%   { transform: translate(0, 0)        scale(1); }
-  30%  { transform: translate(-3%, -30%)   scale(1.08); }
-  60%  { transform: translate(2%, -60%)    scale(0.97); }
-  100% { transform: translate(-2%, -150%)   scale(1.5); }
-}
-
-
-@media screen and (max-width: 1110px) {
-  .responsive-tag {
-    display: none;
-  }
-
-  .responsive-graph {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 450) {
-  .responsive-home-graph {
-    display: none;
-  }
-}
-
-
-
-@layer base {
-  :root { --background: 0 0% 100%; --foreground: 0 0% 3.9%; --card: 0 0% 100%; --card-foreground: 0 0% 3.9%; --popover: 0 0% 100%; --popover-foreground: 0 0% 3.9%; --primary: 0 0% 9%; --primary-foreground: 0 0% 98%; --secondary: 0 0% 96.1%; --secondary-foreground: 0 0% 9%; --muted: 0 0% 96.1%; --muted-foreground: 0 0% 45.1%; --accent: 0 0% 96.1%; --accent-foreground: 0 0% 9%; --destructive: 0 84.2% 60.2%; --destructive-foreground: 0 0% 98%; --border: 0 0% 89.8%; --input: 0 0% 89.8%; --ring: 0 0% 3.9%; --chart-1: 12 76% 61%; --chart-2: 173 58% 39%; --chart-3: 197 37% 24%; --chart-4: 43 74% 66%; --chart-5: 27 87% 67%; --radius: 0.5rem; }
-  .dark { --background: 0 0% 3.9%; --foreground: 0 0% 98%; --card: 0 0% 3.9%; --card-foreground: 0 0% 98%; --popover: 0 0% 3.9%; --popover-foreground: 0 0% 98%; --primary: 0 0% 98%; --primary-foreground: 0 0% 9%; --secondary: 0 0% 14.9%; --secondary-foreground: 0 0% 98%; --muted: 0 0% 14.9%; --muted-foreground: 0 0% 63.9%; --accent: 0 0% 14.9%; --accent-foreground: 0 0% 98%; --destructive: 0 62.8% 30.6%; --destructive-foreground: 0 0% 98%; --border: 0 0% 14.9%; --input: 0 0% 14.9%; --ring: 0 0% 83.1%; --chart-1: 220 70% 50%; --chart-2: 160 60% 45%; --chart-3: 30 80% 55%; --chart-4: 280 65% 60%; --chart-5: 340 75% 55%; } }
-
-
-
-@layer base {
-  * {
-    @apply border-border; }
-  body {
-    @apply bg-background text-foreground; } }
