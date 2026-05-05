@@ -1,11 +1,16 @@
 import { Linkedin, Github, Mail } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
-const navLinks = [
+type NavLink = {
+  label: string;
+  href: string;
+  isRoute?: boolean;
+};
+
+const navLinks: NavLink[] = [
   { label: "Work", href: "#work" },
-  { label: "Services", href: "#services" },
+  { label: "Resume", href: "#resume" },
   { label: "About", href: "#about" },
-  { label: "Showroom", href: "/showroom", isRoute: true },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -31,16 +36,16 @@ export function Footer() {
               Marc Cruz
             </p>
             <p className="text-sm leading-relaxed">
-              Websites. SEO. AI.
+              Full-stack engineer.
             </p>
-            <p className="text-sm mt-1">Orange County, CA · US-wide</p>
+            <p className="text-sm mt-1">Orange County, CA · Open to remote</p>
           </div>
 
           {/* Col 2: Nav links */}
           <div>
             <p
               className="text-xs font-semibold uppercase tracking-widest mb-4"
-              style={{ color: "color-mix(in srgb, var(--color-on-dark) 42%, transparent)" }}
+              style={{ color: "color-mix(in srgb, var(--color-on-dark) 62%, transparent)" }}
             >
               Navigation
             </p>
@@ -93,7 +98,7 @@ export function Footer() {
           <div>
             <p
               className="text-xs font-semibold uppercase tracking-widest mb-4"
-              style={{ color: "color-mix(in srgb, var(--color-on-dark) 42%, transparent)" }}
+              style={{ color: "color-mix(in srgb, var(--color-on-dark) 62%, transparent)" }}
             >
               Get in Touch
             </p>
@@ -142,7 +147,7 @@ export function Footer() {
           className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs"
           style={{
             borderTop: "1px solid color-mix(in srgb, var(--color-on-dark) 12%, transparent)",
-            color: "color-mix(in srgb, var(--color-on-dark) 38%, transparent)",
+            color: "color-mix(in srgb, var(--color-on-dark) 58%, transparent)",
           }}
         >
           <span>© 2026 Marc Cruz</span>

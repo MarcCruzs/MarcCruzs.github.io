@@ -1,8 +1,9 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const techStack = [
-  "React", "TypeScript", "Python", "Node.js",
-  "SEO", "Analytics", "AI / LLM", "PostgreSQL",
+  "Python", "TypeScript", "React", "PyTorch",
+  "TensorFlow", "CUDA C", "Node.js", "Apache Airflow",
+  "PostgreSQL", "REST APIs", "Docker", "Linux / HPC",
 ];
 
 export function About() {
@@ -20,7 +21,7 @@ export function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Text */}
           <div
-            ref={textRef as React.RefObject<HTMLDivElement>}
+            ref={textRef}
             className={`reveal-left${textVisible ? " is-visible" : ""}`}
           >
             <p
@@ -31,15 +32,15 @@ export function About() {
             </p>
             <h2
               id="about-heading"
-              className="text-3xl lg:text-4xl font-bold leading-tight mb-6"
+              className="text-step-5 font-bold leading-tight mb-6"
               style={{
                 color: "var(--color-text)",
                 fontFamily: "var(--font-display)",
               }}
             >
-              Technical Chops.{" "}
+              Engineer With{" "}
               <span style={{ color: "var(--color-primary)" }}>
-                Creative Instincts.
+                Range.
               </span>
             </h2>
 
@@ -48,19 +49,19 @@ export function About() {
                 className="text-lg leading-relaxed"
                 style={{ color: "var(--color-text-muted)" }}
               >
-                I'm a full-stack developer based in Orange County, working with
-                clients across the US. I understand the visual, emotional, and
-                narrative needs of creative businesses — and I build sites that
-                reflect that.
+                I'm a full-stack engineer who's worked across the stack:
+                production data pipelines at NASA Ames, ML research on UAVs
+                and precision agriculture, GPU programming on HPC clusters,
+                and modern TypeScript front-ends.
               </p>
               <p
                 className="text-base leading-relaxed"
                 style={{ color: "var(--color-text-muted)" }}
               >
-                I don't outsource. I don't use account managers. When you hire
-                me, you get me — start to finish. Outside of code, I've spent
-                years in the performing arts, which keeps my eye sharp for
-                composition and rhythm.
+                What I bring isn't just one stack. It's the ability to learn
+                a system fast, ship something that works, and keep iterating.
+                I've led a team under competition deadlines and shipped this
+                site end to end.
               </p>
             </div>
 
@@ -70,7 +71,7 @@ export function About() {
                 className="text-xs font-semibold uppercase tracking-widest mb-3"
                 style={{ color: "var(--color-text-subtle)" }}
               >
-                Technologies
+                Core Stack
               </p>
               <div className="flex flex-wrap gap-2">
                 {techStack.map((tech) => (
@@ -92,7 +93,7 @@ export function About() {
 
           {/* Photo / visual */}
           <div
-            ref={imgRef as React.RefObject<HTMLDivElement>}
+            ref={imgRef}
             className={`relative flex justify-center reveal-right${imgVisible ? " is-visible" : ""}`}
           >
             {/* Photo placeholder — swap src for real photo when available */}
@@ -103,14 +104,24 @@ export function About() {
                 boxShadow: "0 20px 25px hsl(var(--shadow-color) / 0.12)",
               }}
             >
-              <img
-                src="/images/marc-portrait.jpg"
-                alt="Marc Cruz, web developer based in Orange County"
-                width={320}
-                height={384}
-                loading="lazy"
-                className="w-full h-full object-cover"
-              />
+              <picture>
+                <source
+                  type="image/webp"
+                  srcSet="/images/marc-portrait-320w.webp 320w, /images/marc-portrait-640w.webp 640w, /images/marc-portrait-960w.webp 960w"
+                  sizes="(min-width: 1024px) 320px, 80vw"
+                />
+                <img
+                  src="/images/marc-portrait-640w.jpg"
+                  srcSet="/images/marc-portrait-320w.jpg 320w, /images/marc-portrait-640w.jpg 640w, /images/marc-portrait-960w.jpg 960w"
+                  sizes="(min-width: 1024px) 320px, 80vw"
+                  alt="Marc Cruz, full-stack software engineer"
+                  width={320}
+                  height={384}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover"
+                />
+              </picture>
             </div>
           </div>
         </div>

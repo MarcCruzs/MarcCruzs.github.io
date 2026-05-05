@@ -6,12 +6,18 @@ type Step = 1 | 2;
 type Status = "idle" | "loading" | "success" | "error";
 
 const serviceOptions = [
-  "Website Design",
-  "SEO Audit",
-  "AI Feature",
-  "Bookkeeping (Coming Soon)",
+  "Full-Time Role",
+  "Contract / Freelance",
+  "Internship",
+  "Open-Source Collaboration",
   "Something Else",
 ];
+
+// Web3Forms drops any submission where the honeypot field is non-empty —
+// real users never see this field, so a populated value implies a bot.
+const HONEYPOT_FIELD = "botcheck";
+// Minimum gap between Send-It clicks (ms) — blocks rapid resubmits via step-back.
+const SUBMIT_COOLDOWN_MS = 30_000;
 
 export function Contact() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal();
@@ -24,12 +30,14 @@ export function Contact() {
     message: "",
   });
   const [errors, setErrors] = useState<Partial<typeof form>>({});
+  const [botcheck, setBotcheck] = useState("");
+  const [lastSubmitAt, setLastSubmitAt] = useState(0);
 
   const validateStep1 = () => {
     const e: Partial<typeof form> = {};
     if (!form.name.trim()) e.name = "Name is required.";
     if (!form.email.includes("@"))
-      e.email = "Email must include an @ symbol — e.g. you@example.com";
+      e.email = "Email must include an @ symbol, e.g. you@example.com";
     if (!form.service) e.service = "Please select a service.";
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -42,7 +50,13 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.message.trim()) {
-      setErrors({ message: "Please share a bit about your project." });
+      setErrors({ message: "Please share a bit about the role." });
+      return;
+    }
+
+    const now = Date.now();
+    if (now - lastSubmitAt < SUBMIT_COOLDOWN_MS) {
+      // Silent throttle — a real user clicking once never trips this.
       return;
     }
 
@@ -56,6 +70,7 @@ export function Contact() {
       return;
     }
 
+    setLastSubmitAt(now);
     setStatus("loading");
 
     try {
@@ -64,12 +79,13 @@ export function Contact() {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           access_key: accessKey,
-          subject: `New project inquiry — ${form.name}`,
+          subject: `New opportunity inquiry — ${form.name}`,
           from_name: form.name,
           name: form.name,
           email: form.email,
-          service: form.service,
+          opportunity_type: form.service,
           message: form.message,
+          [HONEYPOT_FIELD]: botcheck,
         }),
       });
 
@@ -77,7 +93,7 @@ export function Contact() {
 
       if (res.ok && data?.success) {
         setStatus("success");
-        (window as any).umami?.track("form-submitted", { service: form.service });
+        window.umami?.track("form-submitted", { opportunity_type: form.service });
       } else {
         console.error("[Contact] Web3Forms rejected the submission:", data ?? res.statusText);
         setStatus("error");
@@ -123,7 +139,7 @@ export function Contact() {
     >
       <div className="max-w-6xl mx-auto">
         <div
-          ref={sectionRef as React.RefObject<HTMLDivElement>}
+          ref={sectionRef}
           className="grid grid-cols-1 lg:grid-cols-2 gap-16"
         >
           {/* Left: Form */}
@@ -132,17 +148,17 @@ export function Contact() {
               className="text-xs font-semibold uppercase tracking-widest mb-3"
               style={{ color: "var(--color-primary)" }}
             >
-              Start Your Project
+              Get In Touch
             </p>
             <h2
               id="contact-heading"
-              className="text-3xl lg:text-4xl font-bold leading-tight mb-8"
+              className="text-step-5 font-bold leading-tight mb-8"
               style={{
                 color: "var(--color-text)",
                 fontFamily: "var(--font-display)",
               }}
             >
-              Let's Build Something
+              Hiring? Let's Talk.
             </h2>
 
             {/* Success state */}
@@ -175,6 +191,24 @@ export function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} noValidate>
+                {/* Honeypot — hidden from real users; bots fill it and Web3Forms drops the submission. */}
+                <input
+                  type="text"
+                  name={HONEYPOT_FIELD}
+                  value={botcheck}
+                  onChange={(e) => setBotcheck(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  style={{
+                    position: "absolute",
+                    left: "-9999px",
+                    width: "1px",
+                    height: "1px",
+                    opacity: 0,
+                    pointerEvents: "none",
+                  }}
+                />
                 {/* Step indicator */}
                 <div className="flex items-center gap-3 mb-8">
                   {[1, 2].map((s) => (
@@ -292,7 +326,7 @@ export function Contact() {
 
                     <div>
                       <label htmlFor="service" style={labelStyle}>
-                        What are you interested in?
+                        What kind of opportunity?
                       </label>
                       <select
                         id="service"
@@ -313,7 +347,7 @@ export function Contact() {
                         aria-invalid={!!errors.service}
                       >
                         <option value="" style={{ backgroundColor: "var(--color-surface)" }}>
-                          Select a service…
+                          Select an opportunity type…
                         </option>
                         {serviceOptions.map((opt) => (
                           <option
@@ -359,12 +393,12 @@ export function Contact() {
                   <div className="space-y-5">
                     <div>
                       <label htmlFor="message" style={labelStyle}>
-                        Tell me about your project
+                        Tell me about the role
                       </label>
                       <textarea
                         id="message"
                         rows={6}
-                        placeholder="What are you building, what's broken, or what do you need? The more detail, the better."
+                        placeholder="Role, team, stack, location/remote. The more detail, the better."
                         value={form.message}
                         onChange={(e) =>
                           setForm((f) => ({ ...f, message: e.target.value }))
@@ -383,7 +417,7 @@ export function Contact() {
                       />
                       {errors.message && (
                         <p id="message-error" style={errorStyle} role="alert">
-                          {errors.message}
+                          {errors.message || "Please share a bit about the role."}
                         </p>
                       )}
                     </div>
@@ -468,7 +502,7 @@ export function Contact() {
                       className="text-xs text-center"
                       style={{ color: "var(--color-text-subtle)" }}
                     >
-                      No obligation · I respond within 24 hrs · Your info is never shared.
+                      No obligation · Reply within 24 hrs · Your info is never shared.
                     </p>
                   </div>
                 )}
@@ -535,7 +569,7 @@ export function Contact() {
                     className="text-sm font-medium"
                     style={{ color: "var(--color-text)" }}
                   >
-                    Orange County, CA · Available US-wide
+                    Orange County, CA · Open to remote / relocation
                   </p>
                 </div>
               </div>
@@ -569,9 +603,9 @@ export function Contact() {
             {/* Value callouts */}
             <div className="grid grid-cols-1 gap-3 mt-10">
               {[
-                { icon: Shield, label: "No obligation", sub: "Free to inquire, zero pressure" },
-                { icon: Clock, label: "24-hour response", sub: "I reply fast — no ghosting" },
-                { icon: Mail, label: "Personal service", sub: "You talk to me, not an account manager" },
+                { icon: Shield, label: "No obligation", sub: "An intro chat, zero pressure" },
+                { icon: Clock, label: "24-hour response", sub: "I reply fast, no ghosting" },
+                { icon: Mail, label: "Direct contact", sub: "You talk to me, not a mailing list" },
               ].map(({ icon: Icon, label, sub }) => (
                 <div
                   key={label}

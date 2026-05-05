@@ -1,7 +1,7 @@
 import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-type ProjectSize = "medium" | "small";
+type ProjectSize = "hero" | "medium" | "small";
 
 interface Project {
   id: string;
@@ -14,9 +14,27 @@ interface Project {
   image: string | null;
   imageAlt: string;
   gradient: string;
+  // Widths actually generated for this image. Defaults to [440, 880, 1320].
+  // precision-ag-aerial source is 1049 px wide so 1320w isn't generated.
+  imageWidths?: number[];
 }
 
+const DEFAULT_THUMB_WIDTHS = [440, 880, 1320] as const;
+
 const projects: Project[] = [
+  {
+    id: "website",
+    title: "This Website",
+    group: "Web Design",
+    tags: ["React", "TypeScript", "Tailwind", "SEO", "Vite"],
+    description:
+      "The site you're on right now, custom-built from scratch with React, responsive on every device, optimized for search engines, and deployed on Cloudflare Pages. No templates, no page builders. This is what I deliver.",
+    url: "https://github.com/MarcCruzs/MarcCruzs.github.io",
+    size: "hero",
+    image: null,
+    imageAlt: "",
+    gradient: "linear-gradient(135deg, hsl(163,28%,28%) 0%, hsl(163,22%,46%) 100%)",
+  },
   // Engineering background — credibility, not the main pitch
   {
     id: "nasa-rd",
@@ -24,12 +42,12 @@ const projects: Project[] = [
     group: "Data Pipelines",
     tags: ["Python", "ETL", "pandas", "HPC", "REST API"],
     description:
-      "Built data pipelines and contributed to contrail research at NASA Ames — the same engineering rigor behind every site I build.",
+      "Built data pipelines and contributed to contrail research at NASA Ames, the same engineering rigor behind every site I build.",
     url: null,
     size: "medium",
     image: "/images/portfolio/nasa-contrails.jpg",
     imageAlt: "Satellite view of aircraft contrails over mountainous terrain",
-    gradient: "linear-gradient(135deg, hsl(25,28%,18%) 0%, hsl(14,50%,32%) 100%)",
+    gradient: "linear-gradient(135deg, hsl(200,30%,18%) 0%, hsl(200,45%,32%) 100%)",
   },
   {
     id: "suas-competition",
@@ -37,7 +55,7 @@ const projects: Project[] = [
     group: "Software Lead",
     tags: ["Python", "PyTorch", "Roboflow", "UAV", "Jira"],
     description:
-      "Led a team building an object detection system for an international UAV competition — shipping under deadline pressure.",
+      "Led a team building an object detection system for an international UAV competition, shipping under deadline pressure.",
     url: "https://github.com/MarcCruzs/ODLC_Machine_Inferencing_System",
     size: "medium",
     image: "/images/portfolio/suas-drone.jpg",
@@ -56,6 +74,7 @@ const projects: Project[] = [
     image: "/images/portfolio/precision-ag-aerial.png",
     imageAlt: "Aerial map view of agricultural research campus",
     gradient: "linear-gradient(135deg, hsl(72,36%,22%) 0%, hsl(60,40%,32%) 100%)",
+    imageWidths: [440, 880],
   },
   {
     id: "mobility-scooters",
@@ -63,7 +82,7 @@ const projects: Project[] = [
     group: "ML Research",
     tags: ["Python", "TensorFlow", "Raspberry Pi"],
     description:
-      "Deep learning research for mobility scooter safety — real-world impact for elderly and disabled users.",
+      "Deep learning research for mobility scooter safety, real-world impact for elderly and disabled users.",
     url: "https://github.com/MarcCruzs/NSFREU2022-Mobility-Scooter",
     size: "small",
     image: null,
@@ -76,12 +95,12 @@ const projects: Project[] = [
     group: "Systems",
     tags: ["CUDA C", "C++", "HPC", "Slurm"],
     description:
-      "Low-level GPU programming on an HPC cluster — thread scheduling, batch ops, performance at scale.",
+      "Low-level GPU programming on an HPC cluster, thread scheduling, batch ops, performance at scale.",
     url: "https://github.com/MarcCruzs/CS4990-gpu-computing",
     size: "small",
     image: null,
     imageAlt: "",
-    gradient: "linear-gradient(135deg, hsl(25,28%,18%) 0%, hsl(25,35%,28%) 100%)",
+    gradient: "linear-gradient(135deg, hsl(165,25%,14%) 0%, hsl(165,28%,28%) 100%)",
   },
   {
     id: "apache-sdap",
@@ -94,7 +113,7 @@ const projects: Project[] = [
     size: "small",
     image: null,
     imageAlt: "",
-    gradient: "linear-gradient(135deg, hsl(14,55%,22%) 0%, hsl(14,57%,40%) 100%)",
+    gradient: "linear-gradient(135deg, hsl(140,32%,22%) 0%, hsl(140,38%,38%) 100%)",
   },
 ];
 
@@ -114,12 +133,33 @@ function Thumbnail({
       style={{ background: project.gradient }}
     >
       {project.image ? (
-        <img
-          src={project.image}
-          alt={project.imageAlt}
-          loading="lazy"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        (() => {
+          const base = project.image.replace(/\.(jpg|jpeg|png|webp)$/i, "");
+          const widths = project.imageWidths ?? DEFAULT_THUMB_WIDTHS;
+          const fallback = widths[Math.min(1, widths.length - 1)];
+          const srcSet = (ext: "webp" | "jpg") =>
+            widths.map((w) => `${base}-${w}w.${ext} ${w}w`).join(", ");
+          return (
+            <picture>
+              <source
+                type="image/webp"
+                srcSet={srcSet("webp")}
+                sizes="(min-width: 1024px) 444px, (min-width: 768px) 50vw, 100vw"
+              />
+              <img
+                src={`${base}-${fallback}w.jpg`}
+                srcSet={srcSet("jpg")}
+                sizes="(min-width: 1024px) 444px, (min-width: 768px) 50vw, 100vw"
+                alt={project.imageAlt}
+                width={880}
+                height={350}
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </picture>
+          );
+        })()
       ) : (
         <div className="absolute inset-0 flex items-center justify-center p-6">
           <span
@@ -140,12 +180,80 @@ function Thumbnail({
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to top, hsl(25 25% 6% / 0.55) 0%, transparent 60%)",
+              "linear-gradient(to top, hsl(165 25% 6% / 0.55) 0%, transparent 60%)",
           }}
         />
       )}
       {children}
     </div>
+  );
+}
+
+/* ── Hero Card — content-only (no left thumbnail) ────────────────────────── */
+function HeroCard({ project }: { project: Project }) {
+  return (
+    <article
+      className="rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 group relative"
+      style={{
+        backgroundColor: "var(--color-surface-raised)",
+        border: "1px solid var(--color-border)",
+        boxShadow: "0 8px 24px hsl(var(--shadow-color) / 0.10)",
+      }}
+    >
+
+      <div className="p-8 md:p-10 flex flex-col">
+        <span
+          className="text-xs font-semibold uppercase tracking-widest mb-3"
+          style={{ color: "var(--color-primary)" }}
+        >
+          {project.group}
+        </span>
+        <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-3">
+          <h3
+            className="text-2xl md:text-3xl font-bold leading-tight"
+            style={{
+              color: "var(--color-text)",
+              fontFamily: "var(--font-display)",
+            }}
+          >
+            {project.title}
+          </h3>
+          {project.url && (
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open ${project.title} on GitHub`}
+              className="inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity duration-150 hover:opacity-70"
+              style={{ color: "var(--color-primary)" }}
+              data-umami-event="portfolio-item-click"
+            >
+            </a>
+          )}
+        </div>
+        <p
+          className="text-sm md:text-base leading-relaxed mb-5 max-w-2xl"
+          style={{ color: "var(--color-text-muted)" }}
+        >
+          {project.description}
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-xs px-2.5 py-1 rounded-md"
+              style={{
+                backgroundColor: "var(--color-surface)",
+                color: "var(--color-text-subtle)",
+                border: "1px solid var(--color-border)",
+              }}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </article>
   );
 }
 
@@ -166,7 +274,7 @@ function MediumCard({ project }: { project: Project }) {
         {project.url && (
           <div
             className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
-            style={{ backgroundColor: "hsl(25 25% 6% / 0.6)" }}
+            style={{ backgroundColor: "hsl(165 25% 6% / 0.6)" }}
           >
             <a
               href={project.url}
@@ -317,6 +425,7 @@ function CompactCard({ project }: { project: Project }) {
 
 /* ── Main Section ───────────────────────────────────────────────────────── */
 export function Work() {
+  const heroProject = projects.find((p) => p.size === "hero")!;
   const mediumProjects = projects.filter((p) => p.size === "medium");
   const smallProjects = projects.filter((p) => p.size === "small");
 
@@ -333,7 +442,7 @@ export function Work() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div
-          ref={headerRef as React.RefObject<HTMLDivElement>}
+          ref={headerRef}
           className={`mb-10 reveal${headerVisible ? " is-visible" : ""}`}
         >
           <p
@@ -345,7 +454,7 @@ export function Work() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <h2
               id="work-heading"
-              className="text-3xl lg:text-4xl font-bold leading-tight"
+              className="text-step-5 font-bold leading-tight"
               style={{
                 color: "var(--color-text)",
                 fontFamily: "var(--font-display)",
@@ -357,14 +466,14 @@ export function Work() {
               className="text-sm max-w-xs"
               style={{ color: "var(--color-text-muted)" }}
             >
-              From NASA data pipelines to UAV computer vision — everything I ship is custom code.
+              From this site to NASA data pipelines and ML research. Selected work spanning web, data, and systems.
             </p>
           </div>
         </div>
 
         {/* Portfolio container — theme-aware */}
         <div
-          ref={containerRef as React.RefObject<HTMLDivElement>}
+          ref={containerRef}
           className={`rounded-2xl p-4 sm:p-6 lg:p-8 reveal${containerVisible ? " is-visible" : ""}`}
           style={{
             backgroundColor: "var(--color-surface)",
@@ -372,7 +481,12 @@ export function Work() {
             boxShadow: "0 20px 40px hsl(var(--shadow-color) / 0.10)",
           }}
         >
-          {/* Row 1: Medium cards — asymmetric 3/2 split */}
+          {/* Row 1: Featured hero card */}
+          <div className="mb-5">
+            <HeroCard project={heroProject} />
+          </div>
+
+          {/* Row 2: Medium cards — asymmetric 3/2 split */}
           <div className="grid grid-cols-1 md:grid-cols-5 gap-5 mb-5">
             <div className="md:col-span-3">
               <MediumCard project={mediumProjects[0]} />
@@ -382,7 +496,7 @@ export function Work() {
             </div>
           </div>
 
-          {/* Row 2: Last medium card (2/5) + compact cards (each ~1/5) */}
+          {/* Row 3: Last medium card (2/5) + compact cards (each ~1/5) */}
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
             <div className="md:col-span-2">
               <MediumCard project={mediumProjects[2]} />

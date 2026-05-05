@@ -7,12 +7,41 @@
 @import "@fontsource-variable/fraunces";
 @import "@fontsource-variable/inter";
 
-/* Theme tokens (cascade layers declared inside) */
-@import "./midcentury.css";
+/* Shared theme tokens (cascade layers declared inside) */
+@import "./themes/midcentury.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ── Client palette override — dirty jade green primary ─────────────────── */
+@layer tokens {
+  :root {
+    --color-primary:        hsl(163, 21%, 43%);   /* dirty jade #588578 */
+    --color-primary-dark:   hsl(163, 26%, 33%);
+    --color-primary-ink:    hsl(150, 30%, 97%);
+
+    --color-border-hover:   hsl(163, 25%, 50%);
+
+    /* Dark slab — espresso → deep forest jade (Hero + Footer + glass-warm-ink) */
+    --color-surface-dark:   hsl(165, 25%, 11%);
+    --color-on-dark:        hsl(150, 30%, 97%);
+
+    --shadow-color:         163deg 25% 22%;
+  }
+  .dark {
+    --color-primary:        hsl(163, 28%, 56%);
+    --color-primary-dark:   hsl(163, 26%, 42%);
+    --color-primary-ink:    hsl(165, 30%, 10%);
+
+    --color-border-hover:   hsl(163, 32%, 50%);
+
+    --color-surface-dark:   hsl(165, 28%, 6%);
+    --color-on-dark:        hsl(150, 30%, 97%);
+
+    --shadow-color:         163deg 30% 6%;
+  }
+}
 
 /* ── Client-specific overrides ──────────────────────────────────────────── */
 @layer components {
@@ -24,18 +53,87 @@
     overflow: hidden;
   }
 
-  /* Geometric grid overlay for hero — warm mustard hairlines */
+  /* Geometric grid overlay for hero — jade hairlines */
   .hero-grid-overlay {
     position: absolute;
     inset: 0;
     pointer-events: none;
     background-image:
-      linear-gradient(hsl(39 72% 55% / 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(39 72% 55% / 0.08) 1px, transparent 1px);
+      linear-gradient(hsl(163 25% 55% / 0.10) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(163 25% 55% / 0.10) 1px, transparent 1px);
     background-size: 56px 56px;
   }
 
-  /* Terracotta CTA button base */
+  /* Hero photo backdrop — full-bleed image with scrim + vignette for text contrast */
+  .hero-photo-wrap {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 38%;
+    /* Slight desaturation so the image reads as backdrop, not foreground subject */
+    filter: saturate(0.88) contrast(1.02);
+  }
+  /* Portrait / mobile: keep the architecture centered horizontally,
+     pull focus down a touch so the dome sits behind the headline */
+  @media (max-aspect-ratio: 1/1) {
+    .hero-photo { object-position: 50% 42%; }
+  }
+  @media (max-aspect-ratio: 3/4) {
+    .hero-photo { object-position: 52% 45%; }
+  }
+  /* Layered dark gradient — heavier at top (under nav) and bottom (under CTAs)
+     with a softer band through the middle so the image still reads */
+  .hero-scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        180deg,
+        hsl(165 30% 6% / 0.78) 0%,
+        hsl(165 30% 6% / 0.55) 22%,
+        hsl(165 30% 6% / 0.50) 50%,
+        hsl(165 30% 6% / 0.62) 78%,
+        hsl(165 30% 6% / 0.82) 100%
+      );
+  }
+  /* Radial vignette focuses contrast around the centered text block */
+  .hero-vignette {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(
+        ellipse 80% 60% at 50% 52%,
+        hsl(165 30% 6% / 0.35) 0%,
+        hsl(165 30% 6% / 0.10) 55%,
+        transparent 80%
+      );
+  }
+  /* On narrow viewports the image fills less width; bump the scrim a notch
+     so the smaller H1 still hits AAA contrast */
+  @media (max-width: 640px) {
+    .hero-scrim {
+      background:
+        linear-gradient(
+          180deg,
+          hsl(165 30% 6% / 0.85) 0%,
+          hsl(165 30% 6% / 0.65) 22%,
+          hsl(165 30% 6% / 0.62) 50%,
+          hsl(165 30% 6% / 0.72) 78%,
+          hsl(165 30% 6% / 0.88) 100%
+        );
+    }
+  }
+
+  /* Primary CTA button base (jade) */
   .btn-terracotta {
     background-color: var(--color-primary);
     color: var(--color-primary-ink);
@@ -46,7 +144,7 @@
   .btn-terracotta:hover {
     background-color: var(--color-primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 10px 24px hsl(14 57% 35% / 0.28);
+    box-shadow: 0 10px 24px hsl(163 30% 28% / 0.32);
   }
   .btn-terracotta:active {
     transform: scale(0.98);
@@ -177,9 +275,9 @@ html.a11y-dyslexia * {
 }
 
 html.a11y-focus-highlight *:focus-visible {
-  outline: 3px solid var(--color-accent) !important;
+  outline: 3px solid var(--color-primary) !important;
   outline-offset: 3px !important;
-  box-shadow: 0 0 0 6px hsl(39 72% 47% / 0.25) !important;
+  box-shadow: 0 0 0 6px hsl(163 25% 45% / 0.25) !important;
 }
 
 html.a11y-line-height * {

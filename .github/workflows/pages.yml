@@ -33,6 +33,8 @@ jobs:
           echo "${{ github.sha }}" > dist/commit.txt
 
       - name: Build
+        env:
+          VITE_WEB3FORM_KEY_MARCCRUZS: ${{ secrets.VITE_WEB3FORM_KEY_MARCCRUZS }}
         run: npm run build
 
       - name: Verify dist

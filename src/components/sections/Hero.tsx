@@ -13,19 +13,39 @@ export function Hero() {
       className="hero-espresso relative min-h-screen flex items-center justify-center pt-24 sm:pt-20 pb-12"
       aria-labelledby="hero-heading"
     >
-      {/* Warm mustard grid overlay */}
-      <div aria-hidden="true" className="hero-grid-overlay" />
-
-      {/* Decorative mid-century arch — terracotta, top-right */}
-      <div
-        aria-hidden="true"
-        className="absolute top-0 right-0 w-[40vw] h-[40vw] max-w-[520px] max-h-[520px] opacity-[0.12] pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle at bottom left, var(--color-primary) 0%, var(--color-primary) 60%, transparent 62%)",
-          borderBottomLeftRadius: "100%",
-        }}
-      />
+      <div className="hero-photo-wrap" aria-hidden="true">
+        <picture>
+          <source
+            type="image/webp"
+            srcSet="
+              /images/hero/hero-390w.webp 390w,
+              /images/hero/hero-820w.webp 820w,
+              /images/hero/hero-1440w.webp 1440w,
+              /images/hero/hero-2560w.webp 2560w
+            "
+            sizes="100vw"
+          />
+          <img
+            className="hero-photo"
+            src="/images/hero/hero-1440w.jpg"
+            srcSet="
+              /images/hero/hero-390w.jpg 390w,
+              /images/hero/hero-820w.jpg 820w,
+              /images/hero/hero-1440w.jpg 1440w,
+              /images/hero/hero-2560w.jpg 2560w
+            "
+            sizes="100vw"
+            alt=""
+            width={1440}
+            height={956}
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+          />
+        </picture>
+        <div className="hero-scrim" />
+        <div className="hero-vignette" />
+      </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -35,7 +55,7 @@ export function Hero() {
           <span
             className="glass-warm-ink inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest text-accent"
           >
-            Web Design · SEO · AI
+            Full-Stack · ML / Data · Systems
           </span>
         </div>
 
@@ -47,12 +67,13 @@ export function Hero() {
             color: "var(--color-on-dark)",
             fontSize: "var(--step-6)",
             textWrap: "balance",
+            textShadow: "0 2px 18px hsl(165 30% 4% / 0.55), 0 1px 2px hsl(165 30% 4% / 0.45)",
             ...enterUp(200),
           }}
         >
-          Websites That{" "}
+          Engineer Who{" "}
           <span className="italic" style={{ color: "var(--color-accent)" }}>
-            Get You Found
+            Ships
           </span>
         </h1>
 
@@ -61,12 +82,14 @@ export function Hero() {
           className="font-body max-w-2xl mx-auto mb-10 leading-relaxed"
           style={{
             fontSize: "var(--step-1)",
-            color: "color-mix(in srgb, var(--color-on-dark) 82%, transparent)",
+            color: "color-mix(in srgb, var(--color-on-dark) 92%, transparent)",
+            textShadow: "0 1px 12px hsl(165 30% 4% / 0.55)",
             ...enterUp(350),
           }}
         >
-          Custom-built sites with SEO, analytics &amp; AI — designed for small
-          businesses in Orange County and across the US.
+          Full-stack engineer with NASA R&amp;D, ML research, and UAV
+          competition experience. Python, TypeScript, React, PyTorch, CUDA,
+          and a track record of delivering under deadline.
         </p>
 
         {/* CTAs */}
@@ -79,7 +102,7 @@ export function Hero() {
             className="btn-terracotta inline-flex items-center justify-center px-8 py-4 rounded-xl text-base font-semibold"
             data-umami-event="cta-hero-click"
           >
-            Start Your Project
+            Get In Touch
           </a>
           <a
             href="#work"
@@ -105,13 +128,14 @@ export function Hero() {
 
         {/* Meta proof */}
         <p
-          className="mt-10 text-sm"
+          className="mt-10 text-sm max-w-2xl mx-auto"
           style={{
-            color: "color-mix(in srgb, var(--color-on-dark) 55%, transparent)",
+            color: "color-mix(in srgb, var(--color-on-dark) 72%, transparent)",
+            textShadow: "0 1px 8px hsl(165 30% 4% / 0.5)",
             ...enterFade(700),
           }}
         >
-          The site you're looking at is my proof of work — judge the craft by what's in front of you.
+          This site is my proof of work, every line written from scratch. Judge the craft by what's in front of you.
         </p>
       </div>
     </section>

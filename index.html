@@ -3,20 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Marc Cruz | Web Design, SEO & AI · Orange County, CA</title>
-    <meta name="description" content="Custom-built websites with SEO, analytics & AI for small businesses. Based in Orange County — serving all of the US. No templates. Everything from scratch." />
-    <meta property="og:title" content="Marc Cruz | Web Design, SEO & AI · Orange County, CA" />
-    <meta property="og:description" content="Custom-built websites with SEO, analytics & AI for small businesses. Based in Orange County — serving all of the US." />
-    <meta property="og:type" content="website" />
+    <title>Marc Cruz | Full-Stack Engineer · Portfolio & Resume</title>
+    <meta name="description" content="Full-stack engineer — Python, TypeScript, React, ML/data pipelines. NASA R&D, UAV competition lead, GPU computing. Portfolio for hiring managers and recruiters." />
+    <meta property="og:title" content="Marc Cruz | Full-Stack Engineer · Portfolio & Resume" />
+    <meta property="og:description" content="Full-stack engineer with NASA R&D and ML research experience. Portfolio for hiring managers." />
+    <meta property="og:type" content="profile" />
     <meta property="og:url" content="https://marccruzs.com" />
 
-<script type="application/ld+json">
+    <!-- Variable font preloads — prevent FOUT for display + body -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      crossorigin
+      href="/node_modules/@fontsource-variable/fraunces/files/fraunces-latin-wght-normal.woff2"
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      crossorigin
+      href="/node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2"
+    />
+
+    <!-- Preload LCP hero image so it ships before JS evaluation -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/hero/hero-1440w.webp"
+      type="image/webp"
+      imagesrcset="/images/hero/hero-390w.webp 390w, /images/hero/hero-820w.webp 820w, /images/hero/hero-1440w.webp 1440w, /images/hero/hero-2560w.webp 2560w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
+
+    <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Marc Cruz",
-      "jobTitle": "Full-Stack Web Developer",
-      "description": "Custom websites with SEO, analytics and AI for small businesses. Based in Orange County, CA.",
+      "jobTitle": "Full-Stack Software Engineer",
+      "description": "Full-stack engineer with experience in Python, TypeScript, React, machine learning, and data pipelines. NASA R&D contributor, UAV competition software lead.",
       "url": "https://marccruzs.com",
       "email": "marc.cruz.office@gmail.com",
       "address": {
@@ -25,14 +52,18 @@
         "addressRegion": "CA",
         "addressCountry": "US"
       },
-      "knowsAbout": ["Web Design", "SEO", "Analytics", "AI Implementation", "React", "TypeScript"]
+      "knowsAbout": ["Full-Stack Development", "Python", "TypeScript", "React", "Machine Learning", "Data Pipelines", "ETL", "PyTorch", "TensorFlow", "CUDA"]
     }
     </script>
     <script>
-      // Restore saved theme before first paint to avoid flash
+      // Restore saved theme before first paint to avoid flash.
+      // Stored value ('dark'|'light') wins; otherwise fall back to OS preference.
       try {
         const t = localStorage.getItem('theme');
-        if (t === 'light') document.documentElement.classList.add('light');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (t === 'dark' || (t === null && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
       } catch (_) {}
       // Restore accessibility prefs before first paint
       try {
@@ -47,6 +78,7 @@
         if (a.lineHeight) h.add('a11y-line-height');
       } catch (_) {}
     </script>
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="4528afb9-248b-4f1b-a597-cd8e09fc2717"></script>
   </head>
   <body>
     <div id="root"></div>

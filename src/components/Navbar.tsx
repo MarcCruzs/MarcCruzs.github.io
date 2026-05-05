@@ -16,9 +16,8 @@ type NavLink = {
 
 const navLinks: NavLink[] = [
   { label: "Work", href: "#work" },
-  { label: "Services", href: "#services" },
+  { label: "Resume", href: "#resume" },
   { label: "About", href: "#about" },
-  { label: "Showroom", href: "/showroom", isRoute: true, isNew: true },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -159,7 +158,7 @@ export function Navbar({ dark, onToggleDark }: NavbarProps) {
             className="btn-terracotta hidden md:inline-flex items-center px-4 py-2 rounded-lg text-sm font-semibold"
             data-umami-event="cta-nav-click"
           >
-            Start Your Project
+            Get In Touch
           </a>
 
           <button
@@ -253,7 +252,7 @@ export function Navbar({ dark, onToggleDark }: NavbarProps) {
             } : () => setMobileOpen(false)}
             className="btn-terracotta block w-full text-center px-4 py-3 rounded-lg text-sm font-semibold mt-2"
           >
-            Start Your Project
+            Get In Touch
           </a>
         </div>
       )}

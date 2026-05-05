@@ -1,11 +1,11 @@
-import { Code2, MapPin, Search, Zap } from "lucide-react";
+import { Code2, MapPin, Rocket, GraduationCap } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const items = [
-  { icon: Code2, label: "Full-Stack Developer" },
-  { icon: MapPin, label: "Orange County, CA" },
-  { icon: Search, label: "SEO & Analytics Included" },
-  { icon: Zap, label: "Responds Within 24 Hrs" },
+  { icon: Code2, label: "Full-Stack Engineer" },
+  { icon: Rocket, label: "NASA R&D · ML Research" },
+  { icon: GraduationCap, label: "B.S. Computer Science · Cal Poly Pomona" },
+  { icon: MapPin, label: "Orange County · Open to Remote" },
 ];
 
 export function TrustBar() {
@@ -21,7 +21,7 @@ export function TrustBar() {
       }}
     >
       <div
-        ref={ref as React.RefObject<HTMLDivElement>}
+        ref={ref}
         className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6"
       >
         <div className="flex flex-wrap justify-center items-center gap-6 lg:gap-10">

@@ -5,24 +5,29 @@ import { StickyMobileBar } from "@/components/StickyMobileBar";
 import { AccessibilityWidget } from "@/components/AccessibilityWidget";
 import { Hero } from "@/components/sections/Hero";
 import { TrustBar } from "@/components/sections/TrustBar";
-import { Services } from "@/components/sections/Services";
 import { Work } from "@/components/sections/Work";
-import { Process } from "@/components/sections/Process";
+import { Resume } from "@/components/sections/Resume";
 import { About } from "@/components/sections/About";
-import { FAQ } from "@/components/sections/FAQ";
-import { ShowroomCTA } from "@/components/sections/ShowroomCTA";
 import { Contact } from "@/components/sections/Contact";
 
 export default function App() {
-  const [dark, setDark] = useState(false);
+  // Boot script in index.html has already applied .dark before React mounts;
+  // mirror that so the toggle button reflects the current state on first paint.
+  const [dark, setDark] = useState(() =>
+    typeof document !== "undefined" &&
+    document.documentElement.classList.contains("dark"),
+  );
   const [heroVisible, setHeroVisible] = useState(true);
 
-  // Sync dark class on <html>
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
+    try {
+      localStorage.setItem("theme", dark ? "dark" : "light");
+    } catch (_) {
+      /* localStorage unavailable (private mode, quota) — non-fatal */
+    }
   }, [dark]);
 
-  // Watch hero visibility for sticky mobile bar
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setHeroVisible(entry.isIntersecting),
@@ -39,12 +44,9 @@ export default function App() {
       <main>
         <Hero />
         <TrustBar />
-        <Services />
         <Work />
-        <Process />
+        <Resume />
         <About />
-        <FAQ />
-        <ShowroomCTA />
         <Contact />
       </main>
       <Footer />
